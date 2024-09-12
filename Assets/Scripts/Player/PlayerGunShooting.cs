@@ -4,13 +4,21 @@ public class PlayerGunShooting : MonoBehaviour
 {
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private GameObject bulletPrefab;
-	[SerializeField] private float bulletSpeed = 1f; 
+	[SerializeField] private float bulletSpeed = 1f;
 	
+	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
+	private float timeSinceLastFire;
+
+
 	private void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButton("Fire1"))
 		{
-			Fire();
+			if (Time.time - timeSinceLastFire > 1.0 / fireRate)
+			{
+				Fire();
+				timeSinceLastFire = Time.time;
+			}
 		}
 	}
 
@@ -18,5 +26,6 @@ public class PlayerGunShooting : MonoBehaviour
 	{
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
+		// TODO: play sfx
 	}
 }

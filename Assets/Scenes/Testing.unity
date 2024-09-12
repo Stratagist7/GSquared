@@ -207,8 +207,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1756305331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &31384875
-MeshCollider:
+--- !u!65 &31384875
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -225,10 +225,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0007665, z: 1.0685936}
+  m_Center: {x: 0, y: -0.00038325787, z: 0.014494346}
 --- !u!4 &55263316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -558,6 +557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: 6df3f650b33fa604cb3f5923fa50d053, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -760,7 +763,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 658881648}
   bulletPrefab: {fileID: 4876863007464666677, guid: f3c59350574b67d4891548868d6b3bf8, type: 3}
-  bulletSpeed: 80
+  bulletSpeed: 60
+  fireRate: 10
 --- !u!1 &1756305330
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +776,7 @@ GameObject:
   - component: {fileID: 1756305331}
   m_Layer: 0
   m_Name: Temp_target
-  m_TagString: Untagged
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
