@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerGunShooting : MonoBehaviour
 {
+	[SerializeField] private GameObject playerLook;
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float bulletSpeed = 1f;
@@ -9,6 +11,10 @@ public class PlayerGunShooting : MonoBehaviour
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
 	private float timeSinceLastFire;
 
+	private void Start()
+	{
+		SetGunAim();
+	}
 
 	private void Update()
 	{
@@ -27,5 +33,12 @@ public class PlayerGunShooting : MonoBehaviour
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
 		// TODO: play sfx
+	}
+
+	private void SetGunAim()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Physics.Raycast(ray, out RaycastHit hitInfo);
+		transform.LookAt(hitInfo.point);
 	}
 }
