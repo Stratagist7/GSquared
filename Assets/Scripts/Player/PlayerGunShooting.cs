@@ -37,7 +37,7 @@ public class PlayerGunShooting : MonoBehaviour
 
 	private void SetGunAim()
 	{
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
 		Physics.Raycast(ray, out RaycastHit hitInfo);
 		transform.LookAt(hitInfo.point);
 	}
