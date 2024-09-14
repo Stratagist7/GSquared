@@ -10,14 +10,13 @@ public class PlayerGunShooting : MonoBehaviour
 	
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
 	private float timeSinceLastFire;
-
-	private void Start()
-	{
-		SetGunAim();
-	}
+	
+	private Vector3 point;
+	private GameObject target;
 
 	private void Update()
 	{
+		SetAim();
 		if (Input.GetButton("Fire1"))
 		{
 			if (Time.time - timeSinceLastFire > 1.0 / fireRate)
@@ -31,14 +30,23 @@ public class PlayerGunShooting : MonoBehaviour
 	private void Fire()
 	{
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+		bullet.GetComponent<BulletDamage>().SetTarget(point, target);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
+		
 		// TODO: play sfx
 	}
 
-	private void SetGunAim()
+	private void SetAim()
 	{
 		Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
 		Physics.Raycast(ray, out RaycastHit hitInfo);
-		transform.LookAt(hitInfo.point);
+		if (hitInfo.point != point && hitInfo.point != Vector3.zero)
+		{
+			point = hitInfo.point;
+			target = hitInfo.transform.gameObject;
+			Vector3 targetDirection = hitInfo.point - transform.position;
+			Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+			transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+		}
 	}
 }

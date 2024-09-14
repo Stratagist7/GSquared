@@ -7,6 +7,9 @@ public class BulletDamage : MonoBehaviour
 	private float lifeTime;
 
 	private Vector3 prevPos;
+	private Vector3 point;
+	private GameObject target;
+	private bool canDamage = true;
 	
 	private void Start()
 	{
@@ -25,41 +28,54 @@ public class BulletDamage : MonoBehaviour
 		}
 		prevPos = transform.position;
 	}
+	
+	public void SetTarget(Vector3 argPoint, GameObject argTarget)
+	{
+		point = argPoint;
+		target = argTarget;
+		canDamage = target.CompareTag("Damageable");
+	}
 
 	private void CheckHit()
 	{
 		RaycastHit[] hits = Physics.RaycastAll(new Ray(prevPos, (transform.position - prevPos).normalized), (transform.position - prevPos).magnitude);
 		foreach (RaycastHit hit in hits)
 		{
-			if (hit.transform.gameObject.CompareTag("Damageable"))
+			if (hit.transform.gameObject == target && canDamage)
 			{
-				Damageable damageable = hit.transform.GetComponent<Damageable>();
-				if (damageable)
-				{
-					damageable.TakeDamage(damage);
-				}
-				else
-				{
-					// Get highest parent
-					GameObject par = hit.transform.gameObject;
-					while (par.transform.parent != null)
-					{
-						par = par.transform.parent.gameObject;
-					}
-					
-					damageable = par.GetComponent<Damageable>();
-					if (damageable)
-					{
-						damageable.TakeDamage(damage);
-					}
-					else
-					{
-						Debug.LogError("Object " + hit.transform.name + " is tagged as damageable but is missing the Damageable script");
-					}
-				}
+				DealDamage();
+				Destroy(gameObject);
+				break;
 			}
-			Destroy(gameObject);
-			break;
+			
+		}
+	}
+
+	private void DealDamage()
+	{
+		Damageable damageable = target.GetComponent<Damageable>();
+		if (damageable)
+		{
+			damageable.TakeDamage(damage);
+		}
+		else
+		{
+			// Get highest parent
+			GameObject par = target;
+			while (par.transform.parent != null)
+			{
+				par = par.transform.parent.gameObject;
+			}
+
+			damageable = par.GetComponent<Damageable>();
+			if (damageable)
+			{
+				damageable.TakeDamage(damage);
+			}
+			else
+			{
+				Debug.LogError("Object " + target.name + " is tagged as damageable but is missing the Damageable script");
+			}
 		}
 	}
 }
