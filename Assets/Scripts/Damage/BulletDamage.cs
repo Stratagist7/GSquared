@@ -7,7 +7,6 @@ public class BulletDamage : MonoBehaviour
 	private float lifeTime;
 
 	private Vector3 prevPos;
-	private Vector3 point;
 	private GameObject target;
 	private bool canDamage = true;
 	
@@ -29,9 +28,8 @@ public class BulletDamage : MonoBehaviour
 		prevPos = transform.position;
 	}
 	
-	public void SetTarget(Vector3 argPoint, GameObject argTarget)
+	public void SetTarget(GameObject argTarget)
 	{
-		point = argPoint;
 		target = argTarget;
 		canDamage = target.CompareTag("Damageable");
 	}
@@ -41,6 +39,7 @@ public class BulletDamage : MonoBehaviour
 		RaycastHit[] hits = Physics.RaycastAll(new Ray(prevPos, (transform.position - prevPos).normalized), (transform.position - prevPos).magnitude);
 		foreach (RaycastHit hit in hits)
 		{
+			print(hit.collider.name);
 			if (hit.transform.gameObject == target && canDamage)
 			{
 				DealDamage();
