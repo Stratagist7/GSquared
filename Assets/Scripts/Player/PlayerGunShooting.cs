@@ -30,7 +30,7 @@ public class PlayerGunShooting : MonoBehaviour
 	private void Fire()
 	{
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-		bullet.GetComponent<BulletDamage>().SetTarget(target);
+		bullet.GetComponent<BulletDamage>().SetTarget(target, point);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
 		
 		// TODO: play sfx

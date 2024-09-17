@@ -3376,6 +3376,10 @@ PrefabInstance:
       value: Floor (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
+      propertyPath: m_TagString
+      value: Passthrough
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -3543,7 +3547,7 @@ Transform:
   m_GameObject: {fileID: 658881647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0017925347, y: -0.16190332, z: 0.11736575}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2966789}
   m_LocalScale: {x: 0.41219494, y: 0.5916084, z: 0.08150491}
   m_ConstrainProportionsScale: 0
   m_Children: []

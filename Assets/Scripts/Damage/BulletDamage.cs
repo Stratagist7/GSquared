@@ -4,7 +4,9 @@ public class BulletDamage : MonoBehaviour
 {
 	[SerializeField] private int damage = 5;
 	[SerializeField] private float maxLifeTime = 1.5f;
-	private float lifeTime;
+	[SerializeField, Tooltip("When attacking point blank, the bullet struggles to detect the object due to the gun barrel. " +
+	                         "This is the max distance the point can be from the spawn point to automatically deal damage.")] 
+	private float pointDistance = 0.55f;
 
 	private Vector3 prevPos;
 	private GameObject target;
@@ -12,26 +14,25 @@ public class BulletDamage : MonoBehaviour
 	
 	private void Start()
 	{
-		lifeTime = 0f;
 		prevPos = transform.position;
+		Destroy(gameObject, maxLifeTime);
 	}
 
 	private void Update()
 	{
 		CheckHit();
-		
-		lifeTime += Time.deltaTime;
-		if (lifeTime >= maxLifeTime)
-		{
-			Destroy(gameObject);
-		}
-		prevPos = transform.position;
 	}
 	
-	public void SetTarget(GameObject argTarget)
+	public void SetTarget(GameObject argTarget, Vector3 argPoint)
 	{
 		target = argTarget;
 		canDamage = target.CompareTag("Damageable");
+
+		if (canDamage && Vector3.Distance(transform.position, argPoint) < pointDistance)
+		{
+			DealDamage();
+			Destroy(gameObject);
+		}
 	}
 
 	private void CheckHit()
@@ -39,10 +40,12 @@ public class BulletDamage : MonoBehaviour
 		RaycastHit[] hits = Physics.RaycastAll(new Ray(prevPos, (transform.position - prevPos).normalized), (transform.position - prevPos).magnitude);
 		foreach (RaycastHit hit in hits)
 		{
-			print(hit.collider.name);
-			if (hit.transform.gameObject == target && canDamage)
+			if (hit.transform.gameObject == target && !target.CompareTag("Passthrough"))
 			{
-				DealDamage();
+				if (canDamage)
+				{
+					DealDamage();
+				}
 				Destroy(gameObject);
 				break;
 			}
@@ -52,6 +55,7 @@ public class BulletDamage : MonoBehaviour
 
 	private void DealDamage()
 	{
+		canDamage = false;
 		Damageable damageable = target.GetComponent<Damageable>();
 		if (damageable)
 		{

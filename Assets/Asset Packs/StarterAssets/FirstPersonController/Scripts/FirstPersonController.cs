@@ -55,6 +55,7 @@ namespace StarterAssets
 		private float _cinemachineTargetPitch;
 
 		// player
+		private bool _isSprintJumping;
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
@@ -156,6 +157,11 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (!Grounded)
+			{
+				targetSpeed = _isSprintJumping ? SprintSpeed : MoveSpeed;
+			}
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -216,6 +222,7 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					_isSprintJumping = _input.sprint;
 				}
 
 				// jump timeout
