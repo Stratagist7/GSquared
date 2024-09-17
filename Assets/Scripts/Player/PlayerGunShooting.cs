@@ -10,6 +10,7 @@ public class PlayerGunShooting : MonoBehaviour
 	
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
 	private float timeSinceLastFire;
+	private DamageType damageType = DamageType.Fire;
 	
 	private Vector3 point;
 	private GameObject target;
@@ -30,7 +31,7 @@ public class PlayerGunShooting : MonoBehaviour
 	private void Fire()
 	{
 		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-		bullet.GetComponent<BulletDamage>().SetTarget(target, point);
+		bullet.GetComponent<BulletDamage>().SetTarget(damageType, target, point);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
 		
 		// TODO: play sfx

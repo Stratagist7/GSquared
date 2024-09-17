@@ -10,7 +10,9 @@ public class BulletDamage : MonoBehaviour
 
 	private Vector3 prevPos;
 	private GameObject target;
-	private bool canDamage = true;
+	private bool canDamage = false;
+	private DamageType damageType;
+	
 	
 	private void Start()
 	{
@@ -23,8 +25,9 @@ public class BulletDamage : MonoBehaviour
 		CheckHit();
 	}
 	
-	public void SetTarget(GameObject argTarget, Vector3 argPoint)
+	public void SetTarget(DamageType argType, GameObject argTarget, Vector3 argPoint)
 	{
+		damageType = argType;
 		target = argTarget;
 		canDamage = target.CompareTag("Damageable");
 
@@ -59,7 +62,7 @@ public class BulletDamage : MonoBehaviour
 		Damageable damageable = target.GetComponent<Damageable>();
 		if (damageable)
 		{
-			damageable.TakeDamage(damage);
+			damageable.TakeDamage(damageType, damage);
 		}
 		else
 		{
@@ -73,7 +76,7 @@ public class BulletDamage : MonoBehaviour
 			damageable = par.GetComponent<Damageable>();
 			if (damageable)
 			{
-				damageable.TakeDamage(damage);
+				damageable.TakeDamage(damageType, damage);
 			}
 			else
 			{
