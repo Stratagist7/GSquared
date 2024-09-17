@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider), typeof(HealthBar))]
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     private HealthBar healthBar;
+    private NavMeshAgent agent;
+    private float normSpeed;
+    
     private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
     private const float MAX_TYPE_TIME = 5f;
-
+    private const float SLOW_MULTIPLIER = 0.5f;
+    
+    private bool isSlowed = false;
+    private bool isBurning = false;
+    
     private int _curHealth;
     private int curHealth
     {
@@ -23,6 +31,12 @@ public class Damageable : MonoBehaviour
 
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        if (agent)
+        {
+            normSpeed = agent.speed;
+        }
+
         healthBar = GetComponent<HealthBar>();
         curHealth = maxHealth;
         tag = "Damageable";
@@ -64,20 +78,49 @@ public class Damageable : MonoBehaviour
         }
         
         types[argType] = Time.time;
-        if (argType == DamageType.Fire)
+        switch (argType)
         {
-            StartCoroutine(OnFire());
+            case DamageType.Fire:
+                if (!isBurning)
+                {
+                    StartCoroutine(Burning());
+                }
+                break;
+            case DamageType.Ice:
+                if (!isSlowed)
+                {
+                    StartCoroutine(Slowed());
+                }
+                break;
         }
+        
     }
 
-    private IEnumerator OnFire()
+    private IEnumerator Burning()
     {
-        float stopTime = types[DamageType.Fire] + MAX_TYPE_TIME;
-        while (Time.time < stopTime)
+        isBurning = true;
+        while (types.ContainsKey(DamageType.Fire))
         {
-            yield return new WaitForSeconds(0.5f);
-            TakeDamage(DamageType.None, 2);
+            yield return new WaitForSeconds(0.25f);
+            TakeDamage(DamageType.None, 1);
         }
+        isBurning = false;
+    }
+
+    private IEnumerator Slowed()
+    {
+        if (!agent)
+        {
+            yield break;
+        }
+        isSlowed = true;
+        agent.speed = normSpeed * SLOW_MULTIPLIER;
+        while (types.ContainsKey(DamageType.Ice))
+        {
+            yield return null;
+        }
+        agent.speed = normSpeed;
+        isSlowed = false;
     }
 }
 
