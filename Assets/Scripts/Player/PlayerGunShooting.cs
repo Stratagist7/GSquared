@@ -9,8 +9,22 @@ public class PlayerGunShooting : MonoBehaviour
 	[SerializeField] private float bulletSpeed = 1f;
 	
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
+	[SerializeField] private PlayerGunAmmo ammo;
 	private float timeSinceLastFire;
-	private DamageType damageType = DamageType.Fire;
+	private DamageType _damageType = DamageType.Fire;
+
+	public DamageType damageType
+	{
+		get => _damageType;
+		set
+		{
+			if (value != _damageType)
+			{
+				_damageType = value;
+				ammo.Reload();
+			}
+		}
+	}
 	
 	private Vector3 point;
 	private GameObject target;
@@ -30,11 +44,15 @@ public class PlayerGunShooting : MonoBehaviour
 
 	private void Fire()
 	{
-		GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-		bullet.GetComponent<BulletDamage>().SetTarget(damageType, target, point);
-		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
-		
-		// TODO: play sfx
+		if (ammo.curAmmo > 0)
+		{
+			ammo.curAmmo -= 1;
+			GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+			bullet.GetComponent<BulletDamage>().SetTarget(damageType, target, point);
+			bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
+
+			// TODO: play sfx
+		}
 	}
 
 	private void SetAim()

@@ -60,7 +60,7 @@ public class PlayerGunAmmo : MonoBehaviour
 		actionRef.action.Disable();
 	}
 	
-	private void Reload()
+	public void Reload()
 	{
 		curAmmo = maxAmmo;
 	}
