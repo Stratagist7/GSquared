@@ -1,4 +1,4 @@
-using System;
+using StarterAssets;
 using TMPro;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
@@ -9,9 +9,11 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerGunAmmo : MonoBehaviour
 {
 	[SerializeField] private int maxAmmo;
+	[Space]
 	[SerializeField] private InputActionReference actionRef;
 	[SerializeField] private TextMeshProUGUI ammoText;
 	[SerializeField] private GameObject ammoScreen;
+	[SerializeField] private StarterAssetsInputs inputs;
 	
 	private int _curAmmo;
 	public int curAmmo
@@ -36,14 +38,14 @@ public class PlayerGunAmmo : MonoBehaviour
 				Reload();
 			} else if (context.interaction is HoldInteraction)
 			{
-				ammoScreen.SetActive(true);
+				DisplayAmmoScreen(true);
 			}
 		};
 		actionRef.action.canceled += context =>
 		{
 			if (context.interaction is HoldInteraction)
 			{
-				ammoScreen.SetActive(false);
+				DisplayAmmoScreen(false);
 			}
 		};
 	}
@@ -57,21 +59,18 @@ public class PlayerGunAmmo : MonoBehaviour
 	{
 		actionRef.action.Disable();
 	}
-
-	private void Update()
-	{
-		
-	}
 	
 	private void Reload()
 	{
 		curAmmo = maxAmmo;
 	}
-	
-#if ENABLE_INPUT_SYSTEM
-	public void OnReload(InputValue value)
+
+	private void DisplayAmmoScreen(bool shouldDisplay)
 	{
-		
+		ammoScreen.SetActive(shouldDisplay);
+		Cursor.visible = shouldDisplay;
+		inputs.LookInput(Vector2.zero);  // Fixes camera spinning if the look input left as non-zero number
+		inputs.SetCursorLocked(shouldDisplay == false);
+		inputs.cursorInputForLook = shouldDisplay == false;
 	}
-#endif
 }

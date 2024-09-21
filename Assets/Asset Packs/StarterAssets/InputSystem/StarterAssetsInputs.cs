@@ -65,6 +65,12 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+
+		public void SetCursorLocked(bool shouldLock)
+		{
+			cursorLocked = shouldLock;
+			SetCursorState(cursorLocked);
+		}
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{
