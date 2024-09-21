@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "afac945c-0468-480a-8f96-3c991df4eeb0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap,Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -216,6 +225,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "758562d5-8424-4625-b4b7-d975bb2b4b11",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
