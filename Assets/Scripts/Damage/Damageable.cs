@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.AI;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private DamageTypeUI[] damageTypeUI;
     private HealthBar healthBar;
     private NavMeshAgent agent;
     private float normSpeed;
@@ -27,6 +29,13 @@ public class Damageable : MonoBehaviour
             _curHealth = value;
             healthBar.SetHealth(_curHealth);
         }
+    }
+
+    [Serializable]
+    private class DamageTypeUI
+    {
+        public DamageType damageType;
+        public GameObject uiObj;
     }
 
     private void Start()
@@ -59,6 +68,7 @@ public class Damageable : MonoBehaviour
         {
             if (Time.time - types[type] > MAX_TYPE_TIME)
             {
+                EnableDamageTypeUI(type, false);
                 types.Remove(type);
             }
         }
@@ -93,6 +103,7 @@ public class Damageable : MonoBehaviour
                 }
                 break;
         }
+        EnableDamageTypeUI(argType, true);
         
     }
 
@@ -121,6 +132,21 @@ public class Damageable : MonoBehaviour
         }
         agent.speed = normSpeed;
         isSlowed = false;
+    }
+
+    private void EnableDamageTypeUI(DamageType argType, bool argEnabled)
+    {
+        GameObject uiObj = argType switch
+        {
+            DamageType.Fire => damageTypeUI[1].uiObj,
+            DamageType.Ice => damageTypeUI[2].uiObj,
+            DamageType.Lightning => damageTypeUI[3].uiObj,
+            DamageType.Nature => damageTypeUI[4].uiObj,
+            DamageType.Water => damageTypeUI[5].uiObj,
+            _ => damageTypeUI[0].uiObj  // default Earth
+        };
+        uiObj.transform.SetAsFirstSibling();
+        uiObj.SetActive(argEnabled);
     }
 }
 
