@@ -11,6 +11,9 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		private static readonly int vertKey = Animator.StringToHash("Vertical Motion");
+		private static readonly int horiKey = Animator.StringToHash("Horizontal Motion");
+
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -20,6 +23,7 @@ namespace StarterAssets
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		[SerializeField] private Animator animator;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -202,6 +206,8 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			animator.SetInteger(vertKey, (int)_input.move.y);
+			animator.SetInteger(horiKey, (int)_input.move.x);
 		}
 
 		private void JumpAndGravity()
