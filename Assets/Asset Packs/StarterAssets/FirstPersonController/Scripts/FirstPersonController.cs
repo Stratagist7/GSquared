@@ -170,7 +170,10 @@ namespace StarterAssets
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (_input.move == Vector2.zero)
+			{
+				targetSpeed = 0.0f;
+			}
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -206,8 +209,16 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-			animator.SetInteger(vertKey, (int)_input.move.y);
-			animator.SetInteger(horiKey, (int)_input.move.x);
+			if (_input.sprint)
+			{
+				animator.SetFloat(vertKey, _input.move.y * 2 * _speed / SprintSpeed);
+				animator.SetFloat(horiKey, _input.move.x * 2 * _speed / SprintSpeed);
+			}
+			else
+			{
+				animator.SetFloat(vertKey, _input.move.y * _speed / MoveSpeed);
+				animator.SetFloat(horiKey, _input.move.x * _speed / MoveSpeed);
+			}
 		}
 
 		private void JumpAndGravity()

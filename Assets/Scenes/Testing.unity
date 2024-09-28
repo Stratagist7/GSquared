@@ -1718,11 +1718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.446317
+      value: 10.404317
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.948788
+      value: -23.883787
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5856,7 +5856,7 @@ Transform:
   m_GameObject: {fileID: 4135013736847829436}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6599998, z: 0}
+  m_LocalPosition: {x: 0, y: 1.618, z: 0.065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6026,7 +6026,7 @@ GameObject:
   - component: {fileID: 5420857362121477275}
   - component: {fileID: 8616685847562490091}
   m_Layer: 3
-  m_Name: PlayerCapsule
+  m_Name: Player Scripts
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
