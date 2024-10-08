@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerGunShooting : MonoBehaviour
 {
+	private static readonly int attackKey = Animator.StringToHash("t_attack");
+	
 	[SerializeField] private GameObject playerLook;
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private GameObject bulletPrefab;
@@ -10,6 +12,7 @@ public class PlayerGunShooting : MonoBehaviour
 	
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
 	[SerializeField] private PlayerGunAmmo ammo;
+	[SerializeField] private Animator animator;
 	private float timeSinceLastFire;
 	private DamageType _damageType = DamageType.Fire;
 
@@ -51,6 +54,8 @@ public class PlayerGunShooting : MonoBehaviour
 			bullet.GetComponent<BulletDamage>().SetTarget(damageType, target, point);
 			bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
 
+			animator.ResetTrigger(attackKey);
+			animator.SetTrigger(attackKey);
 			// TODO: play sfx
 		}
 	}

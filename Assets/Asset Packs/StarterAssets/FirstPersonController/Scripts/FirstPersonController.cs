@@ -11,8 +11,8 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
-		private static readonly int vertKey = Animator.StringToHash("Vertical Motion");
-		private static readonly int horiKey = Animator.StringToHash("Horizontal Motion");
+		private static readonly int speedKey = Animator.StringToHash("f_speed");
+		private static readonly int jumpKey = Animator.StringToHash("t_jump");
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -209,16 +209,8 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-			if (_input.sprint)
-			{
-				animator.SetFloat(vertKey, _input.move.y * 2 * _speed / SprintSpeed);
-				animator.SetFloat(horiKey, _input.move.x * 2 * _speed / SprintSpeed);
-			}
-			else
-			{
-				animator.SetFloat(vertKey, _input.move.y * _speed / MoveSpeed);
-				animator.SetFloat(horiKey, _input.move.x * _speed / MoveSpeed);
-			}
+			
+			animator.SetFloat(speedKey, _speed);
 		}
 
 		private void JumpAndGravity()
@@ -240,6 +232,7 @@ namespace StarterAssets
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 					_isSprintJumping = _input.sprint;
+					animator.SetTrigger(jumpKey);
 				}
 
 				// jump timeout
