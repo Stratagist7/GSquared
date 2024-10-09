@@ -27,6 +27,10 @@ public class PlayerGunAmmo : MonoBehaviour
 		set
 		{
 			_curAmmo = value;
+			if (value < 0)
+			{
+				_curAmmo = 0;
+			}
 			ammoText.text = $"{_curAmmo}/{maxAmmo}";
 		}
 	}
@@ -69,6 +73,11 @@ public class PlayerGunAmmo : MonoBehaviour
 	
 	public void Reload()
 	{
+		if (curAmmo == maxAmmo)
+		{
+			return;
+		}
+		
 		isReloading = true;
 		playerAnim.SetTrigger(reloadKey);
 		gunAnim.SetTrigger(reloadKey);

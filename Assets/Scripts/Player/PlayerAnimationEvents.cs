@@ -8,8 +8,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void ResetAmmo()
     {
-        print("reset ammo");
         ammo.ResetAmmo();
-        print("done reloading");
     }
 }
