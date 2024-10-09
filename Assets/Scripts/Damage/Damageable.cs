@@ -14,7 +14,7 @@ public class Damageable : MonoBehaviour
     private float normSpeed;
     
     private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
-    private const float MAX_TYPE_TIME = 5f;
+    private const float MAX_TYPE_TIME = 6f;
     private const float SLOW_MULTIPLIER = 0.5f;
     
     private bool isSlowed = false;

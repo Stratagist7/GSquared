@@ -1,6 +1,7 @@
 using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -8,12 +9,16 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerGunAmmo : MonoBehaviour
 {
+	private static readonly int reloadKey = Animator.StringToHash("t_reload");
+	
 	[SerializeField] private int maxAmmo;
 	[Space]
 	[SerializeField] private InputActionReference actionRef;
 	[SerializeField] private TextMeshProUGUI ammoText;
 	[SerializeField] private GameObject ammoScreen;
 	[SerializeField] private StarterAssetsInputs inputs;
+	[SerializeField] private Animator playerAnim;
+	[SerializeField] private Animator gunAnim;
 	
 	private int _curAmmo;
 	public int curAmmo
@@ -26,14 +31,16 @@ public class PlayerGunAmmo : MonoBehaviour
 		}
 	}
 
+	private bool isReloading = false;
+
 	private void Start()
 	{
 		ammoScreen.SetActive(false);
-		Reload();
+		ResetAmmo();
 
 		actionRef.action.performed += context =>
 		{
-			if (context.interaction is TapInteraction)
+			if (context.interaction is TapInteraction && isReloading == false)
 			{
 				Reload();
 			} else if (context.interaction is HoldInteraction)
@@ -62,7 +69,20 @@ public class PlayerGunAmmo : MonoBehaviour
 	
 	public void Reload()
 	{
+		isReloading = true;
+		playerAnim.SetTrigger(reloadKey);
+		gunAnim.SetTrigger(reloadKey);
+	}
+
+	public void ResetAmmo()
+	{
 		curAmmo = maxAmmo;
+		isReloading = false;
+	}
+
+	public bool CanShoot()
+	{
+		return curAmmo >= 0 && isReloading == false;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)

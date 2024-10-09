@@ -47,7 +47,7 @@ public class PlayerGunShooting : MonoBehaviour
 
 	private void Fire()
 	{
-		if (ammo.curAmmo > 0)
+		if (ammo.CanShoot())
 		{
 			ammo.curAmmo -= 1;
 			GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
