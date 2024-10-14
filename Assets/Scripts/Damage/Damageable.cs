@@ -151,4 +151,4 @@ public class Damageable : MonoBehaviour
     }
 }
 
-public enum DamageType {None = -1, Earth, Fire, Ice, Lightning, Nature, Water};
+public enum DamageType {None = -1, Earth, Fire, Ice, Lightning, Water, Wind};

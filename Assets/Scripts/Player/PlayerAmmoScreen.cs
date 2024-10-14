@@ -9,7 +9,7 @@ public class PlayerAmmoScreen : MonoBehaviour
 
 	private readonly Dictionary<int, DamageType> ammoAngle = new Dictionary<int, DamageType>()
 		{
-			{0, DamageType.Nature},
+			{0, DamageType.Wind},
 			{60, DamageType.Earth},
 			{120, DamageType.Fire},
 			{180, DamageType.Lightning},

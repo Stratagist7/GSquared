@@ -59,10 +59,10 @@ MonoBehaviour:
     uiObj: {fileID: 8512567009497309410}
   - damageType: 4
     uiObj: {fileID: 7037888913501065917}
+  - damageType: 4
+    uiObj: {fileID: 7192920985457989285}
   - damageType: 5
     uiObj: {fileID: 8840552398634265950}
-  - damageType: 6
-    uiObj: {fileID: 7192920985457989285}
 --- !u!114 &3333378353675548444
 MonoBehaviour:
   m_ObjectHideFlags: 0
