@@ -785,8 +785,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 214c24644d3567e4bb000dbdac295abc, type: 2}
   - {fileID: 11400000, guid: ef39b292f31b8254f98949484c9da2ef, type: 2}
   - {fileID: 11400000, guid: 07b777ed5cb0b8d42a1a5cf6e372705c, type: 2}
-  - {fileID: 11400000, guid: c09cc2cf6163cb848b51dbab7cd68bb8, type: 2}
   - {fileID: 11400000, guid: c3bc2e384873f294ba1b0c2616e319d8, type: 2}
+  - {fileID: 11400000, guid: c09cc2cf6163cb848b51dbab7cd68bb8, type: 2}
 --- !u!4 &168466445
 Transform:
   m_ObjectHideFlags: 0
@@ -987,6 +987,7 @@ MonoBehaviour:
   fireRate: 7
   ammo: {fileID: 208950854}
   animator: {fileID: 1079714384}
+  actionRef: {fileID: -8232872504731855345, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
 --- !u!23 &208950856
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4128,6 +4129,7 @@ MonoBehaviour:
   fireRate: 10
   ammo: {fileID: 1518237204}
   animator: {fileID: 0}
+  actionRef: {fileID: 0}
 --- !u!23 &1518237206
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5634,7 +5636,7 @@ GameObject:
   - component: {fileID: 1880294751}
   - component: {fileID: 1880294750}
   m_Layer: 5
-  m_Name: Nature
+  m_Name: Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5672,7 +5674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.021962404, a: 0.78431374}
+  m_Color: {r: 0.039443612, g: 1, b: 0.49019608, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6183,6 +6185,7 @@ MonoBehaviour:
   fireRate: 10
   ammo: {fileID: 2024439574}
   animator: {fileID: 0}
+  actionRef: {fileID: 0}
 --- !u!23 &2024439576
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6359,7 +6362,7 @@ GameObject:
   - component: {fileID: 2083365418}
   - component: {fileID: 2083365417}
   m_Layer: 5
-  m_Name: Electric
+  m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
