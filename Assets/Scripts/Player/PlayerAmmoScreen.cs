@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAmmoScreen : MonoBehaviour
 {
 	[SerializeField] private Transform highlight;
-	[SerializeField] private PlayerGunShooting playerGun;
+	[SerializeField] private PlayerGunAmmo ammo;
 
 	private readonly Dictionary<int, DamageType> ammoAngle = new Dictionary<int, DamageType>()
 		{
@@ -23,7 +23,7 @@ public class PlayerAmmoScreen : MonoBehaviour
 	
 	private void OnDisable()
 	{
-		playerGun.damageType = curType;
+		ammo.damageType = curType;
 	}
 	
 	private void Update()

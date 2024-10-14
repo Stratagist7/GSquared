@@ -1,7 +1,7 @@
 using StarterAssets;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -11,14 +11,15 @@ public class PlayerGunAmmo : MonoBehaviour
 {
 	private static readonly int reloadKey = Animator.StringToHash("t_reload");
 	
-	[SerializeField] private int maxAmmo;
-	[Space]
 	[SerializeField] private InputActionReference actionRef;
 	[SerializeField] private TextMeshProUGUI ammoText;
 	[SerializeField] private GameObject ammoScreen;
+	[SerializeField] private Image ammoType;
 	[SerializeField] private StarterAssetsInputs inputs;
 	[SerializeField] private Animator playerAnim;
 	[SerializeField] private Animator gunAnim;
+
+	private int maxAmmo;
 	
 	private int _curAmmo;
 	public int curAmmo
@@ -34,7 +35,19 @@ public class PlayerGunAmmo : MonoBehaviour
 			ammoText.text = $"{_curAmmo}/{maxAmmo}";
 		}
 	}
-
+	private DamageType _damageType = DamageType.Fire;
+	public DamageType damageType
+	{
+		get => _damageType;
+		set
+		{
+			if (value != _damageType)
+			{
+				_damageType = value;
+				Reload(true);
+			}
+		}
+	}
 	private bool isReloading = false;
 
 	private void Start()
@@ -71,9 +84,9 @@ public class PlayerGunAmmo : MonoBehaviour
 		actionRef.action.Disable();
 	}
 	
-	public void Reload()
+	private void Reload(bool force = false)
 	{
-		if (curAmmo == maxAmmo)
+		if (curAmmo == maxAmmo && force == false)
 		{
 			return;
 		}
@@ -85,7 +98,9 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public void ResetAmmo()
 	{
+		maxAmmo = ElementManager.instance.GetElement(damageType).maxAmmo;
 		curAmmo = maxAmmo;
+		ammoType.color = ElementManager.instance.GetElement(damageType).color;
 		isReloading = false;
 	}
 

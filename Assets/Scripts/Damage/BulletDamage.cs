@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
 {
-	[SerializeField] private int damage = 5;
 	[SerializeField] private float maxLifeTime = 1.5f;
 	[SerializeField, Tooltip("When attacking point blank, the bullet struggles to detect the object due to the gun barrel. " +
 	                         "This is the max distance the point can be from the spawn point to automatically deal damage.")] 
@@ -62,7 +61,7 @@ public class BulletDamage : MonoBehaviour
 		Damageable damageable = target.GetComponent<Damageable>();
 		if (damageable)
 		{
-			damageable.TakeDamage(damageType, damage);
+			damageable.TakeDamage(damageType);
 		}
 		else
 		{
@@ -76,7 +75,7 @@ public class BulletDamage : MonoBehaviour
 			damageable = par.GetComponent<Damageable>();
 			if (damageable)
 			{
-				damageable.TakeDamage(damageType, damage);
+				damageable.TakeDamage(damageType);
 			}
 			else
 			{

@@ -74,9 +74,18 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public void TakeDamage(DamageType argType, int argDamage)
+    public void TakeDamage(DamageType argType, int argDamage = -1)
     {
-        curHealth -= argDamage;
+        if (argDamage < 0)
+        {
+            curHealth -= ElementManager.instance.GetElement(argType).damage;
+        }
+        else
+        {
+            curHealth -= argDamage;
+        }
+        
+        // if dead
         if (curHealth <= 0)
         {
             Destroy(gameObject);
@@ -136,18 +145,10 @@ public class Damageable : MonoBehaviour
 
     private void EnableDamageTypeUI(DamageType argType, bool argEnabled)
     {
-        GameObject uiObj = argType switch
-        {
-            DamageType.Fire => damageTypeUI[1].uiObj,
-            DamageType.Ice => damageTypeUI[2].uiObj,
-            DamageType.Lightning => damageTypeUI[3].uiObj,
-            DamageType.Nature => damageTypeUI[4].uiObj,
-            DamageType.Water => damageTypeUI[5].uiObj,
-            _ => damageTypeUI[0].uiObj  // default Earth
-        };
+        GameObject uiObj = damageTypeUI[(int)argType].uiObj;
         uiObj.transform.SetAsFirstSibling();
         uiObj.SetActive(argEnabled);
     }
 }
 
-public enum DamageType {None, Earth, Fire, Ice, Lightning, Nature, Water};
+public enum DamageType {None = -1, Earth, Fire, Ice, Lightning, Nature, Water};
