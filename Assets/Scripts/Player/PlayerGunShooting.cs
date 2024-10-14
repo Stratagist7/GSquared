@@ -1,4 +1,6 @@
-using System;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
 using UnityEngine;
 
 public class PlayerGunShooting : MonoBehaviour
@@ -13,6 +15,7 @@ public class PlayerGunShooting : MonoBehaviour
 	[SerializeField, Tooltip("Bullets per second")] private int fireRate = 20;
 	[SerializeField] private PlayerGunAmmo ammo;
 	[SerializeField] private Animator animator;
+	[SerializeField] private InputActionReference actionRef;
 	private float timeSinceLastFire;
 	
 	
@@ -22,7 +25,7 @@ public class PlayerGunShooting : MonoBehaviour
 	private void Update()
 	{
 		SetAim();
-		if (Input.GetButton("Fire1"))
+		if (actionRef.action.phase == InputActionPhase.Performed)
 		{
 			if (Time.time - timeSinceLastFire > 1.0 / fireRate)
 			{
@@ -30,6 +33,16 @@ public class PlayerGunShooting : MonoBehaviour
 				timeSinceLastFire = Time.time;
 			}
 		}
+	}
+	
+	private void OnEnable()
+	{
+		actionRef.action.Enable();
+	}
+
+	private void OnDisable()
+	{
+		actionRef.action.Disable();
 	}
 
 	private void Fire()
