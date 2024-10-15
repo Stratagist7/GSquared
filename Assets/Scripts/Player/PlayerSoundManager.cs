@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class PlayerSoundManager : MonoBehaviour
 {
-    [FormerlySerializedAs("playerAudioSource")] [SerializeField] private AudioSource playerSource;
+    [SerializeField] private AudioSource playerSource;
     [SerializeField] private AudioSource gunSource;
     
     [Header("Sound Clips")]
