@@ -48,7 +48,8 @@ public class PlayerGunAmmo : MonoBehaviour
 			}
 		}
 	}
-	private bool isReloading = false;
+
+	public bool isReloading { get; private set; }
 
 	private void Start()
 	{
@@ -84,7 +85,7 @@ public class PlayerGunAmmo : MonoBehaviour
 		actionRef.action.Disable();
 	}
 	
-	private void Reload(bool force = false)
+	public void Reload(bool force = false)
 	{
 		if (curAmmo == maxAmmo && force == false)
 		{
@@ -93,7 +94,6 @@ public class PlayerGunAmmo : MonoBehaviour
 		
 		isReloading = true;
 		playerAnim.SetTrigger(reloadKey);
-		gunAnim.SetTrigger(reloadKey);
 	}
 
 	public void ResetAmmo()

@@ -68,6 +68,11 @@ namespace StarterAssets
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
+		
+		// sound clip
+		private float lastStepSound = int.MinValue;
+		private const float WALK_STEP_WAIT = 0.5f;
+		private const float SPRINT_STEP_WAIT = 0.35f;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -205,6 +210,12 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				float waitTime = _input.sprint ? SPRINT_STEP_WAIT : WALK_STEP_WAIT;
+				if (lastStepSound + waitTime < Time.time && Grounded)
+				{
+					lastStepSound = Time.time;
+					PlayerSoundManager.instance.PlayStep();
+				}
 			}
 
 			// move the player
@@ -235,6 +246,7 @@ namespace StarterAssets
 					_jumpTimeoutDelta = JumpTimeout;
 					
 					animator.SetTrigger(jumpKey);
+					PlayerSoundManager.instance.PlayJump();
 				}
 
 				// jump timeout

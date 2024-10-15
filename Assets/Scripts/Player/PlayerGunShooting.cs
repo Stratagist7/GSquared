@@ -1,6 +1,7 @@
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+using System;
 using UnityEngine;
 
 public class PlayerGunShooting : MonoBehaviour
@@ -16,8 +17,8 @@ public class PlayerGunShooting : MonoBehaviour
 	[SerializeField] private PlayerGunAmmo ammo;
 	[SerializeField] private Animator animator;
 	[SerializeField] private InputActionReference actionRef;
-	private float timeSinceLastFire;
 	
+	private float timeSinceLastFire;
 	
 	private Vector3 point;
 	private GameObject target;
@@ -49,14 +50,18 @@ public class PlayerGunShooting : MonoBehaviour
 	{
 		if (ammo.CanShoot())
 		{
+			animator.SetTrigger(attackKey);
+			PlayerSoundManager.instance.PlayGunShot();
+			
 			ammo.curAmmo -= 1;
 			GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 			bullet.GetComponent<BulletDamage>().SetTarget(ammo.damageType, target, point);
 			bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
-
-			animator.ResetTrigger(attackKey);
-			animator.SetTrigger(attackKey);
-			// TODO: play sfx
+		}
+		else if(ammo.isReloading == false)
+		{
+			PlayerSoundManager.instance.PlayEmptyClip();
+			ammo.Reload();
 		}
 	}
 
