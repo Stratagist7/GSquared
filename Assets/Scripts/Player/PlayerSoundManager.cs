@@ -21,7 +21,6 @@ public class PlayerSoundManager : MonoBehaviour
     {
         if (instance == null) {
             instance = this;
-            DontDestroyOnLoad(this);
         }  else
             Destroy(gameObject);
     }
