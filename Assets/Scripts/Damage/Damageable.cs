@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Collider), typeof(HealthBar))]
+[RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private DamageTypeUI[] damageTypeUI;
+    [SerializeField] private PullRadius pr;
     private HealthBar healthBar;
+    private Rigidbody rb;
     private NavMeshAgent agent;
     private float normSpeed;
     
@@ -49,6 +51,8 @@ public class Damageable : MonoBehaviour
         healthBar = GetComponent<HealthBar>();
         curHealth = maxHealth;
         tag = "Damageable";
+        
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -111,6 +115,9 @@ public class Damageable : MonoBehaviour
                     StartCoroutine(Slowed());
                 }
                 break;
+            case DamageType.Wind:
+                Pull();
+                break;
         }
         EnableDamageTypeUI(argType, true);
         
@@ -141,6 +148,11 @@ public class Damageable : MonoBehaviour
         }
         agent.speed = normSpeed;
         isSlowed = false;
+    }
+
+    private void Pull()
+    {
+        pr.PullObjects();
     }
 
     private void EnableDamageTypeUI(DamageType argType, bool argEnabled)

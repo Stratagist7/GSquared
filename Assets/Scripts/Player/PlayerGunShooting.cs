@@ -69,6 +69,7 @@ public class PlayerGunShooting : MonoBehaviour
 	{
 		Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
 		Physics.Raycast(ray, out RaycastHit hitInfo);
+		Debug.DrawRay(transform.position, ray.direction * 10, Color.red);
 		if (hitInfo.point != Vector3.zero)
 		{
 			point = hitInfo.point;
