@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class PullRadius : MonoBehaviour
 {
+    [SerializeField] private float drag = 1.7f;
     public List<PullRadius> pullables = new List<PullRadius>();
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private MoveableAgent agent;
+
+    private void Start()
+    {
+        if (agent != null)
+        {
+            rb.drag = drag;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +47,11 @@ public class PullRadius : MonoBehaviour
 
     private void PullThisObject(Vector3 position)
     {
+        if (agent != null)
+        {
+            agent.Stun();
+        }
+        
         Vector3 forceDir = position - transform.position;
         
         // Use for dynamic pull based on distance

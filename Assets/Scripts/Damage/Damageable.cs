@@ -11,9 +11,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] private DamageTypeUI[] damageTypeUI;
     [SerializeField] private PullRadius pr;
     private HealthBar healthBar;
-    private Rigidbody rb;
-    private NavMeshAgent agent;
-    private float normSpeed;
+    private MoveableAgent agent;
     
     private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
     private const float MAX_TYPE_TIME = 6f;
@@ -42,17 +40,11 @@ public class Damageable : MonoBehaviour
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        if (agent)
-        {
-            normSpeed = agent.speed;
-        }
-
+        agent = GetComponent<MoveableAgent>();
+        
         healthBar = GetComponent<HealthBar>();
         curHealth = maxHealth;
         tag = "Damageable";
-        
-        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -100,16 +92,19 @@ public class Damageable : MonoBehaviour
             return;
         }
         
-        types[argType] = Time.time;
         switch (argType)
         {
+            case DamageType.Earth:
+                break;
             case DamageType.Fire:
+                ApplyDamageType(argType);
                 if (!isBurning)
                 {
                     StartCoroutine(Burning());
                 }
                 break;
             case DamageType.Ice:
+                ApplyDamageType(argType);
                 if (!isSlowed)
                 {
                     StartCoroutine(Slowed());
@@ -118,8 +113,10 @@ public class Damageable : MonoBehaviour
             case DamageType.Wind:
                 Pull();
                 break;
+            default:
+                ApplyDamageType(argType);
+                break;
         }
-        EnableDamageTypeUI(argType, true);
         
     }
 
@@ -141,12 +138,12 @@ public class Damageable : MonoBehaviour
             yield break;
         }
         isSlowed = true;
-        agent.speed = normSpeed * SLOW_MULTIPLIER;
+        agent.SetSpeedMultiplier(SLOW_MULTIPLIER);
         while (types.ContainsKey(DamageType.Ice))
         {
             yield return null;
         }
-        agent.speed = normSpeed;
+        agent.SetSpeedMultiplier(1);
         isSlowed = false;
     }
 
@@ -155,8 +152,15 @@ public class Damageable : MonoBehaviour
         pr.PullObjects();
     }
 
+    private void ApplyDamageType(DamageType argType)
+    {
+        types[argType] = Time.time;
+        EnableDamageTypeUI(argType, true);
+    }
+
     private void EnableDamageTypeUI(DamageType argType, bool argEnabled)
     {
+        types[argType] = Time.time;
         GameObject uiObj = damageTypeUI[(int)argType].uiObj;
         uiObj.transform.SetAsFirstSibling();
         uiObj.SetActive(argEnabled);

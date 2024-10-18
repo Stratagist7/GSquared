@@ -2,14 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MovingTarget : MonoBehaviour
+public class MovingTarget : MoveableAgent
 {
-    [SerializeField] private NavMeshAgent agent;
+    
     [SerializeField] private GameObject[] locations;
     private int index = 0;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         GoToNextLocation();
     }
 
