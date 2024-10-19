@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
 public class Damageable : MonoBehaviour
@@ -12,13 +12,15 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private PullRadius pr;
 	private HealthBar healthBar;
 	private MoveableAgent agent;
-	
+
 	private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
 	private const float MAX_TYPE_TIME = 6f;
 	private const float SLOW_MULTIPLIER = 0.5f;
-	
+
 	private bool isSlowed = false;
 	private bool isBurning = false;
+
+	private Dictionary<(DamageType, DamageType), Action> reactions = new();
 	
 	private int _curHealth;
 	private int curHealth
@@ -45,6 +47,25 @@ public class Damageable : MonoBehaviour
 		healthBar = GetComponent<HealthBar>();
 		curHealth = maxHealth;
 		tag = "Damageable";
+
+		// Setting up reactions
+		reactions[(DamageType.Earth, DamageType.Fire)] = () => TestReaction(DamageType.Earth, DamageType.Fire);
+		reactions[(DamageType.Earth, DamageType.Ice)] = () => TestReaction(DamageType.Earth, DamageType.Ice);
+		reactions[(DamageType.Earth, DamageType.Lightning)] = () => TestReaction(DamageType.Earth, DamageType.Lightning);
+		reactions[(DamageType.Earth, DamageType.Water)] = () => TestReaction(DamageType.Earth, DamageType.Water);
+		
+		reactions[(DamageType.Fire, DamageType.Ice)] = () => TestReaction(DamageType.Fire, DamageType.Ice);
+		reactions[(DamageType.Fire, DamageType.Lightning)] = () => TestReaction(DamageType.Fire, DamageType.Lightning);
+		reactions[(DamageType.Fire, DamageType.Water)] = () => TestReaction(DamageType.Fire, DamageType.Water);
+		
+		reactions[(DamageType.Ice, DamageType.Water)] = () => TestReaction(DamageType.Ice, DamageType.Water);
+		
+		reactions[(DamageType.Lightning, DamageType.Water)] = () => TestReaction(DamageType.Lightning, DamageType.Water);
+		
+		reactions[(DamageType.Fire, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Fire);
+		reactions[(DamageType.Ice, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Ice);
+		reactions[(DamageType.Lightning, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Lightning);
+		reactions[(DamageType.Water, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Water);
 	}
 
 	private void Update()
@@ -87,6 +108,46 @@ public class Damageable : MonoBehaviour
 			Destroy(gameObject);
 		}
 
+		ApplyDamageTypeEffect(argType);
+		
+	}
+	
+#region Solo Effects
+	private IEnumerator Burning()
+	{
+		isBurning = true;
+		while (types.ContainsKey(DamageType.Fire))
+		{
+			yield return new WaitForSeconds(0.25f);
+			TakeDamage(DamageType.None, 1);
+		}
+		isBurning = false;
+	}
+
+	private IEnumerator Slowed()
+	{
+		if (!agent)
+		{
+			yield break;
+		}
+		isSlowed = true;
+		agent.SetSpeedMultiplier(SLOW_MULTIPLIER);
+		while (types.ContainsKey(DamageType.Ice))
+		{
+			yield return null;
+		}
+		agent.SetSpeedMultiplier(1);
+		isSlowed = false;
+	}
+
+	private void Pull()
+	{
+		pr.PullObjects();
+	}
+#endregion // Solo Effects
+	
+	private void ApplyDamageTypeEffect(DamageType argType)
+	{
 		if (argType == DamageType.None)
 		{
 			return;
@@ -118,39 +179,35 @@ public class Damageable : MonoBehaviour
 				break;
 		}
 		
-	}
-	
-
-	private IEnumerator Burning()
-	{
-		isBurning = true;
-		while (types.ContainsKey(DamageType.Fire))
-		{
-			yield return new WaitForSeconds(0.25f);
-			TakeDamage(DamageType.None, 1);
-		}
-		isBurning = false;
+		CheckReaction(argType);
 	}
 
-	private IEnumerator Slowed()
+	private void CheckReaction(DamageType argType)
 	{
-		if (!agent)
+		DamageType[] reactList = ElementManager.instance.GetElement(argType).reactsWith;
+		List<DamageType> orderedTypes = types.OrderBy(pair => pair.Value).Select(pair => pair.Key).ToList();
+		foreach (DamageType type in orderedTypes)
 		{
-			yield break;
+			if (reactList.Contains(type))
+			{
+				TriggerReaction(argType, type);
+				break;
+			}	
 		}
-		isSlowed = true;
-		agent.SetSpeedMultiplier(SLOW_MULTIPLIER);
-		while (types.ContainsKey(DamageType.Ice))
-		{
-			yield return null;
-		}
-		agent.SetSpeedMultiplier(1);
-		isSlowed = false;
 	}
 
-	private void Pull()
+	private void TriggerReaction(DamageType argType, DamageType reactType)
 	{
-		pr.PullObjects();
+		(DamageType, DamageType) key = argType < reactType ? (argType, reactType) : (reactType, argType);
+		reactions[key]();
+
+		types.Remove(argType);
+		types.Remove(reactType);
+	}
+
+	private void TestReaction(DamageType argType, DamageType reactType)
+	{
+		print(argType + " with " + reactType);
 	}
 
 	private void ApplyDamageType(DamageType argType)
