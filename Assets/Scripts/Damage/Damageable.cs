@@ -7,14 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
 public class Damageable : MonoBehaviour
 {
+	private static GameObject _player;
 	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private DamageTypeUI[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
+	[SerializeField] private GameObject shieldParticlePrefab;
 	private HealthBar healthBar;
 	private MoveableAgent agent;
 
 	private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
-	private const float MAX_TYPE_TIME = 6f;
 	private const float SLOW_MULTIPLIER = 0.5f;
 
 	private bool isSlowed = false;
@@ -42,6 +43,11 @@ public class Damageable : MonoBehaviour
 
 	private void Start()
 	{
+		if (_player == null)
+		{
+			_player = GameObject.FindGameObjectWithTag("Player");
+		}
+		
 		agent = GetComponent<MoveableAgent>();
 		
 		healthBar = GetComponent<HealthBar>();
@@ -49,23 +55,23 @@ public class Damageable : MonoBehaviour
 		tag = "Damageable";
 
 		// Setting up reactions
-		reactions[(DamageType.Earth, DamageType.Fire)] = () => TestReaction(DamageType.Earth, DamageType.Fire);
-		reactions[(DamageType.Earth, DamageType.Ice)] = () => TestReaction(DamageType.Earth, DamageType.Ice);
-		reactions[(DamageType.Earth, DamageType.Lightning)] = () => TestReaction(DamageType.Earth, DamageType.Lightning);
-		reactions[(DamageType.Earth, DamageType.Water)] = () => TestReaction(DamageType.Earth, DamageType.Water);
-		
-		reactions[(DamageType.Fire, DamageType.Ice)] = () => TestReaction(DamageType.Fire, DamageType.Ice);
-		reactions[(DamageType.Fire, DamageType.Lightning)] = () => TestReaction(DamageType.Fire, DamageType.Lightning);
-		reactions[(DamageType.Fire, DamageType.Water)] = () => TestReaction(DamageType.Fire, DamageType.Water);
-		
-		reactions[(DamageType.Ice, DamageType.Water)] = () => TestReaction(DamageType.Ice, DamageType.Water);
-		
-		reactions[(DamageType.Lightning, DamageType.Water)] = () => TestReaction(DamageType.Lightning, DamageType.Water);
-		
-		reactions[(DamageType.Fire, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Fire);
-		reactions[(DamageType.Ice, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Ice);
-		reactions[(DamageType.Lightning, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Lightning);
-		reactions[(DamageType.Water, DamageType.Wind)] = () => TestReaction(DamageType.Wind, DamageType.Water);
+		reactions[(DamageType.Earth, DamageType.Fire)] = () => DropShieldParticle();
+		reactions[(DamageType.Earth, DamageType.Ice)] = () => DropShieldParticle();
+		reactions[(DamageType.Earth, DamageType.Lightning)] = () => DropShieldParticle();
+		reactions[(DamageType.Earth, DamageType.Water)] = () => DropShieldParticle();		// shields
+
+		reactions[(DamageType.Fire, DamageType.Ice)] = () => TakeDamage(DamageType.None, ReactionValues.MELT_DMG);
+		reactions[(DamageType.Fire, DamageType.Lightning)] = () => pr.Explode();
+		reactions[(DamageType.Fire, DamageType.Water)] = () => TakeDamage(DamageType.None, ReactionValues.VAPORIZE_DMG);
+
+		reactions[(DamageType.Ice, DamageType.Water)] = () => agent.Stun(ReactionValues.FREEZE_TIME);
+
+		reactions[(DamageType.Lightning, DamageType.Water)] = () => StartCoroutine(pr.ChainReaction());
+
+		reactions[(DamageType.Fire, DamageType.Wind)] = () => pr.Swirl(DamageType.Fire);
+		reactions[(DamageType.Ice, DamageType.Wind)] = () => pr.Swirl(DamageType.Ice);
+		reactions[(DamageType.Lightning, DamageType.Wind)] = () => pr.Swirl(DamageType.Lightning);
+		reactions[(DamageType.Water, DamageType.Wind)] = () => pr.Swirl(DamageType.Water);
 	}
 
 	private void Update()
@@ -83,12 +89,17 @@ public class Damageable : MonoBehaviour
 		List<DamageType> keyList = new List<DamageType>(types.Keys);
 		foreach (DamageType type in keyList)
 		{
-			if (Time.time - types[type] > MAX_TYPE_TIME)
+			if (Time.time - types[type] > ReactionValues.MAX_TYPE_TIME)
 			{
-				EnableDamageTypeUI(type, false);
-				types.Remove(type);
+				RemoveType(type);
 			}
 		}
+	}
+
+	private void RemoveType(DamageType argType)
+	{
+		EnableDamageTypeUI(argType, false);
+		types.Remove(argType);
 	}
 
 	public void TakeDamage(DamageType argType, int argDamage = -1)
@@ -119,7 +130,7 @@ public class Damageable : MonoBehaviour
 		while (types.ContainsKey(DamageType.Fire))
 		{
 			yield return new WaitForSeconds(0.25f);
-			TakeDamage(DamageType.None, 1);
+			TakeDamage(DamageType.None, ReactionValues.BURN_DMG);
 		}
 		isBurning = false;
 	}
@@ -143,6 +154,11 @@ public class Damageable : MonoBehaviour
 	private void Pull()
 	{
 		pr.PullObjects();
+	}
+
+	public bool IsWet()
+	{
+		return types.ContainsKey(DamageType.Water);
 	}
 #endregion // Solo Effects
 	
@@ -200,14 +216,32 @@ public class Damageable : MonoBehaviour
 	{
 		(DamageType, DamageType) key = argType < reactType ? (argType, reactType) : (reactType, argType);
 		reactions[key]();
-
-		types.Remove(argType);
-		types.Remove(reactType);
+		
+		if (argType == DamageType.Wind)  // Keep the elements if swirled
+		{
+			return;
+		}
+		
+		RemoveType(argType);
+		RemoveType(reactType);
 	}
 
-	private void TestReaction(DamageType argType, DamageType reactType)
+	private void DropShieldParticle()
 	{
-		print(argType + " with " + reactType);
+		Vector3 dirToPlayer = transform.position - _player.transform.position;
+		Vector3 spawnPos = transform.position;
+		if (Mathf.Abs(dirToPlayer.x) > Mathf.Abs(dirToPlayer.z))
+		{
+			spawnPos += dirToPlayer.x > 0 ? Vector3.left : Vector3.right;
+		}
+		else
+		{
+			spawnPos += dirToPlayer.z > 0 ? Vector3.back : Vector3.forward;
+		}
+		
+		spawnPos.y += 1f;
+
+		Instantiate(shieldParticlePrefab, spawnPos, shieldParticlePrefab.transform.rotation);
 	}
 
 	private void ApplyDamageType(DamageType argType)

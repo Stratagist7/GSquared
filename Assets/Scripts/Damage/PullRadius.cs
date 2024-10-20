@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PullRadius : MonoBehaviour
 {
+    private List<PullRadius> inRange = new List<PullRadius>();
     [SerializeField] private float drag = 1.7f;
-    public List<PullRadius> pullables = new List<PullRadius>();
     [SerializeField] private Rigidbody rb;
     [SerializeField] private MoveableAgent agent;
+    [SerializeField] private Damageable damageable;
 
     private void Start()
     {
@@ -22,7 +24,7 @@ public class PullRadius : MonoBehaviour
     {
         if (other.CompareTag("Damageable"))
         {
-            pullables.Add(other.GetComponentInChildren<PullRadius>());
+            inRange.Add(other.GetComponentInChildren<PullRadius>());
         }
     }
 
@@ -30,13 +32,53 @@ public class PullRadius : MonoBehaviour
     {
         if (other.CompareTag("Damageable"))
         {
-            pullables.Remove(other.GetComponentInChildren<PullRadius>());
+            inRange.Remove(other.GetComponentInChildren<PullRadius>());
+        }
+    }
+
+    public void Explode()
+    {
+        damageable.TakeDamage(DamageType.None, ReactionValues.EXP_DMG);
+        foreach (PullRadius p in inRange)
+        {
+            if (p != null)
+            {
+                p.damageable.TakeDamage(DamageType.None, ReactionValues.EXP_DMG);
+            }
+        }
+    }
+
+    public IEnumerator ChainReaction()
+    {
+        damageable.TakeDamage(DamageType.None, ReactionValues.CHAIN_DMG);
+        yield return null;
+        foreach (PullRadius p in inRange)
+        {
+            if (p != null && p.damageable.IsWet())
+            {
+                yield return new WaitForSeconds(0.25f);
+                if (p.damageable.IsWet())  // confirming still wet after waiting
+                {
+                    p.damageable.TakeDamage(DamageType.Lightning, ReactionValues.CHAIN_DMG);
+                }
+            }
+        }
+    }
+
+    public void Swirl(DamageType argType)
+    {
+        foreach (PullRadius p in inRange)
+        {
+            if (p != null)
+            {
+                p.damageable.TakeDamage(argType, 0);  // only apply the element
+            }
         }
     }
 
     public void PullObjects()
     {
-        foreach (PullRadius p in pullables)
+        foreach (PullRadius p in inRange)
         {
             if (p != null)
             {

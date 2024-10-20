@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a18d2de453c5154db00adef65ab47e7, type: 3}
   m_Name: Lightning
   m_EditorClassIdentifier: 
-  damageType: 4
+  damageType: 3
+  reactsWith: 0100000004000000
   damage: 5
   maxAmmo: 35
   color: {r: 0.6764121, g: 0, b: 1, a: 1}

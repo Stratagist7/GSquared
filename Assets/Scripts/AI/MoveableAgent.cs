@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class MoveableAgent : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
-    private const float STUN_TIME = 3.0f;
     private float normSpeed;
 
     protected virtual void Start()
@@ -19,10 +18,10 @@ public class MoveableAgent : MonoBehaviour
         agent.speed = normSpeed * argMultiplier;
     }
 
-    public void Stun()
+    public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME)
     {
         agent.isStopped = true;
-        StartCoroutine(StunCoroutine());
+        StartCoroutine(StunCoroutine(argSeconds));
     }
 
     private void UnStun()
@@ -30,9 +29,9 @@ public class MoveableAgent : MonoBehaviour
         agent.isStopped = false;
     }
 
-    private IEnumerator StunCoroutine()
+    private IEnumerator StunCoroutine(float argSeconds)
     {
-        yield return new WaitForSeconds(STUN_TIME);
+        yield return new WaitForSeconds(argSeconds);
         UnStun();
     }
 }

@@ -67,6 +67,7 @@ MonoBehaviour:
   - damageType: 5
     uiObj: {fileID: 8840552398634265950}
   pr: {fileID: 4061447498198782796}
+  shieldParticlePrefab: {fileID: 6507742713195232737, guid: fae7bf40f73e4214b96e20bc31e233a3, type: 3}
 --- !u!114 &3333378353675548444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,8 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfd1cb0db3fe064eac9cc063b6b9fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullables: []
+  drag: 1.7
   rb: {fileID: 6819855061728921101}
+  agent: {fileID: 0}
+  damageable: {fileID: 3167797781121963548}
 --- !u!1 &5883161350760215137
 GameObject:
   m_ObjectHideFlags: 0
