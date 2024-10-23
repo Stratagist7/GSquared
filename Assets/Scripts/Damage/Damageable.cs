@@ -5,15 +5,17 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
+[RequireComponent(typeof(FreezeHandler))]
 public class Damageable : MonoBehaviour
 {
-	private static GameObject _player;
+	public static GameObject Player;
 	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private DamageTypeUI[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
 	[SerializeField] private GameObject shieldParticlePrefab;
 	private HealthBar healthBar;
 	private MoveableAgent agent;
+	private FreezeHandler freezeHandler;
 
 	private Dictionary<DamageType, float> types = new Dictionary<DamageType, float>();
 	private const float SLOW_MULTIPLIER = 0.5f;
@@ -43,12 +45,13 @@ public class Damageable : MonoBehaviour
 
 	private void Start()
 	{
-		if (_player == null)
+		if (Player == null)
 		{
-			_player = GameObject.FindGameObjectWithTag("Player");
+			Player = GameObject.FindGameObjectWithTag("Player");
 		}
 		
 		agent = GetComponent<MoveableAgent>();
+		freezeHandler = GetComponent<FreezeHandler>();
 		
 		healthBar = GetComponent<HealthBar>();
 		curHealth = maxHealth;
@@ -64,7 +67,14 @@ public class Damageable : MonoBehaviour
 		reactions[(DamageType.Fire, DamageType.Lightning)] = () => pr.Explode();
 		reactions[(DamageType.Fire, DamageType.Water)] = () => TakeDamage(DamageType.None, ReactionValues.VAPORIZE_DMG);
 
-		reactions[(DamageType.Ice, DamageType.Water)] = () => agent.Stun(ReactionValues.FREEZE_TIME);
+		reactions[(DamageType.Ice, DamageType.Water)] = () =>
+		{
+			StartCoroutine(freezeHandler.Freeze());
+			if (agent != null)
+			{
+				agent.Stun(ReactionValues.FREEZE_TIME);
+			}
+		};
 
 		reactions[(DamageType.Lightning, DamageType.Water)] = () => StartCoroutine(pr.ChainReaction());
 
@@ -228,7 +238,7 @@ public class Damageable : MonoBehaviour
 
 	private void DropShieldParticle()
 	{
-		Vector3 dirToPlayer = transform.position - _player.transform.position;
+		Vector3 dirToPlayer = transform.position - Player.transform.position;
 		Vector3 spawnPos = transform.position;
 		if (Mathf.Abs(dirToPlayer.x) > Mathf.Abs(dirToPlayer.z))
 		{
