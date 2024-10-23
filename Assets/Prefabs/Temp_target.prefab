@@ -358,6 +358,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   damageable: {fileID: 3167797781121963548}
   explodePrefab: {fileID: 100000, guid: 06ce2a0ce32f4c64d9877ac1c3325ff6, type: 3}
+  lightningPrefab: {fileID: 8071871470644200973, guid: 98ac0d5029f06374fbc40107ae0d49c7, type: 3}
 --- !u!1 &5883161350760215137
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DigitalRuby.ThunderAndLightning;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PullRadius : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class PullRadius : MonoBehaviour
     [SerializeField] private MoveableAgent agent;
     [SerializeField] private Damageable damageable;
     [SerializeField] private GameObject explodePrefab;
+    [SerializeField] private LightningBoltPrefabScript lightningPrefab;
 
     private void Start()
     {
@@ -54,13 +55,19 @@ public class PullRadius : MonoBehaviour
     {
         damageable.TakeDamage(DamageType.None, ReactionValues.CHAIN_DMG);
         yield return null;
-        foreach (PullRadius p in inRange)
+        
+        foreach (PullRadius p in inRange.OrderBy(radius => (radius.transform.position - transform.position).sqrMagnitude))
         {
             if (p != null && p.damageable.IsWet())
             {
                 yield return new WaitForSeconds(0.25f);
                 if (p.damageable.IsWet())  // confirming still wet after waiting
                 {
+                    LightningBoltPrefabScript bolt = Instantiate(lightningPrefab, transform.position, Quaternion.identity);
+                    bolt.LightningEndedCallback += (_, _, _) => Destroy(bolt);
+                    bolt.Source.transform.position = transform.position + Vector3.up;
+                    bolt.Destination.transform.position = p.transform.position + Vector3.up;
+                    
                     p.damageable.TakeDamage(DamageType.Lightning, 0);
                 }
             }
