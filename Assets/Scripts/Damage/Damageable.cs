@@ -55,10 +55,10 @@ public class Damageable : MonoBehaviour
 		tag = "Damageable";
 
 		// Setting up reactions
-		reactions[(DamageType.Earth, DamageType.Fire)] = () => DropShieldParticle();
-		reactions[(DamageType.Earth, DamageType.Ice)] = () => DropShieldParticle();
-		reactions[(DamageType.Earth, DamageType.Lightning)] = () => DropShieldParticle();
-		reactions[(DamageType.Earth, DamageType.Water)] = () => DropShieldParticle();		// shields
+		reactions[(DamageType.Earth, DamageType.Fire)] = DropShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Ice)] = DropShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Lightning)] = DropShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Water)] = DropShieldParticle;
 
 		reactions[(DamageType.Fire, DamageType.Ice)] = () => TakeDamage(DamageType.None, ReactionValues.MELT_DMG);
 		reactions[(DamageType.Fire, DamageType.Lightning)] = () => pr.Explode();

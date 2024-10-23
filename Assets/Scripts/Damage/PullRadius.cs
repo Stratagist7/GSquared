@@ -11,6 +11,7 @@ public class PullRadius : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private MoveableAgent agent;
     [SerializeField] private Damageable damageable;
+    [SerializeField] private GameObject explodePrefab;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class PullRadius : MonoBehaviour
 
     public void Explode()
     {
+        Instantiate(explodePrefab, transform.position + Vector3.up, transform.rotation);
         damageable.TakeDamage(DamageType.None, ReactionValues.EXP_DMG);
         foreach (PullRadius p in inRange)
         {
@@ -59,7 +61,7 @@ public class PullRadius : MonoBehaviour
                 yield return new WaitForSeconds(0.25f);
                 if (p.damageable.IsWet())  // confirming still wet after waiting
                 {
-                    p.damageable.TakeDamage(DamageType.Lightning, ReactionValues.CHAIN_DMG);
+                    p.damageable.TakeDamage(DamageType.Lightning, 0);
                 }
             }
         }

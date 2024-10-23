@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Utility
             {
                 yield return null;
             }
-            Debug.Log("stopping " + name);
+            //Debug.Log("stopping " + name);
 
             // turn off emission
             foreach (var system in systems)
@@ -44,7 +44,7 @@ namespace UnityStandardAssets.Utility
                 var emission = system.emission;
                 emission.enabled = false;
             }
-            BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);
+            //BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);
 
             // wait for any remaining particles to expire
             yield return new WaitForSeconds(m_MaxLifetime);
