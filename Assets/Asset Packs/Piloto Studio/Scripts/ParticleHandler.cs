@@ -3,89 +3,86 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace PilotoStudio
 {
-    [ExecuteAlways]
-    public class ParticleHandler : MonoBehaviour
-    {
-        public GameObject castParticle;
-        public float castFXDuration;
-        public GameObject loopingParticle;
-        public float loopDuration;
-        public GameObject endParticle;
+	public class ParticleHandler : MonoBehaviour
+	{
+		[FormerlySerializedAs("builtUpParticle")] public ParticleSystem buildUpParticle;
+		public float buildUpDuration;
+		public ParticleSystem loopingParticle;
+		public float loopDuration;
+		public ParticleSystem endParticle;
+		public float endDuration;
 
-        private ParticleSystem castParticleSystem;
-        private ParticleSystem loopingParticleSystem;
-        private ParticleSystem endParticleSystem;
+		float startEmission;
+		private void OnEnable()
+		{
+			Cast();
+		}
 
-        float startEmission;
-        private void OnEnable()
-        {
-            castParticleSystem = castParticle.GetComponent<ParticleSystem>();
-            loopingParticleSystem = loopingParticle.GetComponent<ParticleSystem>();
-            endParticleSystem = endParticle.GetComponent<ParticleSystem>();
-            if (!castParticleSystem || !loopingParticleSystem || !endParticleSystem)
-            {
-                Debug.LogError("ParticleHandler: Missing particle systems. Ensure they are referenced correctly.");
-                return;
-            }
+		public void Cast()
+		{
+			StartCoroutine(Flow());
+		}
 
-            Cast();
-        }
+		IEnumerator Flow()
+		{
+			if (buildUpParticle)
+			{
+				PlayParticles(buildUpParticle);
+				yield return new WaitForSeconds(buildUpDuration);
+			}
 
-        public void Cast()
-        {
-            StartCoroutine(Flow());
-        }
+			if (loopingParticle)
+			{
+				PlayParticles(loopingParticle, loopDuration);
+				yield return new WaitForSeconds(loopDuration);
+			}
 
-        IEnumerator Flow()
-        {
-            PlayParticles(castParticleSystem, castFXDuration);
-            yield return new WaitForSeconds(castFXDuration);
+			if (endParticle)
+			{
+				PlayParticles(endParticle);
+				yield return new WaitForSeconds(endDuration);
+			}
 
-            PlayParticles(loopingParticleSystem, loopDuration);
-            yield return new WaitForSeconds(loopDuration);
+			Destroy(gameObject);
+		}
+		
+		private IEnumerator WaitUntilParticleSystemStops(ParticleSystem particles)
+		{
+			while (particles.IsAlive(true))
+			{
+				yield return null;
+			}
+		}
+		
+		private void PlayParticles(ParticleSystem particles, float duration = -1f)
+		{
+			if (duration == 0) return;
+			
+			particles.gameObject.SetActive(true);
 
-            PlayParticles(endParticleSystem);
-            yield return WaitUntilParticleSystemStops(endParticleSystem);
-        }
-        private IEnumerator WaitUntilParticleSystemStops(ParticleSystem particleSystem)
-        {
-            while (particleSystem.IsAlive(true))
-            {
-                yield return null;
-            }
-        }
-        private void PlayParticles(ParticleSystem particleSystem, float duration = 0f)
-        {
-            particleSystem.gameObject.SetActive(true);
-            var particleSystemMain = particleSystem.emission;
+			if (float.IsPositiveInfinity(particles.main.startLifetime.constantMax))
+				StartCoroutine(WaitUntilParticleSystemStops(particles));
 
-            if (startEmission == 0)
-                startEmission = particleSystemMain.rateOverTimeMultiplier;
+			particles.Play();
 
-            if (particleSystem.main.startLifetime.constantMax == Mathf.Infinity)
-                StartCoroutine(WaitUntilParticleSystemStops(particleSystem));
-            else
-                particleSystemMain.rateOverTimeMultiplier = startEmission;
+			if (duration > -1f && !float.IsPositiveInfinity(particles.main.startLifetime.constantMax))
+			{
+				StartCoroutine(StopParticleAfterTime(particles, duration));
+			}
+		}
 
-            particleSystem.Play();
-
-            if (duration > 0f && particleSystem.main.startLifetime.constantMax != Mathf.Infinity)
-            {
-                StartCoroutine(StopParticleAfterTime(particleSystem, duration));
-            }
-        }
-
-        IEnumerator StopParticleAfterTime(ParticleSystem particleSystem, float duration)
-        {
-            yield return new WaitForSeconds(duration);
-            var particleSystemMain = particleSystem.emission;
-            particleSystemMain.rateOverTimeMultiplier = 0;
-            //   particleSystem.gameObject.SetActive(false);
-        }
-    }
+		IEnumerator StopParticleAfterTime(ParticleSystem particles, float duration)
+		{
+			yield return new WaitForSeconds(duration);
+			var particleSystemMain = particles.emission;
+			particleSystemMain.rateOverTimeMultiplier = 0;
+			//particles.gameObject.SetActive(false);
+		}
+	}
 
 
 

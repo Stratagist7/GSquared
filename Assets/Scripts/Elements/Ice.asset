@@ -17,3 +17,4 @@ MonoBehaviour:
   damage: 5
   maxAmmo: 35
   color: {r: 0, g: 1, b: 0.98099947, a: 1}
+  swirlPrefab: {fileID: 6457711643204179187, guid: b813401640de93940976557ca58373f1, type: 3}

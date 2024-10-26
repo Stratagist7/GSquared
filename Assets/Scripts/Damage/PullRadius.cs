@@ -76,6 +76,8 @@ public class PullRadius : MonoBehaviour
 
     public void Swirl(DamageType argType)
     {
+        print(ElementManager.instance.GetElement(argType).swirlPrefab.name);
+        Instantiate(ElementManager.instance.GetElement(argType).swirlPrefab, transform.position, Quaternion.identity);
         foreach (PullRadius p in inRange)
         {
             if (p != null)
