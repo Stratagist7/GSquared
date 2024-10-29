@@ -4,8 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - freezeParticles: {fileID: 8942621933496775225, guid: 209380760d6232c4f939e2b359710991, type: 3}
-  - freezeMaterial: {fileID: 2100000, guid: e45a01e768e72c745a0246d5cb5db531, type: 2}
+  - frozenPrefab: {fileID: 7811422179709044670, guid: 6b2415d828f4f7a4c9074227c4a27c69, type: 3}
+  - shardPrefab: {fileID: 4942524796293413400, guid: 828dfa987689e224690996cbeb2d03d9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

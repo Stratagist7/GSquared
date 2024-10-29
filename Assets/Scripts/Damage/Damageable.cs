@@ -69,7 +69,7 @@ public class Damageable : MonoBehaviour
 
 		reactions[(DamageType.Ice, DamageType.Water)] = () =>
 		{
-			StartCoroutine(freezeHandler.Freeze());
+			freezeHandler.Freeze();
 			if (agent != null)
 			{
 				agent.Stun(ReactionValues.FREEZE_TIME);
