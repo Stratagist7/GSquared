@@ -44,7 +44,14 @@ public class PlayerGunAmmo : MonoBehaviour
 			if (value != _damageType)
 			{
 				_damageType = value;
-				Reload(true);
+				if (PauseMenu.ReloadAmmoType)
+				{
+					Reload(true);
+				}
+				else
+				{
+					ammoType.color = ElementManager.instance.GetElement(damageType).color;
+				}
 			}
 		}
 	}

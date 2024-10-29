@@ -1,14 +1,17 @@
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject pauseMenu;
 	[SerializeField] private GameObject playerUI;
 	[SerializeField] private StarterAssetsInputs inputs;
+	[SerializeField] private Toggle toggle;
 	
 	public static bool Paused = false;
+	public static bool ReloadAmmoType = true;
 
 	// Update is called once per frame
 	private void Update()
@@ -48,6 +51,11 @@ public class PauseMenu : MonoBehaviour
 	public void QuitGame()
 	{
 		Application.Quit();
+	}
+
+	public void SetReloadBool()
+	{
+		ReloadAmmoType = toggle.isOn;
 	}
 	
 }
