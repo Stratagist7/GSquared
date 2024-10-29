@@ -43,13 +43,16 @@ public class Damageable : MonoBehaviour
 		public GameObject uiObj;
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		if (Player == null)
 		{
 			Player = GameObject.FindGameObjectWithTag("Player");
 		}
-		
+	}
+
+	private void Start()
+	{
 		agent = GetComponent<MoveableAgent>();
 		freezeHandler = GetComponent<FreezeHandler>();
 		

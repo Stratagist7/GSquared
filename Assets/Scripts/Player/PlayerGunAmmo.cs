@@ -63,23 +63,28 @@ public class PlayerGunAmmo : MonoBehaviour
 		ammoScreen.SetActive(false);
 		ResetAmmo();
 
-		actionRef.action.performed += context =>
+		actionRef.action.performed += OnPerformed;
+		actionRef.action.canceled += OnCanceled;
+	}
+
+	private void OnPerformed(InputAction.CallbackContext context)
+	{
+		if (context.interaction is TapInteraction && isReloading == false)
 		{
-			if (context.interaction is TapInteraction && isReloading == false)
-			{
-				Reload();
-			} else if (context.interaction is HoldInteraction)
-			{
-				DisplayAmmoScreen(true);
-			}
-		};
-		actionRef.action.canceled += context =>
+			Reload();
+		}
+		else if (context.interaction is HoldInteraction)
 		{
-			if (context.interaction is HoldInteraction)
-			{
-				DisplayAmmoScreen(false);
-			}
-		};
+			DisplayAmmoScreen(true);
+		}
+	}
+
+	private void OnCanceled(InputAction.CallbackContext context)
+	{
+		if (context.interaction is HoldInteraction)
+		{
+			DisplayAmmoScreen(false);
+		}
 	}
 
 	private void OnEnable()
@@ -91,7 +96,13 @@ public class PlayerGunAmmo : MonoBehaviour
 	{
 		actionRef.action.Disable();
 	}
-	
+
+	private void OnDestroy()
+	{
+		actionRef.action.performed -= OnPerformed;
+		actionRef.action.canceled -= OnCanceled;
+	}
+
 	public void Reload(bool force = false)
 	{
 		if (curAmmo == maxAmmo && force == false)
