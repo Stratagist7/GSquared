@@ -7,7 +7,8 @@ MonoImporter:
   - rb: {instanceID: 0}
   - agent: {instanceID: 0}
   - damageable: {instanceID: 0}
-  - explodePrefab: {fileID: 100000, guid: 06ce2a0ce32f4c64d9877ac1c3325ff6, type: 3}
+  - explodePrefab: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+  - lightningPrefab: {fileID: 8071871470644200973, guid: 98ac0d5029f06374fbc40107ae0d49c7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
