@@ -106,7 +106,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public bool CanShoot()
 	{
-		return curAmmo > 0 && isReloading == false;
+		return curAmmo > 0 && isReloading == false && PauseMenu.Paused == false;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)

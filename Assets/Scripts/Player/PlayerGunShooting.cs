@@ -58,7 +58,7 @@ public class PlayerGunShooting : MonoBehaviour
 			bullet.GetComponent<BulletDamage>().SetTarget(ammo.damageType, target, point);
 			bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
 		}
-		else if(ammo.isReloading == false)
+		else if(ammo.isReloading == false && PauseMenu.Paused == false)
 		{
 			PlayerSoundManager.instance.PlayEmptyClip();
 			ammo.Reload();
