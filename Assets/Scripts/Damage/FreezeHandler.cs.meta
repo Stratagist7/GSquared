@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a79899e964240934b9d3bc7c3c12d4b2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - frozenPrefab: {fileID: 7811422179709044670, guid: 6b2415d828f4f7a4c9074227c4a27c69, type: 3}
+  - shardPrefab: {fileID: 4942524796293413400, guid: 828dfa987689e224690996cbeb2d03d9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
