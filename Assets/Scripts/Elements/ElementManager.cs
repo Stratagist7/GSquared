@@ -40,4 +40,6 @@ public static class ReactionValues
 	public const int VAPORIZE_DMG = 10;
 	public const int EXP_DMG = 8;
 	public const int CHAIN_DMG = 15;
+
+	public const int SHIELD_AMT = 10;
 }

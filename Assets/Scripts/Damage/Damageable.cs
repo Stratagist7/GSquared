@@ -9,10 +9,11 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
 	public static GameObject Player;
+	private static PlayerHealth PlayerSheilds;
+	
 	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private DamageTypeUI[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
-	[SerializeField] private GameObject shieldParticlePrefab;
 	private HealthBar healthBar;
 	private MoveableAgent agent;
 	private FreezeHandler freezeHandler;
@@ -48,7 +49,9 @@ public class Damageable : MonoBehaviour
 		if (Player == null)
 		{
 			Player = GameObject.FindGameObjectWithTag("Player");
+			PlayerSheilds = Player.GetComponent<PlayerHealth>();
 		}
+		
 	}
 
 	private void Start()
@@ -61,10 +64,10 @@ public class Damageable : MonoBehaviour
 		tag = "Damageable";
 
 		// Setting up reactions
-		reactions[(DamageType.Earth, DamageType.Fire)] = DropShieldParticle;
-		reactions[(DamageType.Earth, DamageType.Ice)] = DropShieldParticle;
-		reactions[(DamageType.Earth, DamageType.Lightning)] = DropShieldParticle;
-		reactions[(DamageType.Earth, DamageType.Water)] = DropShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Fire)] = GiveShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Ice)] = GiveShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Lightning)] = GiveShieldParticle;
+		reactions[(DamageType.Earth, DamageType.Water)] = GiveShieldParticle;
 
 		reactions[(DamageType.Fire, DamageType.Ice)] = () => TakeDamage(DamageType.None, ReactionValues.MELT_DMG);
 		reactions[(DamageType.Fire, DamageType.Lightning)] = () => pr.Explode();
@@ -239,22 +242,9 @@ public class Damageable : MonoBehaviour
 		RemoveType(reactType);
 	}
 
-	private void DropShieldParticle()
+	private void GiveShieldParticle()
 	{
-		Vector3 dirToPlayer = transform.position - Player.transform.position;
-		Vector3 spawnPos = transform.position;
-		if (Mathf.Abs(dirToPlayer.x) > Mathf.Abs(dirToPlayer.z))
-		{
-			spawnPos += dirToPlayer.x > 0 ? Vector3.left : Vector3.right;
-		}
-		else
-		{
-			spawnPos += dirToPlayer.z > 0 ? Vector3.back : Vector3.forward;
-		}
-		
-		spawnPos.y += 1f;
-
-		Instantiate(shieldParticlePrefab, spawnPos, shieldParticlePrefab.transform.rotation);
+		PlayerSheilds.Shield(ReactionValues.SHIELD_AMT);
 	}
 
 	private void ApplyDamageType(DamageType argType)

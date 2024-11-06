@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ShieldParticle : MonoBehaviour
 {
-
+	[SerializeField] private int shieldAmount = 10;
+	
 	private void Update()
 	{
 		transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
@@ -15,7 +16,7 @@ public class ShieldParticle : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			// give shield
+			other.GetComponent<PlayerHealth>().Shield(shieldAmount);
 			Destroy(gameObject);
 		}
 	}
