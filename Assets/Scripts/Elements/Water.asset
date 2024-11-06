@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   damageType: 4
-  reactsWith: 0100000002000000
+  reactsWith: 010000000200000003000000
   damage: 5
   maxAmmo: 35
   color: {r: 0.07066631, g: 0, b: 1, a: 1}
