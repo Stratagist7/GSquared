@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
 	[SerializeField] private Toggle toggle;
 	
 	public static bool Paused = false;
-	public static bool ReloadAmmoType = true;
+	public static bool ReloadAmmoType = false;
 
 	// Update is called once per frame
 	private void Update()
