@@ -18,4 +18,12 @@ public class HealthBar : MonoBehaviour
             healthSlider.value = health;
         }
     }
+
+    public void SetMaxHealth(float health)
+    {
+        if (healthSlider)
+        {
+            healthSlider.maxValue = health;
+        }
+    }
 }

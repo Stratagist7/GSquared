@@ -60,6 +60,7 @@ public class Damageable : MonoBehaviour
 		freezeHandler = GetComponent<FreezeHandler>();
 		
 		healthBar = GetComponent<HealthBar>();
+		healthBar.SetMaxHealth(maxHealth);
 		curHealth = maxHealth;
 		tag = "Damageable";
 
