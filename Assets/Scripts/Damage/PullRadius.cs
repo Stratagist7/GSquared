@@ -7,6 +7,7 @@ using UnityEngine;
 public class PullRadius : MonoBehaviour
 {
     private List<PullRadius> inRange = new List<PullRadius>();
+    [SerializeField] private float lightningHeight = 1f;
     [SerializeField] private float drag = 1.7f;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private MoveableAgent agent;
@@ -66,9 +67,9 @@ public class PullRadius : MonoBehaviour
                 if (p.damageable.IsWet())  // confirming still wet after waiting
                 {
                     LightningBoltPrefabScript bolt = Instantiate(lightningPrefab, transform.position, Quaternion.identity);
-                    bolt.LightningEndedCallback += (_, _, _) => Destroy(bolt);
-                    bolt.Source.transform.position = transform.position + Vector3.up;
-                    bolt.Destination.transform.position = p.transform.position + Vector3.up;
+                    bolt.LightningEndedCallback += (_, _, _) => Destroy(bolt.gameObject);
+                    bolt.Source.transform.position = transform.position + new Vector3(0, lightningHeight, 0);
+                    bolt.Destination.transform.position = p.transform.position + new Vector3(0, p.lightningHeight, 0);
                     
                     p.damageable.TakeDamage(DamageType.Lightning, 0);
                 }

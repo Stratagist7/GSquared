@@ -1361,6 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfd1cb0db3fe064eac9cc063b6b9fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightningHeight: 0.25
   drag: 1.7
   rb: {fileID: 6962537685988080918}
   agent: {fileID: 2908897620993153908}
