@@ -44,7 +44,7 @@ public class PlayerGunAmmo : MonoBehaviour
 			if (value != _damageType)
 			{
 				_damageType = value;
-				if (PauseMenu.ReloadAmmoType)
+				if (MenuUI.ReloadAmmoType)
 				{
 					Reload(true);
 				}
@@ -129,7 +129,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public bool CanReload()
 	{
-		return isReloading == false && PauseMenu.Paused == false;
+		return isReloading == false && MenuUI.Paused == false;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)
