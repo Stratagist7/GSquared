@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,6 +6,7 @@ public class MoveableAgent : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
     private float normSpeed;
+    protected bool isStunned = false;
 
     protected virtual void Start()
     {
@@ -20,13 +20,21 @@ public class MoveableAgent : MonoBehaviour
 
     public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME)
     {
-        agent.isStopped = true;
+        isStunned = true;
+        if (agent.enabled)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
         StartCoroutine(StunCoroutine(argSeconds));
     }
 
-    private void UnStun()
+    protected virtual void UnStun()
     {
+        agent.enabled = true;
         agent.isStopped = false;
+        isStunned = false;
     }
 
     private IEnumerator StunCoroutine(float argSeconds)

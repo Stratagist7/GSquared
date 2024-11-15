@@ -16,7 +16,7 @@ public class MovingTarget : MoveableAgent
 
     private void Update()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
         {
             GoToNextLocation();
         }
