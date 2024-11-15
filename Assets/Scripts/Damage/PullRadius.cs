@@ -55,8 +55,10 @@ public class PullRadius : MonoBehaviour
     {
         damageable.TakeDamage(DamageType.None, ReactionValues.CHAIN_DMG);
         yield return null;
+
+        var orderedList = inRange.Where(obj => obj != null).OrderBy(radius => (radius.transform.position - transform.position).sqrMagnitude);
         
-        foreach (PullRadius p in inRange.OrderBy(radius => (radius.transform.position - transform.position).sqrMagnitude))
+        foreach (PullRadius p in orderedList)
         {
             if (p != null && p.damageable.IsWet())
             {
