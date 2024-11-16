@@ -8,6 +8,7 @@ public class MoveableAgent : MonoBehaviour
     private float normSpeed;
     protected bool isStunned = false;
     protected bool isSlowed = false;
+    private int stunCounter = 0;
 
     protected virtual void Start()
     {
@@ -23,6 +24,7 @@ public class MoveableAgent : MonoBehaviour
     public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME)
     {
         isStunned = true;
+        stunCounter++;
         if (agent.enabled)
         {
             agent.isStopped = true;
@@ -34,6 +36,12 @@ public class MoveableAgent : MonoBehaviour
 
     protected virtual void UnStun()
     {
+        stunCounter--;
+        if (stunCounter != 0)
+        {
+            return;
+        }
+        
         agent.enabled = true;
         agent.isStopped = false;
         isStunned = false;

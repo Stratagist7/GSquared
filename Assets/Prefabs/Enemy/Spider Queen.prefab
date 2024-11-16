@@ -1730,6 +1730,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 927897654356755215}
+    - target: {fileID: 2908897620993153908, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: forwardThrust
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
       value: 0.35058737
@@ -1823,6 +1827,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
       value: 0.35
       objectReference: {fileID: 0}
@@ -1833,6 +1841,10 @@ PrefabInstance:
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_BaseOffset
       value: 0.195
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

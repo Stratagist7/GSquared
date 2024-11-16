@@ -15,12 +15,15 @@ public class MeleeChaser : MoveableAgent
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Animator animator;
 
+	private float dist;
 	private bool attacking = false;
 	private bool settingUp = true;
+	private bool shouldUnStun = false;
 
 	protected override void Start()
 	{
 		base.Start();
+		dist = Mathf.Pow(agent.stoppingDistance, 2);
 		StartCoroutine(StartUp());
 	}
 	
@@ -31,7 +34,7 @@ public class MeleeChaser : MoveableAgent
 			return;
 		}
 		
-		if ((transform.position - Damageable.Player.transform.position).sqrMagnitude > agent.stoppingDistance && agent.enabled == true)
+		if (agent.enabled && (transform.position - Damageable.Player.transform.position).sqrMagnitude > dist)
 		{
 			agent.SetDestination(Damageable.Player.transform.position);
 		}
@@ -78,6 +81,11 @@ public class MeleeChaser : MoveableAgent
 		}
 
 		attacking = false;
+		if (shouldUnStun)
+		{
+			UnStun();
+			shouldUnStun = false;
+		}
 	}
 
 	protected override void UnStun()
@@ -86,7 +94,10 @@ public class MeleeChaser : MoveableAgent
 		{
 			base.UnStun();
 		}
-		isStunned = false;
+		else
+		{
+			shouldUnStun = true;
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
