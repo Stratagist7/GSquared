@@ -91,7 +91,7 @@ public class MeleeChaser : MoveableAgent
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (attacking && other.gameObject.CompareTag("Player"))
+		if (attacking && isStunned == false && other.gameObject.CompareTag("Player"))
 		{
 			Damageable.Player.GetComponent<PlayerHealth>().Damage(damage);
 		}

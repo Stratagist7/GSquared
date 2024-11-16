@@ -12,6 +12,7 @@ public class Damageable : MonoBehaviour
 	private static PlayerHealth PlayerSheilds;
 	
 	private static readonly int DEATH_KEY = Animator.StringToHash("Die");
+	private static readonly int DEAD_KEY = Animator.StringToHash("Dead");
 	
 	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private DamageTypeUI[] damageTypeUI;
@@ -144,7 +145,9 @@ public class Damageable : MonoBehaviour
 		{
 			if (animator != null)
 			{
+				agent.Stun();  // Prevent damage after death
 				animator.SetTrigger(DEATH_KEY);
+				animator.SetBool(DEAD_KEY, true);
 				healthUI.SetActive(false);
 			}
 			else
