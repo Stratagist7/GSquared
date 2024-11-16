@@ -7,6 +7,7 @@ public class MoveableAgent : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
     private float normSpeed;
     protected bool isStunned = false;
+    protected bool isSlowed = false;
 
     protected virtual void Start()
     {
@@ -15,6 +16,7 @@ public class MoveableAgent : MonoBehaviour
 
     public void SetSpeedMultiplier(float argMultiplier)
     {
+        isSlowed = argMultiplier < 1;
         agent.speed = normSpeed * argMultiplier;
     }
 

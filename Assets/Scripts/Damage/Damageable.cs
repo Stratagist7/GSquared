@@ -11,9 +11,13 @@ public class Damageable : MonoBehaviour
 	public static GameObject Player;
 	private static PlayerHealth PlayerSheilds;
 	
+	private static readonly int DEATH_KEY = Animator.StringToHash("Die");
+	
 	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private DamageTypeUI[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
+	[SerializeField] private Animator animator;
+	[SerializeField] private GameObject healthUI;
 	private HealthBar healthBar;
 	private MoveableAgent agent;
 	private FreezeHandler freezeHandler;
@@ -121,6 +125,11 @@ public class Damageable : MonoBehaviour
 
 	public void TakeDamage(DamageType argType, int argDamage = -1)
 	{
+		if (curHealth <= 0)
+		{
+			return;
+		}
+		
 		if (argDamage < 0)
 		{
 			curHealth -= ElementManager.instance.GetElement(argType).damage;
@@ -133,11 +142,18 @@ public class Damageable : MonoBehaviour
 		// if dead
 		if (curHealth <= 0)
 		{
-			Destroy(gameObject);
+			if (animator != null)
+			{
+				animator.SetTrigger(DEATH_KEY);
+				healthUI.SetActive(false);
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
 		}
 
 		ApplyDamageTypeEffect(argType);
-		
 	}
 	
 #region Solo Effects

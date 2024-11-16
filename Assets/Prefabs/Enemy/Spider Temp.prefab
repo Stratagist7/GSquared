@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 9073634222560037803}
   - component: {fileID: 781087360230378949}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: Spider Temp
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
