@@ -1,38 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FreezeHandler : MonoBehaviour
 {
+	private const string UNFREEZE_NAME = "UnFreeze";
+	
 	[SerializeField] private GameObject frozenPrefab;
 	[SerializeField] private GameObject shardPrefab;
 	[SerializeField] private AudioClip[] freezeSounds;
 	[SerializeField] private AudioSource audioSource;
 	
-	private List<Animation> frozen = new List<Animation>();
+	private Animation frozen;
+	private float unfreezeTime = 0f;
 
 	public void Freeze()
 	{
-		frozen.Add(Instantiate(frozenPrefab, transform.position, transform.rotation, transform).gameObject.GetComponent<Animation>());
-		audioSource.PlayOneShot(freezeSounds[0]);
-		StartCoroutine(UnFreeze());
+		if (unfreezeTime < Time.time)
+		{
+			frozen = Instantiate(frozenPrefab, transform.position, transform.rotation, transform).gameObject.GetComponent<Animation>();
+			audioSource.PlayOneShot(freezeSounds[0]);
+			unfreezeTime = Time.time + ReactionValues.FREEZE_TIME;
+			StartCoroutine(UnFreeze());
+		}
+		else
+		{
+			unfreezeTime = Time.time + ReactionValues.FREEZE_TIME;
+		}
+		
 	}
 
 	private IEnumerator UnFreeze()
 	{
-		yield return new WaitForSeconds(ReactionValues.FREEZE_TIME);
-		if (frozen.Count == 1)
-		{
-			audioSource.PlayOneShot(freezeSounds[1]);
-		}
-		frozen[0].Play("UnFreeze");
-		Instantiate(shardPrefab, transform.position, frozenPrefab.transform.rotation);
-		while (frozen[0].isPlaying)
+		while (unfreezeTime > Time.time)
 		{
 			yield return null;
 		}
-		Animation anim = frozen[0];
-		frozen.RemoveAt(0);
-		Destroy(anim.gameObject);
+		
+		audioSource.PlayOneShot(freezeSounds[1]);
+		frozen.Play(UNFREEZE_NAME);
+		Instantiate(shardPrefab, transform.position, frozenPrefab.transform.rotation);
+		while (frozen.isPlaying)
+		{
+			yield return null;
+		}
+		Destroy(frozen.gameObject);
 	}
 }
