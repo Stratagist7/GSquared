@@ -72,7 +72,7 @@ namespace StarterAssets
 		// sound clip
 		private float lastStepSound = int.MinValue;
 		private const float WALK_STEP_WAIT = 0.5f;
-		private const float SPRINT_STEP_WAIT = 0.35f;
+		private const float SPRINT_STEP_WAIT = 0.33f;
 
 	
 #if ENABLE_INPUT_SYSTEM
