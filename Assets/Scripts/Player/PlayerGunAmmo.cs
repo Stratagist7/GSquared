@@ -81,7 +81,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	private void OnCanceled(InputAction.CallbackContext context)
 	{
-		if (context.interaction is HoldInteraction)
+		if (context.interaction is HoldInteraction && PlayerHealth.playerIsDead == false)
 		{
 			DisplayAmmoScreen(false);
 		}

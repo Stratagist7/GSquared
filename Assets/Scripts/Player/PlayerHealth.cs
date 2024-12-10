@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     
     private readonly Queue<Action> hitPoints = new Queue<Action>();
     private bool isAnimating;
+    public static bool playerIsDead;
     
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         shieldBar.fillAmount = 0;
         
         isAnimating = false;
+        playerIsDead = false;
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
         {
             hitPoints.Dequeue()();
         }
-        
+#if DEBUG       
         if (Input.GetKeyDown(KeyCode.H))
         {
             Damage(5);
@@ -48,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Shield(5);
         }
+#endif
     }
 
     public void Damage(int argDamage)
@@ -98,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
         
         if (health <= 0)
         {
+            playerIsDead = true;
             menuUI.ShowDeathScreen();
         }
     }
