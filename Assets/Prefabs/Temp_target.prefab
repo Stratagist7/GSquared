@@ -477,6 +477,8 @@ MonoBehaviour:
   damageable: {fileID: 3167797781121963548}
   explodePrefab: {fileID: 100000, guid: 06ce2a0ce32f4c64d9877ac1c3325ff6, type: 3}
   lightningPrefab: {fileID: 8071871470644200973, guid: 98ac0d5029f06374fbc40107ae0d49c7, type: 3}
+  lightningStrikePrefab: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
+  lightningAudio: {fileID: 435209558523656921, guid: 9490c97bd4da772448e7f2097ac721a6, type: 3}
 --- !u!1 &5883161350760215137
 GameObject:
   m_ObjectHideFlags: 0

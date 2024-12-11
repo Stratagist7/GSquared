@@ -81,7 +81,7 @@ MonoBehaviour:
     Maximum: 0.01
   CountRange:
     Minimum: 1
-    Maximum: 1
+    Maximum: 3
   CountProbabilityModifier: 1
   DelayRange:
     Minimum: 0

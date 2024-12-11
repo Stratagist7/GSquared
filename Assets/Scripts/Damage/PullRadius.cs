@@ -13,8 +13,10 @@ public class PullRadius : MonoBehaviour
     [SerializeField] private MoveableAgent agent;
     [SerializeField] private Damageable damageable;
     [SerializeField] private GameObject explodePrefab;
+    [Space]
     [SerializeField] private LightningBoltPrefabScript lightningPrefab;
     [SerializeField] private LightningBoltPrefabScript lightningStrikePrefab;
+    [SerializeField] private GameObject lightningAudio;
 
     private void Start()
     {
@@ -57,6 +59,7 @@ public class PullRadius : MonoBehaviour
     {
         LightningBoltPrefabScript strike = Instantiate(lightningStrikePrefab, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
         strike.LightningEndedCallback += (_, _, _) => Destroy(strike.gameObject);
+        Instantiate(lightningAudio, transform.position, Quaternion.identity);
         
         damageable.TakeDamage(DamageType.None, ReactionValues.CHAIN_DMG);
         yield return null;
