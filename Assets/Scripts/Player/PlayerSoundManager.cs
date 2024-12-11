@@ -23,6 +23,8 @@ public class PlayerSoundManager : MonoBehaviour
             instance = this;
         }  else
             Destroy(gameObject);
+        
+        playerSource.clip = reloadClip;
     }
 
     private void ResetSettings()
