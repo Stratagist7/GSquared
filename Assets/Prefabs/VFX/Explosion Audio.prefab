@@ -49,8 +49,8 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 094f9f07d0a999c4daf73a5927815c32, type: 3}
   pitchMin: 0.7
   pitchMax: 1.3
-  volumeMin: 0.8
-  volumeMax: 1.2
+  volumeMin: 0.7
+  volumeMax: 1
 --- !u!82 &2426370774232367893
 AudioSource:
   m_ObjectHideFlags: 0
