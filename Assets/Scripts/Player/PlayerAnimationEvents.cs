@@ -23,7 +23,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     
     public void ReloadStart()
     {
-        gunAnim.SetTrigger(reloadKey);
+        //gunAnim.SetTrigger(reloadKey);
         PlayerSoundManager.instance.PlayReload();
     }
 

@@ -1722,6 +1722,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 470154763986695993, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: frozenPrefab
+      value: 
+      objectReference: {fileID: 1562623932468501896, guid: 569d9d06700e72e4687dfb6f21c828e6, type: 3}
     - target: {fileID: 2908897620993153908, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: damage
       value: 10
