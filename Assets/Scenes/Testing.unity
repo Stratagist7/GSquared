@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -451,6 +455,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -756,6 +764,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2301,6 +2313,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3069,6 +3085,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007
@@ -4940,6 +4960,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.11810639
       objectReference: {fileID: 0}
+    - target: {fileID: 5003948074752259587, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 5155794766343826934, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.4060405
@@ -5782,6 +5806,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6092,6 +6120,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6871,6 +6903,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7986,6 +8022,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.45857704
       objectReference: {fileID: 0}
+    - target: {fileID: 6278950211840232203, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 6688308176414926126, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000044
@@ -8576,6 +8616,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8842,6 +8886,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9501,6 +9549,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9578,6 +9630,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9803,6 +9859,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9909,6 +9969,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10558,6 +10622,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.11810639
       objectReference: {fileID: 0}
+    - target: {fileID: 5003948074752259587, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 5155794766343826934, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.4060405
@@ -12670,6 +12738,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13218,6 +13290,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13886,6 +13962,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -14118,6 +14198,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -14842,6 +14926,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007
@@ -16460,6 +16548,10 @@ PrefabInstance:
       propertyPath: explodePrefab
       value: 
       objectReference: {fileID: 6593939784104130345, guid: 193d4031074fa8a4199154c8b3bc90cf, type: 3}
+    - target: {fileID: 4061447498198782796, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4450921343305575019, guid: 74f141f672e4c604cbf7b057182cb97f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17243,6 +17335,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: lightningStrikePrefab
+      value: 
+      objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007

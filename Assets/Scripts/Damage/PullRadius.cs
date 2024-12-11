@@ -14,6 +14,7 @@ public class PullRadius : MonoBehaviour
     [SerializeField] private Damageable damageable;
     [SerializeField] private GameObject explodePrefab;
     [SerializeField] private LightningBoltPrefabScript lightningPrefab;
+    [SerializeField] private LightningBoltPrefabScript lightningStrikePrefab;
 
     private void Start()
     {
@@ -54,6 +55,9 @@ public class PullRadius : MonoBehaviour
 
     public IEnumerator ChainReaction()
     {
+        LightningBoltPrefabScript strike = Instantiate(lightningStrikePrefab, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
+        strike.LightningEndedCallback += (_, _, _) => Destroy(strike.gameObject);
+        
         damageable.TakeDamage(DamageType.None, ReactionValues.CHAIN_DMG);
         yield return null;
 
