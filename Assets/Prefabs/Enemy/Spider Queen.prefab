@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 2473407582962624842}
   - component: {fileID: 927897654356755215}
   - component: {fileID: 2578764422621631838}
+  - component: {fileID: 3358538177098563795}
   m_Layer: 0
   m_Name: Spider Queen Robot
   m_TagString: Untagged
@@ -593,6 +594,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 4423176531265979213}
+  stepSounds: {fileID: 3358538177098563795}
+--- !u!114 &3358538177098563795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838413979473834354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4550e29c9e450f4da597aecc60735e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 7096647083577389337}
+  clip: {fileID: 0}
+  manualPlay: 1
+  pitchMin: 0.2
+  pitchMax: 0.7
+  volumeMin: 1.5
+  volumeMax: 2
+  repeatSfx: 1
+  clips:
+  - {fileID: 8300000, guid: 9d7f9ebb097a4f64d803691abb34add0, type: 3}
+  - {fileID: 8300000, guid: 136a7dd335691d844b6b10012a174366, type: 3}
+  - {fileID: 8300000, guid: 53587bedfceddc1459113fce9c3ff06b, type: 3}
+  - {fileID: 8300000, guid: 3f8091bee6924944fa3e1af9260dfed1, type: 3}
+  - {fileID: 8300000, guid: 56e3bebb447958c48993561bddc8ef57, type: 3}
+  - {fileID: 8300000, guid: 993313e798321e945a39675eef6980ff, type: 3}
+  - {fileID: 8300000, guid: 1c5e8a399db1d114587bc0d0d53c1bec, type: 3}
+  - {fileID: 8300000, guid: b0ce1677d0318434c8c75c6e9b8e439a, type: 3}
+  - {fileID: 8300000, guid: 29088a96c1b7afa408635d1e66df8ea5, type: 3}
+  - {fileID: 8300000, guid: 27bf947ea98805e4280be82dcc722cd9, type: 3}
+  - {fileID: 8300000, guid: 32e8de62a4ef8514fb49e479b51adc3c, type: 3}
+  - {fileID: 8300000, guid: b907cddff9abee048b078981a0971b76, type: 3}
+  - {fileID: 8300000, guid: d01de7ad4c2e7ca4b920ad5118d03117, type: 3}
+  - {fileID: 8300000, guid: ce8cb4cb73ddf4b4d871f63b7bde1fc0, type: 3}
+  - {fileID: 8300000, guid: 0f3f80e9df517f9468e07d389c722bf2, type: 3}
 --- !u!1 &1891163979422446835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1904,11 @@ PrefabInstance:
 --- !u!1 &4423176531265979213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 293167015072925656, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+  m_PrefabInstance: {fileID: 4139879282891326613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7096647083577389337 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6561626641398609292, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
   m_PrefabInstance: {fileID: 4139879282891326613}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7960046826740828605 stripped

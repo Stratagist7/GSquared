@@ -7917,6 +7917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider Queen
       objectReference: {fileID: 0}
+    - target: {fileID: 4423176531265979213, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4451057144446773128, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9999983

@@ -8,7 +8,7 @@ public class MultiSfxHandler : EffectSfxHandler
     private int currentClip;
     private static int lastPlayedClip = -1;
 
-    protected override void Start()
+    protected override void SetAudioSettings()
     {
         currentClip = Random.Range(0, clips.Length);
         if (repeatSfx == false)
@@ -22,6 +22,6 @@ public class MultiSfxHandler : EffectSfxHandler
         }
 
         clip = clips[currentClip];
-        base.Start();
+        base.SetAudioSettings();
     }
 }
