@@ -1107,6 +1107,7 @@ MonoBehaviour:
   parent: {fileID: 5792903851844552468}
   stepSounds: {fileID: 1585999278117224489}
   deathSound: {fileID: 2356899043807239936}
+  attackSounds: {fileID: 0}
 --- !u!114 &1585999278117224489
 MonoBehaviour:
   m_ObjectHideFlags: 0

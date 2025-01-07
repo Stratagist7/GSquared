@@ -7,6 +7,7 @@ public class EnemyAnimationEvents : MonoBehaviour
     [SerializeField] private GameObject parent;
     [SerializeField] private MultiSfxHandler stepSounds;
     [SerializeField] private EffectSfxHandler deathSound;
+    [SerializeField] private MultiSfxHandler attackSounds;
 
     public void Die()
     {
@@ -22,5 +23,9 @@ public class EnemyAnimationEvents : MonoBehaviour
         stepSounds.PlayAudio();
     }
 
+    public void Attack()
+    {
+        attackSounds.PlayAudio();
+    }
     
 }

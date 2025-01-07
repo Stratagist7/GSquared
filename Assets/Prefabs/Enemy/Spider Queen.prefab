@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 2578764422621631838}
   - component: {fileID: 3358538177098563795}
   - component: {fileID: 2611237108172506050}
+  - component: {fileID: 7852482036525369852}
   m_Layer: 0
   m_Name: Spider Queen Robot
   m_TagString: Untagged
@@ -597,6 +598,7 @@ MonoBehaviour:
   parent: {fileID: 4423176531265979213}
   stepSounds: {fileID: 3358538177098563795}
   deathSound: {fileID: 2611237108172506050}
+  attackSounds: {fileID: 7852482036525369852}
 --- !u!114 &3358538177098563795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +654,29 @@ MonoBehaviour:
   pitchMax: 0.7
   volumeMin: 1
   volumeMax: 1
+--- !u!114 &7852482036525369852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838413979473834354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4550e29c9e450f4da597aecc60735e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 7096647083577389337}
+  clip: {fileID: 0}
+  manualPlay: 1
+  pitchMin: 0.5
+  pitchMax: 1
+  volumeMin: 1
+  volumeMax: 1
+  repeatSfx: 0
+  clips:
+  - {fileID: 8300000, guid: 04bc8e465bd80634ab2893ea57927fa8, type: 3}
+  - {fileID: 8300000, guid: 65b790ef6fcda194492557a2f12aa4dd, type: 3}
 --- !u!1 &1891163979422446835
 GameObject:
   m_ObjectHideFlags: 0
