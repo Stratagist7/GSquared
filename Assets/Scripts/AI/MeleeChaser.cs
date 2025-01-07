@@ -15,6 +15,12 @@ public class MeleeChaser : MoveableAgent
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Animator animator;
 
+	[Header("Audio")]
+	[SerializeField] private MultiSfxHandler idleSfx;
+	[SerializeField] private float idleSfxChance = 0.1f;
+	[SerializeField] private float idleSfxCd = 2f;
+	private float lastIdleTime;
+
 	private float dist;
 	private bool attacking = false;
 	private bool settingUp = true;
@@ -55,6 +61,7 @@ public class MeleeChaser : MoveableAgent
 	{
 		yield return new WaitForSeconds(1f);
 		settingUp = false;
+		StartCoroutine(TryPlayIdle());
 	}
 	
 	private IEnumerator Attack()
@@ -105,6 +112,22 @@ public class MeleeChaser : MoveableAgent
 		if (attacking && isStunned == false && other.gameObject.CompareTag("Player"))
 		{
 			Damageable.Player.GetComponent<PlayerHealth>().Damage(damage);
+		}
+	}
+
+	private IEnumerator TryPlayIdle()
+	{
+		while (gameObject.activeSelf)
+		{
+			if (attacking == false && isStunned == false && Random.Range(0f, 1f) < idleSfxChance)
+			{
+				idleSfx.PlayAudio();
+				yield return new WaitForSeconds(idleSfxCd);
+			}
+			else
+			{
+				yield return new WaitForSeconds(1);
+			}
 		}
 	}
 }
