@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4247251945540171751}
   - component: {fileID: 6767817624166905369}
   - component: {fileID: 3148728117030801397}
+  - component: {fileID: 8213569673604463144}
   m_Layer: 0
   m_Name: Spider Robot
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 3400376248088034885}
   stepSounds: {fileID: 3148728117030801397}
+  deathSound: {fileID: 8213569673604463144}
 --- !u!114 &3148728117030801397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +149,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d01de7ad4c2e7ca4b920ad5118d03117, type: 3}
   - {fileID: 8300000, guid: ce8cb4cb73ddf4b4d871f63b7bde1fc0, type: 3}
   - {fileID: 8300000, guid: 0f3f80e9df517f9468e07d389c722bf2, type: 3}
+--- !u!114 &8213569673604463144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409029837663826188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3646ce7f953184e90ec1206b8ee95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8083553807552957457}
+  clip: {fileID: 8300000, guid: 483c04d2f35dba9489b73e1f53efedac, type: 3}
+  manualPlay: 1
+  pitchMin: 0.3
+  pitchMax: 1
+  volumeMin: 1
+  volumeMax: 1
 --- !u!1 &502134650529225080
 GameObject:
   m_ObjectHideFlags: 0
