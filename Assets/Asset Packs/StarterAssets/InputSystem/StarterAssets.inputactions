@@ -47,7 +47,16 @@
                     "id": "afac945c-0468-480a-8f96-3c991df4eeb0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,Hold(duration=0.2)",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ammo Menu",
+                    "type": "Button",
+                    "id": "b64c833a-f1c4-4b07-a603-96830f19ed97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=1.401298E-45)",
                     "initialStateCheck": false
                 },
                 {
@@ -256,6 +265,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0b27422-8e67-4e68-a6fb-27cb6fcf1b46",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ammo Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

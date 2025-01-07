@@ -1,6 +1,7 @@
 using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class PlayerGunAmmo : MonoBehaviour
 {
 	private static readonly int reloadKey = Animator.StringToHash("t_reload");
 	
+	[SerializeField] private InputActionReference reloadRef;
 	[SerializeField] private InputActionReference actionRef;
 	[SerializeField] private TextMeshProUGUI ammoText;
 	[SerializeField] private GameObject ammoScreen;
@@ -63,27 +65,32 @@ public class PlayerGunAmmo : MonoBehaviour
 		ammoScreen.SetActive(false);
 		ResetAmmo();
 
-		actionRef.action.performed += OnPerformed;
-		actionRef.action.canceled += OnCanceled;
+		reloadRef.action.performed += OnPerformReload;
+		actionRef.action.performed += OnPerformAmmoMenu;
+		actionRef.action.canceled += OnCancelAmmoMenu;
 	}
 
-	private void OnPerformed(InputAction.CallbackContext context)
+	private void OnPerformAmmoMenu(InputAction.CallbackContext context)
 	{
-		if (context.interaction is TapInteraction && isReloading == false)
-		{
-			Reload();
-		}
-		else if (context.interaction is HoldInteraction)
+		if (context.interaction is HoldInteraction)
 		{
 			DisplayAmmoScreen(true);
 		}
 	}
 
-	private void OnCanceled(InputAction.CallbackContext context)
+	private void OnCancelAmmoMenu(InputAction.CallbackContext context)
 	{
 		if (context.interaction is HoldInteraction && PlayerHealth.playerIsDead == false)
 		{
 			DisplayAmmoScreen(false);
+		}
+	}
+
+	private void OnPerformReload(InputAction.CallbackContext context)
+	{
+		if (context.interaction is TapInteraction)
+		{
+			Reload();
 		}
 	}
 
@@ -99,8 +106,9 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		actionRef.action.performed -= OnPerformed;
-		actionRef.action.canceled -= OnCanceled;
+		reloadRef.action.performed -= OnPerformReload;
+		actionRef.action.performed -= OnPerformAmmoMenu;
+		actionRef.action.canceled -= OnCancelAmmoMenu;
 	}
 
 	public void Reload(bool force = false)

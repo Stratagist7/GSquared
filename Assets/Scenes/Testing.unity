@@ -856,12 +856,12 @@ GameObject:
   - component: {fileID: 208950854}
   - component: {fileID: 208950858}
   m_Layer: 3
-  m_Name: BulletSpawn
+  m_Name: BulletSpawn (out of date)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &208950853
 Transform:
   m_ObjectHideFlags: 0
@@ -889,6 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4872100fd0bd84d4cb6ae0681018c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadRef: {fileID: -8210048260846914621, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   actionRef: {fileID: -8210048260846914621, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   ammoText: {fileID: 117597323}
   ammoScreen: {fileID: 1913493451}
@@ -16692,7 +16693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4872100fd0bd84d4cb6ae0681018c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRef: {fileID: -8210048260846914621, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  reloadRef: {fileID: -8210048260846914621, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  actionRef: {fileID: 8879589256226354163, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   ammoText: {fileID: 117597323}
   ammoScreen: {fileID: 1913493451}
   ammoType: {fileID: 1620361984}
