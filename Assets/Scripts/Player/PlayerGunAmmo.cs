@@ -15,14 +15,16 @@ public class PlayerGunAmmo : MonoBehaviour
 	[SerializeField] private InputActionReference reloadRef;
 	[SerializeField] private InputActionReference actionRef;
 	[SerializeField] private TextMeshProUGUI ammoText;
-	[SerializeField] private GameObject ammoScreen;
+	[SerializeField] private AmmoWheel ammoScreen;
 	[SerializeField] private Image ammoType;
 	[SerializeField] private StarterAssetsInputs inputs;
 	[SerializeField] private Animator playerAnim;
 	[SerializeField] private Animator gunAnim;
+	[SerializeField] private int[] startingAmmo = new int[6];
 
+	private int[] ammoAmounts = new int[6];
+	private int extraAmmo;
 	private int maxAmmo;
-	
 	private int _curAmmo;
 	public int curAmmo
 	{
@@ -34,27 +36,26 @@ public class PlayerGunAmmo : MonoBehaviour
 			{
 				_curAmmo = 0;
 			}
-			ammoText.text = $"{_curAmmo}/{maxAmmo}";
+			ammoAmounts[(int)_damageType] = curAmmo + extraAmmo;
+			ammoText.text = $"{_curAmmo}|{extraAmmo}";
 		}
 	}
+	
 	private DamageType _damageType = DamageType.Fire;
 	public DamageType damageType
 	{
 		get => _damageType;
 		set
 		{
-			if (value != _damageType)
+			if (value == _damageType)
 			{
-				_damageType = value;
-				if (MenuUI.ReloadAmmoType)
-				{
-					Reload(true);
-				}
-				else
-				{
-					ammoType.color = ElementManager.instance.GetElement(damageType).color;
-				}
+				return;
 			}
+			_damageType = value;
+
+			SetCurrentAmmo();
+			
+			ammoType.color = ElementManager.instance.GetElement(damageType).color;
 		}
 	}
 
@@ -62,7 +63,12 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	private void Start()
 	{
-		ammoScreen.SetActive(false);
+		for (int i = 0; i < ammoAmounts.Length; i++)
+		{
+			ammoAmounts[i] = startingAmmo[i];
+		}
+		
+		ammoScreen.gameObject.SetActive(false);
 		ResetAmmo();
 
 		reloadRef.action.performed += OnPerformReload;
@@ -74,6 +80,7 @@ public class PlayerGunAmmo : MonoBehaviour
 	{
 		if (context.interaction is HoldInteraction)
 		{
+			ammoScreen.SetAmmo(ammoAmounts);
 			DisplayAmmoScreen(true);
 		}
 	}
@@ -113,7 +120,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public void Reload(bool force = false)
 	{
-		if (curAmmo == maxAmmo && force == false)
+		if ((curAmmo == maxAmmo || CanReload() == false) && force == false)
 		{
 			return;
 		}
@@ -125,24 +132,38 @@ public class PlayerGunAmmo : MonoBehaviour
 	public void ResetAmmo()
 	{
 		maxAmmo = ElementManager.instance.GetElement(damageType).maxAmmo;
-		curAmmo = maxAmmo;
+		SetCurrentAmmo();
 		ammoType.color = ElementManager.instance.GetElement(damageType).color;
 		isReloading = false;
 	}
 
+	private void SetCurrentAmmo()
+	{
+		if (ammoAmounts[(int)damageType] >= maxAmmo)
+		{
+			extraAmmo = ammoAmounts[(int)damageType] - maxAmmo;
+			curAmmo = maxAmmo;
+		}
+		else
+		{
+			extraAmmo = 0;
+			curAmmo = ammoAmounts[(int)damageType];
+		}
+	}
+
 	public bool CanShoot()
 	{
-		return curAmmo > 0 && CanReload();
+		return curAmmo > 0 && isReloading == false && MenuUI.Paused == false;
 	}
 
 	public bool CanReload()
 	{
-		return isReloading == false && MenuUI.Paused == false;
+		return extraAmmo > 0 && isReloading == false && MenuUI.Paused == false;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)
 	{
-		ammoScreen.SetActive(shouldDisplay);
+		ammoScreen.gameObject.SetActive(shouldDisplay);
 		Cursor.visible = shouldDisplay;
 		inputs.LookInput(Vector2.zero);  // Fixes camera spinning if the look input left as non-zero number
 		inputs.SetCursorLocked(shouldDisplay == false);

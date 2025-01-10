@@ -113,7 +113,7 @@ public class AmmoWheel : MonoBehaviour
         Vector3 maskEndValue = smallMaskScale;
         Vector3 ammoStartValue = smallBgScale;
         Vector3 ammoEndValue = bigBgScale;
-        ammoObjects[ammoIndex].SetSiblingIndex(1);
+        ammoObjects[ammoIndex].SetSiblingIndex(2);
         
         if (isShrink)
         {
@@ -135,5 +135,13 @@ public class AmmoWheel : MonoBehaviour
         }
         mask.localScale = maskEndValue;
         ammoObjects[ammoIndex].localScale = ammoEndValue;
+    }
+
+    public void SetAmmo(int[] argAmmoAmounts)
+    {
+        for (int i = 0; i < ammoTexts.Length; i++)
+        {
+            ammoTexts[i].text = argAmmoAmounts[i].ToString();
+        }
     }
 }

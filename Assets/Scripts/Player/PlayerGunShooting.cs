@@ -60,8 +60,11 @@ public class PlayerGunShooting : MonoBehaviour
 		}
 		else if(ammo.CanReload())
 		{
-			PlayerSoundManager.instance.PlayEmptyClip();
 			ammo.Reload();
+		}
+		else if(ammo.isReloading == false)
+		{
+			PlayerSoundManager.instance.PlayEmptyClip();
 		}
 	}
 
