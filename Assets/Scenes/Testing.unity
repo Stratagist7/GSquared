@@ -4343,6 +4343,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: lightningAudio
       value: 
@@ -4351,6 +4359,14 @@ PrefabInstance:
       propertyPath: lightningStrikePrefab
       value: 
       objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007
@@ -6187,6 +6203,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.11810639
       objectReference: {fileID: 0}
+    - target: {fileID: 4875993312587934219, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875993312587934219, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5003948074752259587, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: lightningAudio
       value: 
@@ -6326,6 +6350,14 @@ PrefabInstance:
     - target: {fileID: 5700665877138001944, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.028333085
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754113589826860237, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754113589826860237, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5959087132956829506, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9314,6 +9346,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.182784
       objectReference: {fileID: 0}
+    - target: {fileID: 5906987291707545347, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906987291707545347, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5930931845850191879, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.14149833
@@ -9393,6 +9433,14 @@ PrefabInstance:
     - target: {fileID: 6688308176414926126, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.0863303
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739742818595686853, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739742818595686853, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6957959026863894061, guid: ce280628b2cd65b4db497ab5e25f46a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -12506,6 +12554,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.11810639
       objectReference: {fileID: 0}
+    - target: {fileID: 4875993312587934219, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875993312587934219, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5003948074752259587, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: lightningAudio
       value: 
@@ -12645,6 +12701,14 @@ PrefabInstance:
     - target: {fileID: 5700665877138001944, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.028333085
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754113589826860237, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754113589826860237, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5959087132956829506, guid: dd069004422a8a443ace06840b5b4b95, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17520,6 +17584,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: lightningAudio
       value: 
@@ -17528,6 +17600,14 @@ PrefabInstance:
       propertyPath: lightningStrikePrefab
       value: 
       objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007
@@ -19795,6 +19875,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.122384414
       objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498910570444819868, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4189912473194860370, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: lightningAudio
       value: 
@@ -19803,6 +19891,14 @@ PrefabInstance:
       propertyPath: lightningStrikePrefab
       value: 
       objectReference: {fileID: 608473567997258312, guid: bdd86c734b6cbff4186d1efdee74ddff, type: 3}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395255296031871834, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848799612514345180, guid: 5757722ba5638ed46842f800a70ec72a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0000007

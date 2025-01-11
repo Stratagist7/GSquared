@@ -15,7 +15,7 @@ public class Damageable : MonoBehaviour
 	private static readonly int DEAD_KEY = Animator.StringToHash("Dead");
 	
 	[SerializeField] private int maxHealth = 100;
-	[SerializeField] private DamageTypeUI[] damageTypeUI;
+	[SerializeField] private GameObject[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
 	[SerializeField] private Animator animator;
 	[SerializeField] private GameObject healthUI;
@@ -40,13 +40,6 @@ public class Damageable : MonoBehaviour
 			_curHealth = value;
 			healthBar.SetHealth(_curHealth);
 		}
-	}
-
-	[Serializable]
-	private class DamageTypeUI
-	{
-		public DamageType damageType;
-		public GameObject uiObj;
 	}
 
 	private void Awake()
@@ -276,9 +269,8 @@ public class Damageable : MonoBehaviour
 	private void EnableDamageTypeUI(DamageType argType, bool argEnabled)
 	{
 		types[argType] = Time.time;
-		GameObject uiObj = damageTypeUI[(int)argType].uiObj;
-		uiObj.transform.SetAsFirstSibling();
-		uiObj.SetActive(argEnabled);
+		damageTypeUI[(int)argType].transform.SetAsFirstSibling();
+		damageTypeUI[(int)argType].SetActive(argEnabled);
 	}
 }
 

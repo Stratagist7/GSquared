@@ -56,21 +56,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damageTypeUI:
-  - damageType: 1
-    uiObj: {fileID: 8787614368573510505}
-  - damageType: 2
-    uiObj: {fileID: 5468440305911433405}
-  - damageType: 3
-    uiObj: {fileID: 8512567009497309410}
-  - damageType: 4
-    uiObj: {fileID: 7037888913501065917}
-  - damageType: 4
-    uiObj: {fileID: 7192920985457989285}
-  - damageType: 5
-    uiObj: {fileID: 8840552398634265950}
+  - {fileID: 8787614368573510505}
+  - {fileID: 5468440305911433405}
+  - {fileID: 8512567009497309410}
+  - {fileID: 7037888913501065917}
+  - {fileID: 7192920985457989285}
+  - {fileID: 8840552398634265950}
   pr: {fileID: 4061447498198782796}
   animator: {fileID: 0}
-  healthUI: {fileID: 0}
+  healthUI: {fileID: 1878267873592797643}
 --- !u!114 &3333378353675548444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +869,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 107a3988029f57f4baad5415ed295334, type: 3}
+--- !u!1 &1878267873592797643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6826415163411116031, guid: 107a3988029f57f4baad5415ed295334, type: 3}
+  m_PrefabInstance: {fileID: 4948539829646476852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5468440305911433405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1103227691927391881, guid: 107a3988029f57f4baad5415ed295334, type: 3}
@@ -900,7 +899,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3889474028882931616, guid: 107a3988029f57f4baad5415ed295334, type: 3}
   m_PrefabInstance: {fileID: 4948539829646476852}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1878267873592797643}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
