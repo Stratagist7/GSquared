@@ -11,4 +11,5 @@ public class Element : ScriptableObject
     public int maxAmmo;
     public Color color;
     public GameObject swirlPrefab;
+    public GameObject ammoUI;
 }

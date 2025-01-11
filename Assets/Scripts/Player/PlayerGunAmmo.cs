@@ -14,9 +14,8 @@ public class PlayerGunAmmo : MonoBehaviour
 	
 	[SerializeField] private InputActionReference reloadRef;
 	[SerializeField] private InputActionReference actionRef;
-	[SerializeField] private TextMeshProUGUI ammoText;
+	[SerializeField] private AmmoInfoUI ammoUI;
 	[SerializeField] private AmmoWheel ammoScreen;
-	[SerializeField] private Image ammoType;
 	[SerializeField] private StarterAssetsInputs inputs;
 	[SerializeField] private Animator playerAnim;
 	[SerializeField] private Animator gunAnim;
@@ -37,7 +36,7 @@ public class PlayerGunAmmo : MonoBehaviour
 				_curAmmo = 0;
 			}
 			ammoAmounts[(int)_damageType] = curAmmo + extraAmmo;
-			ammoText.text = $"{_curAmmo}|{extraAmmo}";
+			ammoUI.SetAmmoCount(curAmmo, extraAmmo);
 		}
 	}
 	
@@ -55,7 +54,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 			SetCurrentAmmo();
 			
-			ammoType.color = ElementManager.instance.GetElement(damageType).color;
+			ammoUI.SetElementIcon(damageType);
 		}
 	}
 
@@ -133,7 +132,7 @@ public class PlayerGunAmmo : MonoBehaviour
 	{
 		maxAmmo = ElementManager.instance.GetElement(damageType).maxAmmo;
 		SetCurrentAmmo();
-		ammoType.color = ElementManager.instance.GetElement(damageType).color;
+		ammoUI.SetElementIcon(damageType);
 		isReloading = false;
 	}
 

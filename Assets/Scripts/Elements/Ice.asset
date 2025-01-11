@@ -18,3 +18,4 @@ MonoBehaviour:
   maxAmmo: 30
   color: {r: 0, g: 1, b: 0.98099947, a: 1}
   swirlPrefab: {fileID: 6457711643204179187, guid: b813401640de93940976557ca58373f1, type: 3}
+  ammoUI: {fileID: 8025347528669737241, guid: 30e89802e6067824b9b01c22f94d307a, type: 3}
