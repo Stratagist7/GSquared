@@ -5,7 +5,9 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - pr: {instanceID: 0}
-  - shieldParticlePrefab: {fileID: 6507742713195232737, guid: fae7bf40f73e4214b96e20bc31e233a3, type: 3}
+  - animator: {instanceID: 0}
+  - healthUI: {instanceID: 0}
+  - droppedAmmoPrefab: {fileID: 6507742713195232737, guid: fae7bf40f73e4214b96e20bc31e233a3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

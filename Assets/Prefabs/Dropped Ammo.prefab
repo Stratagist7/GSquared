@@ -143,9 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoAmount: 10
-  ammoType: 1
+  ammoType: 0
   spriteRenderer: {fileID: 7020111372244663695}
   pointLight: {fileID: 2338914638694408475}
+  collider: {fileID: 4946467668310384246}
 --- !u!135 &4946467668310384246
 SphereCollider:
   m_ObjectHideFlags: 0

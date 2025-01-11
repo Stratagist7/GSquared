@@ -10,7 +10,14 @@ public class DroppedAmmo : MonoBehaviour
 	
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private Light pointLight;
-	
+	[SerializeField] private new Collider collider;
+	[SerializeField] private bool isManuallySet;
+
+	private void Awake()
+	{
+		collider.enabled = isManuallySet;
+	}
+
 	private void Update()
 	{
 		transform.Rotate(Vector3.up * Time.deltaTime * 50, Space.World);
@@ -20,6 +27,9 @@ public class DroppedAmmo : MonoBehaviour
 	{
 		ammoAmount = argAmount;
 		ammoType = argType;
+		spriteRenderer.sprite = ElementManager.instance.GetElement(ammoType).icon;
+		pointLight.color = ElementManager.instance.GetElement(ammoType).color;
+		collider.enabled = true;
 	}
 
 	private void OnTriggerEnter(Collider other)

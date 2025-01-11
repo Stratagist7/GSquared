@@ -75,7 +75,7 @@ public class PullRadius : MonoBehaviour
             if (p != null && p.damageable.IsWet())
             {
                 yield return new WaitForSeconds(0.25f);
-                if (p.damageable.IsWet())  // confirming still wet after waiting
+                if (p != null && p.damageable.IsWet())  // confirming still wet after waiting
                 {
                     LightningBoltPrefabScript bolt = Instantiate(lightningPrefab, transform.position, Quaternion.identity);
                     bolt.LightningEndedCallback += (_, _, _) => Destroy(bolt.gameObject);

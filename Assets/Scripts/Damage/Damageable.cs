@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
 [RequireComponent(typeof(FreezeHandler))]
@@ -19,6 +20,11 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private PullRadius pr;
 	[SerializeField] private Animator animator;
 	[SerializeField] private GameObject healthUI;
+	[Header("Dropped Ammo")] 
+	[SerializeField] private GameObject droppedAmmoPrefab;
+	[SerializeField] private int ammoAmount;
+	[SerializeField] private DamageType damageType;
+	
 	private HealthBar healthBar;
 	private MoveableAgent agent;
 	private FreezeHandler freezeHandler;
@@ -147,9 +153,21 @@ public class Damageable : MonoBehaviour
 			{
 				Destroy(gameObject);
 			}
+
+			DropAmmo();
 		}
 
 		ApplyDamageTypeEffect(argType);
+	}
+
+	private void DropAmmo()
+	{
+		DroppedAmmo ammo = Instantiate(droppedAmmoPrefab, transform.position + Vector3.up * 0.75f, Quaternion.identity).GetComponent<DroppedAmmo>();
+		if (damageType == DamageType.None)
+		{
+			damageType = (DamageType)Random.Range(0, 6);
+		}
+		ammo.SetAmmo(ammoAmount, damageType);
 	}
 	
 #region Solo Effects
@@ -191,6 +209,7 @@ public class Damageable : MonoBehaviour
 	}
 #endregion // Solo Effects
 	
+#region Reactions	
 	private void ApplyDamageTypeEffect(DamageType argType)
 	{
 		if (argType == DamageType.None)
@@ -259,7 +278,8 @@ public class Damageable : MonoBehaviour
 	{
 		PlayerSheilds.Shield(ReactionValues.SHIELD_AMT);
 	}
-
+#endregion // Reactions
+	
 	private void ApplyDamageType(DamageType argType)
 	{
 		types[argType] = Time.time;

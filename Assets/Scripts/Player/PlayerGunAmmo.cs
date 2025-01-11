@@ -175,6 +175,7 @@ public class PlayerGunAmmo : MonoBehaviour
 		if (argType == damageType)
 		{
 			extraAmmo += argAmount;
+			ammoUI.SetAmmoCount(curAmmo, extraAmmo);
 		}
 	}
 }
