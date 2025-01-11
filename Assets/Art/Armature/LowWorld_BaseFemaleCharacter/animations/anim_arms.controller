@@ -920,7 +920,7 @@ AnimatorStateMachine:
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: -170, y: 220, z: 0}
   m_ExitPosition: {x: 760, y: 210, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_ParentStateMachinePosition: {x: 40, y: 120, z: 0}
   m_DefaultState: {fileID: 3274881088613869697}
 --- !u!1102 &-3378170657530768507
 AnimatorState:
@@ -1033,7 +1033,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -6121417280476584796, guid: 4da5b89594b00954383507a7e3bde0f4, type: 3}
-    m_Threshold: 0.5
+    m_Threshold: 4
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1041,7 +1041,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 4444139375008002201, guid: 4da5b89594b00954383507a7e3bde0f4, type: 3}
-    m_Threshold: 1
+    m_Threshold: 6
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1050,8 +1050,8 @@ BlendTree:
   m_BlendParameter: f_speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_MaxThreshold: 6
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1101 &-3013438360192872159
@@ -1674,7 +1674,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: state
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8414117931556708561}
@@ -2369,7 +2369,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: start
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6725920330624465566}
@@ -2382,7 +2382,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8202993341828750308, guid: 4da5b89594b00954383507a7e3bde0f4, type: 3}
+  m_Motion: {fileID: 7400000, guid: 85abf3b128d4d0047ad66ae66288eb92, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2423,7 +2423,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: end
-  m_Speed: 1
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8448747069896355527}
@@ -2436,7 +2436,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2661958605817084902, guid: 4da5b89594b00954383507a7e3bde0f4, type: 3}
+  m_Motion: {fileID: 7400000, guid: 8efdd04f28ed34246ab1e8bf1cbe792b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

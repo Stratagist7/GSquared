@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class PlayerAnimationEvents : MonoBehaviour
-{
-    private static readonly int reloadKey = Animator.StringToHash("t_reload");
-    
+{    
     [SerializeField] private PlayerGunAmmo ammo;
     [SerializeField] private Animator gunAnim;
     [Space]
     [SerializeField] private Transform ammoCartridge;
     [SerializeField] private Transform gun;
     [SerializeField] private Transform handLBone;
+    [SerializeField] private WeaponControl weaponController;
 
     public void ResetAmmo()
     {
@@ -33,5 +32,15 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void ParentHand()
     {
         ammoCartridge.parent = handLBone;
+    }
+    
+    public void EnableMelee()
+    {
+        weaponController.EnableMelee();
+    }
+    
+    public void EnableGun()
+    {
+        weaponController.EnableGun();
     }
 }
