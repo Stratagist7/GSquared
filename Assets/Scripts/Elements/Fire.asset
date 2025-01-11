@@ -19,3 +19,4 @@ MonoBehaviour:
   color: {r: 1, g: 0, b: 0, a: 1}
   swirlPrefab: {fileID: 9026024851390424045, guid: 690f0dec381891643afd3646d33ec75f, type: 3}
   ammoUI: {fileID: 496741773990981888, guid: f8330f0fd9fa7ee42a55c5490a1666f2, type: 3}
+  icon: {fileID: -1206764419, guid: 2a08773844b005247824c0e70121c215, type: 3}

@@ -12,4 +12,5 @@ public class Element : ScriptableObject
     public Color color;
     public GameObject swirlPrefab;
     public GameObject ammoUI;
+    public Sprite icon;
 }

@@ -168,4 +168,13 @@ public class PlayerGunAmmo : MonoBehaviour
 		inputs.SetCursorLocked(shouldDisplay == false);
 		inputs.cursorInputForLook = shouldDisplay == false;
 	}
+
+	public void PickUpAmmo(int argAmount, DamageType argType)
+	{
+		ammoAmounts[(int)argType] += argAmount;
+		if (argType == damageType)
+		{
+			extraAmmo += argAmount;
+		}
+	}
 }

@@ -8,7 +8,6 @@ public class PlayerGunShooting : MonoBehaviour
 {
 	private static readonly int attackKey = Animator.StringToHash("t_attack");
 	
-	[SerializeField] private GameObject playerLook;
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float bulletSpeed = 1f;

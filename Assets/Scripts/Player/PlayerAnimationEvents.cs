@@ -13,8 +13,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     [SerializeField] private Transform ammoCartridge;
     [SerializeField] private Transform gun;
     [SerializeField] private Transform handLBone;
-    [SerializeField] private Vector3 gunOffset;
-    [SerializeField] private Vector3 handOffset;
 
     public void ResetAmmo()
     {
