@@ -54,4 +54,14 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         melee.SetIsAttacking(false);
     }
+
+    public void EnableHit()
+    {
+        melee.SetHitCollider(true);
+    }
+    
+    public void DisableHit()
+    {
+        melee.SetHitCollider(false);
+    }
 }

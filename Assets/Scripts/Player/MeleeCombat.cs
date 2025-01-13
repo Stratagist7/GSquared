@@ -5,8 +5,11 @@ public class MeleeCombat : MonoBehaviour
 {
     private static readonly int indexKey = Animator.StringToHash("i_attack_index");
     private static readonly int attackKey = Animator.StringToHash("t_attack");
+    public const int MELEE_DAMAGE = 15;
+    
     [SerializeField] private Animator animator;
     [SerializeField] private InputActionReference actionRef;
+    [SerializeField] private GameObject hitCollider;
     
     private bool isAttacking = false;
 
@@ -43,5 +46,10 @@ public class MeleeCombat : MonoBehaviour
         {
             animator.SetInteger(indexKey, -1);
         }
+    }
+
+    public void SetHitCollider(bool argValue)
+    {
+        hitCollider.SetActive(argValue);
     }
 }
