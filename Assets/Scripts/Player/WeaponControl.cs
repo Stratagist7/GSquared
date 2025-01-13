@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,65 +6,75 @@ public class WeaponControl : MonoBehaviour
 {
     private static readonly int stateKey = Animator.StringToHash("i_state_index");
     private static readonly int endKey = Animator.StringToHash("t_end");
-    private const int MIDDLE_STATE = -1;
-    private const int MELEE_STATE = 0;
-    private const int GUN_STATE = 6;
-    private static int state = 6;
-    
+    private static WeaponType _state;
+
+    [SerializeField] private WeaponType initialState;
     [SerializeField] private Animator animator;
+    [Space]
     [Header("Gun Controllers")]
     [SerializeField] private GameObject gun;
     [SerializeField] private PlayerGunAmmo ammo;
     [SerializeField] private Image[] gunImage;
+    [Space]
     [Header("Melee Controllers")]
+    [SerializeField] private MeleeCombat melee;
     [SerializeField] private Image[] fistImage;
+
+    private void Awake()
+    {
+        animator.SetInteger(stateKey, (int)initialState);
+    }
 
     public void OnSwapToGun()
     {
-        if (state == GUN_STATE || state == MIDDLE_STATE || MenuUI.Paused)
+        if (_state == WeaponType.Gun || _state == WeaponType.None || MenuUI.Paused)
         {
             return;
         }
-        SwapWeapons(true);
+        SwapWeapons(WeaponType.Gun);
     }
     
     public void OnSwapToMelee()
     {
-        if (state == MELEE_STATE || state == MIDDLE_STATE || MenuUI.Paused)
+        if (_state == WeaponType.Melee || _state == WeaponType.None || MenuUI.Paused)
         {
             return;
         }
-        SwapWeapons(false);
+        SwapWeapons(WeaponType.Melee);
     }
 
-    private void SwapWeapons(bool argSwapToGun)
+    private void SwapWeapons(WeaponType argWeapon)
     {
-        state = MIDDLE_STATE;
+        _state = WeaponType.None;
         animator.SetTrigger(endKey);
-        animator.SetInteger(stateKey, argSwapToGun ? GUN_STATE : MELEE_STATE);
+        animator.SetInteger(stateKey, (int)argWeapon);
     }
 
     public void EnableMelee()
     {
-        state = MELEE_STATE;
+        _state = WeaponType.Melee;
         gun.SetActive(false);
         ammo.enabled = false;
         ChangeColor(gunImage, Color.black);
+        
         // enable melee stuff
+        melee.enabled = true;
         ChangeColor(fistImage, Color.white);
     }
     
     public void EnableGun()
     {
-        state = GUN_STATE;
+        // disable melee stuff
+        melee.enabled = false;
+        ChangeColor(fistImage, Color.black);
+        
+        _state = WeaponType.Gun;
         gun.SetActive(true);
         ammo.enabled = true;
         ChangeColor(gunImage, Color.white);
-        // disable melee stuff
-        ChangeColor(fistImage, Color.black);
     }
 
-    private void ChangeColor(Image[] argImages, Color argColor)
+    private static void ChangeColor(Image[] argImages, Color argColor)
     {
         foreach (Image i in argImages)
         {
@@ -71,3 +82,5 @@ public class WeaponControl : MonoBehaviour
         }
     }
 }
+
+public enum WeaponType {None = -1, Melee = 0, Gun = 6};

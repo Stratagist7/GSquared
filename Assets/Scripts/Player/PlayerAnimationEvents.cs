@@ -12,6 +12,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     [SerializeField] private Transform gun;
     [SerializeField] private Transform handLBone;
     [SerializeField] private WeaponControl weaponController;
+    [SerializeField] private MeleeCombat melee;
 
     public void ResetAmmo()
     {
@@ -42,5 +43,15 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void EnableGun()
     {
         weaponController.EnableGun();
+    }
+
+    public void StartAttack()
+    {
+        melee.SetIsAttacking(true);
+    }
+    
+    public void EndAttack()
+    {
+        melee.SetIsAttacking(false);
     }
 }
