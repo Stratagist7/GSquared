@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class WeaponControl : MonoBehaviour
 {
@@ -15,7 +14,9 @@ public class WeaponControl : MonoBehaviour
     [Header("Gun Controllers")]
     [SerializeField] private GameObject gun;
     [SerializeField] private PlayerGunAmmo ammo;
-    //ToDo: [Header("Melee Controllers")]
+    [SerializeField] private Image[] gunImage;
+    [Header("Melee Controllers")]
+    [SerializeField] private Image[] fistImage;
 
     public void OnSwapToGun()
     {
@@ -47,7 +48,9 @@ public class WeaponControl : MonoBehaviour
         state = MELEE_STATE;
         gun.SetActive(false);
         ammo.enabled = false;
+        ChangeColor(gunImage, Color.black);
         // enable melee stuff
+        ChangeColor(fistImage, Color.white);
     }
     
     public void EnableGun()
@@ -55,6 +58,16 @@ public class WeaponControl : MonoBehaviour
         state = GUN_STATE;
         gun.SetActive(true);
         ammo.enabled = true;
+        ChangeColor(gunImage, Color.white);
         // disable melee stuff
+        ChangeColor(fistImage, Color.black);
+    }
+
+    private void ChangeColor(Image[] argImages, Color argColor)
+    {
+        foreach (Image i in argImages)
+        {
+            i.color = argColor;
+        }
     }
 }
