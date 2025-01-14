@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Collider), typeof(HealthBar), typeof(Rigidbody))]
 [RequireComponent(typeof(FreezeHandler))]
-public class Damageable : MonoBehaviour
+public class Damageable : Hitable
 {
 	public static GameObject Player;
 	private static PlayerHealth PlayerSheilds;
@@ -15,7 +15,6 @@ public class Damageable : MonoBehaviour
 	private static readonly int DEATH_KEY = Animator.StringToHash("Die");
 	private static readonly int DEAD_KEY = Animator.StringToHash("Dead");
 	
-	[SerializeField] private int maxHealth = 100;
 	[SerializeField] private GameObject[] damageTypeUI;
 	[SerializeField] private PullRadius pr;
 	[SerializeField] private Animator animator;
@@ -37,7 +36,7 @@ public class Damageable : MonoBehaviour
 
 	private Dictionary<(DamageType, DamageType), Action> reactions = new();
 	
-	private int _curHealth;
+	
 	private int curHealth
 	{
 		get => _curHealth;
@@ -58,15 +57,14 @@ public class Damageable : MonoBehaviour
 		
 	}
 
-	private void Start()
+	protected override void Start()
 	{
 		agent = GetComponent<MoveableAgent>();
 		freezeHandler = GetComponent<FreezeHandler>();
 		
 		healthBar = GetComponent<HealthBar>();
 		healthBar.SetMaxHealth(maxHealth);
-		curHealth = maxHealth;
-		tag = "Damageable";
+		base.Start();
 
 		// Setting up reactions
 		reactions[(DamageType.Earth, DamageType.Fire)] = GiveShieldParticle;
@@ -123,7 +121,7 @@ public class Damageable : MonoBehaviour
 		types.Remove(argType);
 	}
 
-	public void TakeDamage(DamageType argType, int argDamage = -1)
+	public override void TakeDamage(DamageType argType, int argDamage = -1)
 	{
 		if (curHealth <= 0)
 		{

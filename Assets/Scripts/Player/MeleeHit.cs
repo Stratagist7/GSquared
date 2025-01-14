@@ -9,7 +9,7 @@ public class MeleeHit : MonoBehaviour
     {
         if (other.CompareTag("Damageable"))
         {
-            other.GetComponentInChildren<Damageable>().TakeDamage(DamageType.None, MeleeCombat.MELEE_DAMAGE);
+            other.GetComponentInChildren<Hitable>().TakeDamage(DamageType.None, MeleeCombat.MELEE_DAMAGE);
             StartCoroutine(HitLag());
         }
     }
