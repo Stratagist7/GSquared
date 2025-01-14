@@ -73,6 +73,8 @@ public class MenuUI : MonoBehaviour
 	public void MainMenuButton()
 	{
 		UnlockCursor(true);
+		Time.timeScale = 1f;
+		AudioListener.pause = false;
 		SceneManager.LoadScene("MainMenu");
 	}
 
