@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7247072639944531121, guid: 9e95d01812fb9074a89cc1f351185c59, type: 3}
   m_PrefabInstance: {fileID: 490376489}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1147002016}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12094697ca62eba4ab68afdf0ab4bb97, type: 3}
@@ -4986,6 +4986,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288573940958208194, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
+      propertyPath: ammoUI
+      value: 
+      objectReference: {fileID: 1147002016}
+    - target: {fileID: 5288573940958208194, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
       propertyPath: gunImage.Array.data[0]
       value: 
       objectReference: {fileID: 490376501}
@@ -6196,6 +6200,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4072321668713172, guid: a278f26168d4240f1b6750a38747bc3d, type: 3}
   m_PrefabInstance: {fileID: 1145993165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1147002016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4411375473144024493, guid: 9e95d01812fb9074a89cc1f351185c59, type: 3}
+  m_PrefabInstance: {fileID: 490376489}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1152475988
 PrefabInstance:

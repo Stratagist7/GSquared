@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class WeaponControl : MonoBehaviour
 {
     private static readonly int stateKey = Animator.StringToHash("i_state_index");
+    private static readonly int indexKey = Animator.StringToHash("i_attack_index");
     private static readonly int endKey = Animator.StringToHash("t_end");
     private static WeaponType _state;
 
@@ -14,6 +15,7 @@ public class WeaponControl : MonoBehaviour
     [Header("Gun Controllers")]
     [SerializeField] private GameObject gun;
     [SerializeField] private PlayerGunAmmo ammo;
+    [SerializeField] private GameObject ammoUI;
     [SerializeField] private Image[] gunImage;
     [Space]
     [Header("Melee Controllers")]
@@ -55,6 +57,7 @@ public class WeaponControl : MonoBehaviour
         _state = WeaponType.Melee;
         gun.SetActive(false);
         ammo.enabled = false;
+        ammoUI.SetActive(false);
         ChangeColor(gunImage, Color.black);
         
         // enable melee stuff
@@ -68,9 +71,11 @@ public class WeaponControl : MonoBehaviour
         melee.enabled = false;
         ChangeColor(fistImage, Color.black);
         
+        animator.SetInteger(indexKey, -1); // Ensures no lingering attack triggers cause weird animations 
         _state = WeaponType.Gun;
         gun.SetActive(true);
         ammo.enabled = true;
+        ammoUI.SetActive(true);
         ChangeColor(gunImage, Color.white);
     }
 
