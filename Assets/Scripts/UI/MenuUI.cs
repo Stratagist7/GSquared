@@ -1,3 +1,4 @@
+using System;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,12 @@ public class MenuUI : MonoBehaviour
 	
 	public static bool Paused = false;
 	public static bool ReloadAmmoType = false;
-	
+
+	private void Start()
+	{
+		UnlockCursor(false);
+	}
+
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -41,11 +47,16 @@ public class MenuUI : MonoBehaviour
 		
 		Time.timeScale = argShow ? 0f : 1f;
 		AudioListener.pause = argShow;
-		
-		Cursor.visible = argShow;
+
+		UnlockCursor(argShow);
+	}
+
+	private void UnlockCursor(bool argShowCursor)
+	{
+		Cursor.visible = argShowCursor;
 		inputs.LookInput(Vector2.zero);  // Fixes camera spinning if the look input left as non-zero number
-		inputs.SetCursorLocked(argShow == false);
-		inputs.cursorInputForLook = argShow == false;
+		inputs.SetCursorLocked(argShowCursor == false);
+		inputs.cursorInputForLook = argShowCursor == false;
 	}
 	
 	public void ResumeGame()
@@ -59,9 +70,10 @@ public class MenuUI : MonoBehaviour
 		ShowPauseMenu(false);
 	}
 
-	public void QuitGame()
+	public void MainMenuButton()
 	{
-		Application.Quit();
+		UnlockCursor(true);
+		SceneManager.LoadScene("MainMenu");
 	}
 
 	public void SetReloadBool()
