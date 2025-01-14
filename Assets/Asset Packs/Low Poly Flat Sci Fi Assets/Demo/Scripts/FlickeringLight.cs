@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,7 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class FlickeringLight : MonoBehaviour {
 
-	Light light;
+	[SerializeField] private Light light;
 	[SerializeField]
 	private float minWaitTime	= 0.1f;
 	[SerializeField]
@@ -25,31 +25,65 @@ public class FlickeringLight : MonoBehaviour {
 
 	private MeshRenderer	meshRenderer;
 	private Material []	materials;
+	private bool isOn = true;
+	private float duration = 0.2f;
 
 	// Use this for initialization
 	void Start () {
-		light = GetComponentInChildren <Light>();
+		
+		if (light == null) {
+			light = GetComponentInChildren <Light>();
+		}
 		if (light != null) {
-			StartCoroutine (FlickerLight ());
+			StartCoroutine (FlickerMaterial ());
 		}
 		meshRenderer	= GetComponent<MeshRenderer> ();
 		materials	= meshRenderer.materials;
 	}
-
-	//	Turn on and off the light
-	IEnumerator FlickerLight () {
-		while (true) {
+	
+	private IEnumerator FlickerMaterial()
+	{
+		while (true)
+		{
 			yield return new WaitForSeconds(Random.Range (minWaitTime, maxWaitTime));
-			light.enabled = ! light.enabled;
+			duration = Random.Range (minWaitTime, maxWaitTime/2);
+			
+			float time = 0;
+			Material startValue = isOn ? onMaterial : offMaterial;
+			Material endValue = isOn ? offMaterial : onMaterial;
+			StartCoroutine(FlickerLight ());
 
-			//	Updates the model material based on the real light status
-			if (light.enabled) {
-				materials [materialIdx]	= onMaterial;
-			} else {
-				materials [materialIdx]	= offMaterial;
+			while (time < duration)
+			{
+				meshRenderer.materials[materialIdx].Lerp(startValue, endValue, time / duration);
+				time += Time.deltaTime;
+				yield return null;
 			}
 
-			meshRenderer.materials	= materials;
+			materials[materialIdx] = endValue;
+			isOn = !isOn;
+
+			meshRenderer.materials = materials;
 		}
 	}
+
+	//	Turn on and off the light
+	private IEnumerator FlickerLight () {
+			float time = 0;
+
+			float startIntensity = isOn ? 3 : 2;
+			float endIntensity = isOn ? 2 : 3;
+        
+			while (time < duration)
+			{
+				light.intensity = Mathf.Lerp(startIntensity, endIntensity, time / duration);
+				time += Time.deltaTime;
+				yield return null;
+			}
+			light.intensity = endIntensity;
+			isOn = !isOn;
+			
+			meshRenderer.materials	= materials;
+	}
+	
 }
