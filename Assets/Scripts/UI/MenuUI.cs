@@ -72,6 +72,7 @@ public class MenuUI : MonoBehaviour
 
 	public void MainMenuButton()
 	{
+		Paused = false;
 		UnlockCursor(true);
 		Time.timeScale = 1f;
 		AudioListener.pause = false;

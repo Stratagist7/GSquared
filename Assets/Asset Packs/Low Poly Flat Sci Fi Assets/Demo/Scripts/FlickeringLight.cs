@@ -11,6 +11,8 @@ using UnityEngine;
 public class FlickeringLight : MonoBehaviour {
 
 	[SerializeField] private Light light;
+	[SerializeField] private float highIntensity;
+	[SerializeField] private float lowIntensity;
 	[SerializeField]
 	private float minWaitTime	= 0.1f;
 	[SerializeField]
@@ -71,8 +73,8 @@ public class FlickeringLight : MonoBehaviour {
 	private IEnumerator FlickerLight () {
 			float time = 0;
 
-			float startIntensity = isOn ? 3 : 2;
-			float endIntensity = isOn ? 2 : 3;
+			float startIntensity = isOn ? highIntensity : lowIntensity;
+			float endIntensity = isOn ? lowIntensity : highIntensity;
         
 			while (time < duration)
 			{
