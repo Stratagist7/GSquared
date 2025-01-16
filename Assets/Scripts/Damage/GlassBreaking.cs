@@ -10,8 +10,7 @@ public class GlassBreaking : Hitable
 	[SerializeField] private GameObject disableObject;
 	[SerializeField] private Collider[] enableColliders;
 	[SerializeField] private Mesh newMesh;
-	[Space]
-	[SerializeField] private GameObject tempText;
+	[SerializeField] private ParticleSystem particles;
 	
 	public override void TakeDamage(DamageType argType, int argDamage = -1)
 	{
@@ -19,6 +18,7 @@ public class GlassBreaking : Hitable
 
 		if (_curHealth <= 0)
 		{
+			particles.Play();
 			filter.mesh = newMesh;
 			if (disableColl != null)
 			{
@@ -36,15 +36,7 @@ public class GlassBreaking : Hitable
 			}
 			
 			tag = "Untagged";
-			StartCoroutine(DisplayTempText());
 		}
 	}
 
-	private IEnumerator DisplayTempText()
-	{
-		tempText.SetActive(true);
-		yield return new WaitForSeconds(1f);
-		tempText.SetActive(false);
-		Destroy(this);
-	}
 }
