@@ -10,6 +10,7 @@ public class WeaponControl : MonoBehaviour
     private static WeaponType _state;
 
     [SerializeField] private WeaponType initialState;
+    [SerializeField] private bool hasGun = false;
     [SerializeField] private Animator animator;
     [Space]
     [Header("Gun Controllers")]
@@ -21,9 +22,25 @@ public class WeaponControl : MonoBehaviour
     [Header("Melee Controllers")]
     [SerializeField] private MeleeCombat melee;
     [SerializeField] private Image[] fistImage;
+    
 
     private void Awake()
     {
+        // Backup if forgot to change
+        if (hasGun == false)
+        {
+            if (initialState == WeaponType.Gun)
+            {
+                hasGun = true;
+            }
+            else
+            {
+                foreach (Image i in gunImage)
+                {
+                    i.gameObject.SetActive(false);
+                }
+            }
+        }
         animator.SetInteger(stateKey, (int)initialState);
     }
 
@@ -47,6 +64,11 @@ public class WeaponControl : MonoBehaviour
 
     private void SwapWeapons(WeaponType argWeapon)
     {
+        if (argWeapon == WeaponType.Gun && hasGun == false)
+        {
+            return;
+        }
+        
         _state = WeaponType.None;
         animator.SetTrigger(endKey);
         animator.SetInteger(stateKey, (int)argWeapon);

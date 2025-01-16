@@ -11818,6 +11818,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3286636343791723682}
     - target: {fileID: 5288573940958208194, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
+      propertyPath: hasGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288573940958208194, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
       propertyPath: gunImage.Array.data[0]
       value: 
       objectReference: {fileID: 1254092756}

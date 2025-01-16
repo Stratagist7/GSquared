@@ -200,7 +200,7 @@ TextureImporter:
         serializedVersion: 2
         x: 16
         y: 3567
-        width: 1517
+        width: 1518
         height: 508
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -261,10 +261,10 @@ TextureImporter:
       name: LT Automatic rifle 5
       rect:
         serializedVersion: 2
-        x: 248
-        y: 2949
+        x: 220
+        y: 3012
         width: 1381
-        height: 538
+        height: 542
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,8 +366,8 @@ TextureImporter:
       name: LT Submachinegun 3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 2475
+        x: 25
+        y: 2610
         width: 743
         height: 358
       alignment: 0
@@ -387,8 +387,8 @@ TextureImporter:
       name: LT Automatic rifle 2
       rect:
         serializedVersion: 2
-        x: 775
-        y: 2491
+        x: 781
+        y: 2628
         width: 854
         height: 344
       alignment: 0
@@ -450,10 +450,10 @@ TextureImporter:
       name: LT Submachinegun 1
       rect:
         serializedVersion: 2
-        x: 176
-        y: 1967
-        width: 1163
-        height: 462
+        x: 172
+        y: 2086
+        width: 1167
+        height: 478
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -618,10 +618,10 @@ TextureImporter:
       name: LT Automatic shotgun 1
       rect:
         serializedVersion: 2
-        x: 47
-        y: 1484
-        width: 1278
-        height: 483
+        x: 43
+        y: 1570
+        width: 1285
+        height: 489
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -642,7 +642,7 @@ TextureImporter:
         x: 17
         y: 26
         width: 1046
-        height: 481
+        height: 483
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -660,10 +660,10 @@ TextureImporter:
       name: LT Automatic rifle 3
       rect:
         serializedVersion: 2
-        x: 18
-        y: 990
-        width: 1595
-        height: 494
+        x: 13
+        y: 1031
+        width: 1601
+        height: 496
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -681,10 +681,10 @@ TextureImporter:
       name: LT Automatic rifle 4
       rect:
         serializedVersion: 2
-        x: 24
-        y: 507
-        width: 1579
-        height: 482
+        x: 22
+        y: 524
+        width: 1584
+        height: 492
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -701,7 +701,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9e738df96249ce641a50ef81471db399
     internalID: 0
     vertices: []
     indices: 
