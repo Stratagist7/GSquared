@@ -10,10 +10,6 @@ public class GlassBreaking : Hitable
 	[SerializeField] private GameObject disableObject;
 	[SerializeField] private Collider[] enableColliders;
 	[SerializeField] private Mesh newMesh;
-	[Header("Material Change")]
-	[SerializeField] private bool addMaterial;
-	[SerializeField] private MeshRenderer rend;
-	[SerializeField] private Material newMaterial;
 	[Space]
 	[SerializeField] private GameObject tempText;
 	
@@ -32,13 +28,6 @@ public class GlassBreaking : Hitable
 			if (disableObject != null)
 			{
 				disableObject.SetActive(false);
-			}
-
-			if (addMaterial)
-			{
-				Material[] mats = rend.materials;
-				mats[1] = newMaterial;
-				rend.materials = mats;
 			}
 
 			foreach (Collider coll in enableColliders)
