@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerGunShooting : MonoBehaviour
 {
 	private static readonly int attackKey = Animator.StringToHash("t_attack");
+	private static readonly int indexKey = Animator.StringToHash("i_attack_index");
 	
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private GameObject bulletPrefab;
@@ -49,6 +50,7 @@ public class PlayerGunShooting : MonoBehaviour
 	{
 		if (ammo.CanShoot())
 		{
+			animator.SetInteger(indexKey, 0);
 			animator.SetTrigger(attackKey);
 			PlayerSoundManager.instance.PlayGunShot();
 			
