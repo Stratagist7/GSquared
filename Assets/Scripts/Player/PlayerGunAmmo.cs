@@ -152,12 +152,17 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public bool CanShoot()
 	{
-		return curAmmo > 0 && isReloading == false && MenuUI.Paused == false;
+		return curAmmo > 0 && CanTakeAction();
 	}
 
 	public bool CanReload()
 	{
-		return extraAmmo > 0 && isReloading == false && MenuUI.Paused == false;
+		return extraAmmo > 0 && CanTakeAction();
+	}
+
+	public bool CanTakeAction()
+	{
+		return isReloading == false && MenuUI.Paused == false && WeaponControl._state != WeaponType.None;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)

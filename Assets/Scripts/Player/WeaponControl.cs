@@ -7,7 +7,7 @@ public class WeaponControl : MonoBehaviour
     private static readonly int stateKey = Animator.StringToHash("i_state_index");
     private static readonly int indexKey = Animator.StringToHash("i_attack_index");
     private static readonly int endKey = Animator.StringToHash("t_end");
-    private static WeaponType _state;
+    public static WeaponType _state;
 
     [SerializeField] private WeaponType initialState;
     [SerializeField] private bool hasGun = false;
