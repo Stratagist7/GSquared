@@ -11,10 +11,20 @@ public class MenuUI : MonoBehaviour
 	[SerializeField] private GameObject playerUI;
 	[SerializeField] private StarterAssetsInputs inputs;
 	[SerializeField] private Toggle toggle;
-	
+	[SerializeField] private GameObject caughtScreen;
+
+	public static MenuUI instance;
 	public static bool Paused = false;
 	public static bool ReloadAmmoType = false;
 
+	private void Awake()
+	{
+		if (instance == null) {
+			instance = this;
+		}  else
+			Destroy(gameObject);
+	}
+	
 	private void Start()
 	{
 		UnlockCursor(false);
@@ -38,6 +48,12 @@ public class MenuUI : MonoBehaviour
 	{
 		FreezePlayer(true);
 		deathScreen.SetActive(true);
+	}
+
+	public void ShowCaughtScreen()
+	{
+		FreezePlayer(true);
+		caughtScreen.SetActive(true);
 	}
 
 	private void FreezePlayer(bool argShow)

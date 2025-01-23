@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
-    [SerializeField] private MenuUI menuUI;
     
     private const int MAX_HEALTH = 100;
     private const float DURATION = 0.025f;
@@ -102,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             playerIsDead = true;
-            menuUI.ShowDeathScreen();
+            MenuUI.instance.ShowDeathScreen();
         }
     }
     
