@@ -50,11 +50,11 @@ public class DoubleSlidingDoorController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		leftDoorClosedPosition	= new Vector3 (0f, 0f, 0f);
-		leftDoorOpenPosition	= new Vector3 (0f, 0f, slideDistance);
+		leftDoorClosedPosition	= halfDoorLeftTransform.localPosition;
+		leftDoorOpenPosition	= leftDoorClosedPosition + new Vector3 (0f, 0f, slideDistance);
 
-		rightDoorClosedPosition	= new Vector3 (0f, 0f, 0f);
-		rightDoorOpenPosition	= new Vector3 (0f, 0f, -slideDistance);
+		rightDoorClosedPosition	= halfDoorRightTransform.localPosition;
+		rightDoorOpenPosition	= rightDoorClosedPosition + new Vector3 (0f, 0f, -slideDistance);
 
 		audioSource = GetComponent<AudioSource>();
 	}
@@ -78,18 +78,14 @@ public class DoubleSlidingDoorController : MonoBehaviour {
 			}
 		}
 
-		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Characters")) {
+		if (other.CompareTag("Player")) {
 			objectsOnDoorArea++;
 		}
 	}
 
-	void OnTriggerStay(Collider other) {
-		
-	}
-
 	void OnTriggerExit(Collider other) {
 		//	Keep tracking of objects on the door
-		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Characters")) {
+		if (other.CompareTag("Player")) {
 			objectsOnDoorArea--;
 		}
 	}
