@@ -211,7 +211,7 @@ namespace StarterAssets
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 				float waitTime = _input.sprint ? SPRINT_STEP_WAIT : WALK_STEP_WAIT;
-				if (lastStepSound + waitTime < Time.time && Grounded)
+				if (lastStepSound + waitTime < Time.time && Grounded && _speed > 0f )
 				{
 					lastStepSound = Time.time;
 					PlayerSoundManager.instance.PlayStep();

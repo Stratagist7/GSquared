@@ -58,7 +58,6 @@ public class MenuUI : MonoBehaviour
 
 	private void FreezePlayer(bool argShow)
 	{
-		Paused = argShow;
 		playerUI.SetActive(!argShow);
 		
 		Time.timeScale = argShow ? 0f : 1f;
@@ -67,8 +66,9 @@ public class MenuUI : MonoBehaviour
 		UnlockCursor(argShow);
 	}
 
-	private void UnlockCursor(bool argShowCursor)
+	public void UnlockCursor(bool argShowCursor)
 	{
+		Paused = argShowCursor;
 		Cursor.visible = argShowCursor;
 		inputs.LookInput(Vector2.zero);  // Fixes camera spinning if the look input left as non-zero number
 		inputs.SetCursorLocked(argShowCursor == false);
@@ -88,7 +88,6 @@ public class MenuUI : MonoBehaviour
 
 	public void MainMenuButton()
 	{
-		Paused = false;
 		UnlockCursor(true);
 		Time.timeScale = 1f;
 		AudioListener.pause = false;
