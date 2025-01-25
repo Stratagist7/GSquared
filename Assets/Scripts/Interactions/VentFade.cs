@@ -7,6 +7,7 @@ public class VentFade : Interactable
 {
     [SerializeField] private PostEffectsController effect;
     [SerializeField] private float fadeDuration = 0.5f;
+    [SerializeField] private GameObject tempText;
     void Start()
     {
         interactAction = StartFade;
@@ -41,7 +42,8 @@ public class VentFade : Interactable
         }
         effect.radius = endRadius;
         effect.feather = endFeather;
-        // MOVE TO NEW SCENE
+
+        tempText.SetActive(true); // MOVE TO NEW SCENE
     }
 
 }
