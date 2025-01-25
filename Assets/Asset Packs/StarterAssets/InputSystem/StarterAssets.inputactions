@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "84295b36-ae35-4bfc-8a6d-912143c16640",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -338,6 +347,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Swap To Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c036058-895b-434f-bc80-fffe9bad8894",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

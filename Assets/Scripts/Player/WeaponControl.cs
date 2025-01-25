@@ -108,6 +108,23 @@ public class WeaponControl : MonoBehaviour
             i.color = argColor;
         }
     }
+
+    /// return: Whether they successfully got the gun
+    public bool GetGun()
+    {
+        if (_state == WeaponType.Gun || _state == WeaponType.None || MenuUI.Paused)
+        {
+            return false;
+        }
+        
+        hasGun = true;
+        foreach (Image i in gunImage)
+        {
+            i.gameObject.SetActive(true);
+        }
+        SwapWeapons(WeaponType.Gun);
+        return true;
+    }
 }
 
 public enum WeaponType {None = -1, Melee = 0, Gun = 6};
