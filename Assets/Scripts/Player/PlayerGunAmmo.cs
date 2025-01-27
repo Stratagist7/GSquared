@@ -162,7 +162,7 @@ public class PlayerGunAmmo : MonoBehaviour
 
 	public bool CanTakeAction()
 	{
-		return isReloading == false && MenuUI.Paused == false && WeaponControl._state != WeaponType.None;
+		return isReloading == false && MenuUI.Paused == false && WeaponControl._state != WeaponType.None && ammoScreen.gameObject.activeSelf == false;
 	}
 
 	private void DisplayAmmoScreen(bool shouldDisplay)
