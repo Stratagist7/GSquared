@@ -11,6 +11,8 @@ public class GlassBreaking : Hitable
 	[SerializeField] private Collider[] enableColliders;
 	[SerializeField] private Mesh newMesh;
 	[SerializeField] private ParticleSystem particles;
+	[SerializeField] private AudioClip sfx;
+	[SerializeField] private AudioSource audioSource;
 	
 	public override void TakeDamage(DamageType argType, int argDamage = -1)
 	{
@@ -18,6 +20,7 @@ public class GlassBreaking : Hitable
 
 		if (_curHealth <= 0)
 		{
+			audioSource.PlayOneShot(sfx);
 			particles.Play();
 			filter.mesh = newMesh;
 			if (disableColl != null)
