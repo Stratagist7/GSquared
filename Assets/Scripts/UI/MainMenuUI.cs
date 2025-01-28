@@ -5,7 +5,7 @@ public class MainMenuUI : MonoBehaviour
 {
 	public void StartButton()
 	{
-		SceneManager.LoadScene("MainLevel");
+		SceneManager.LoadScene("IntroLevel");
 	}
 
 	public void PracticeButton()
