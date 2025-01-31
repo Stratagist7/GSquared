@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class PullRadius : MonoBehaviour
 {
-    private List<PullRadius> inRange = new List<PullRadius>();
+    public List<PullRadius> inRange = new List<PullRadius>();
     [SerializeField] private float lightningHeight = 1f;
     [SerializeField] private float drag = 1.7f;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private MoveableAgent agent;
+    [SerializeField] public MoveableAgent agent;
     [SerializeField] private Damageable damageable;
     [Space]
     [SerializeField] private GameObject explodePrefab;

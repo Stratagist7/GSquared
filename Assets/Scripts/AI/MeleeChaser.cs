@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class MeleeChaser : MoveableAgent
 {
-	private static readonly int MOVE_KEY = Animator.StringToHash("Moving");
-	private static readonly int SLOW_KEY = Animator.StringToHash("Slowed");
+	protected static readonly int MOVE_KEY = Animator.StringToHash("Moving");
+	protected static readonly int SLOW_KEY = Animator.StringToHash("Slowed");
 	private static readonly int ATTACK_KEY = Animator.StringToHash("Attack");
 	
 	[Space] 
@@ -13,7 +13,7 @@ public class MeleeChaser : MoveableAgent
 	[SerializeField] private float forwardThrust = 10f;
 	[SerializeField] private float downThrustMultiplier = 1.5f;
 	[SerializeField] private Rigidbody rb;
-	[SerializeField] private Animator animator;
+	[SerializeField] protected Animator animator;
 
 	[Header("Audio")]
 	[SerializeField] private MultiSfxHandler idleSfx;
@@ -23,7 +23,7 @@ public class MeleeChaser : MoveableAgent
 
 	private float dist;
 	private bool attacking = false;
-	private bool settingUp = true;
+	protected bool settingUp = true;
 	private bool shouldUnStun = false;
 
 	protected override void Start()
@@ -33,7 +33,7 @@ public class MeleeChaser : MoveableAgent
 		StartCoroutine(StartUp());
 	}
 	
-	private void Update()
+	protected virtual void Update()
 	{
 		if (settingUp)
 		{

@@ -1668,19 +1668,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
-      value: 0.35058737
+      value: 0.60695225
       objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Radius
-      value: 0.13999581
+      value: 0.2974863
       objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Center.x
-      value: 0.0010201931
+      value: -0.020473957
+      objectReference: {fileID: 0}
+    - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0502851
       objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Center.z
-      value: 0.03341508
+      value: 0.02742526
       objectReference: {fileID: 0}
     - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: animator
