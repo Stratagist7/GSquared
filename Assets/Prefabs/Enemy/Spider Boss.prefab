@@ -11015,6 +11015,7 @@ GameObject:
   - component: {fileID: 9015216804272885840}
   - component: {fileID: 5248332870224616766}
   - component: {fileID: 6260976418487659965}
+  - component: {fileID: 5515889825684436897}
   m_Layer: 0
   m_Name: GoopPool
   m_TagString: Untagged
@@ -14791,15 +14792,11 @@ ParticleSystem:
     serializedVersion: 2
     inside: 0
     outside: 0
-    enter: 0
-    exit: 0
+    enter: 2
+    exit: 2
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
   SubModule:
@@ -15823,6 +15820,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5515889825684436897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872950917291636073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969ad4ce242b6174cb99d4351ca361ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 5248332870224616766}
 --- !u!1 &7991989203297568195
 GameObject:
   m_ObjectHideFlags: 0
@@ -16463,7 +16473,7 @@ MonoBehaviour:
   rb: {fileID: 8398334177926079092}
   poisonSpit: {fileID: 47511583382012247}
   meleeHitbox: {fileID: 4546479678346120267}
-  jumpHitbox: {fileID: 0}
+  jumpHitboxPrefab: {fileID: 1486801365548660785, guid: 761e74c53d63d3c46a7a011718ccf59c, type: 3}
   idleSfx: {fileID: 3539907168300168069}
   idleSfxChance: 0.1
   idleSfxCd: 2
