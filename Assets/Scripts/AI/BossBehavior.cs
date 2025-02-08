@@ -32,8 +32,8 @@ public class BossBehavior : MoveableAgent
 	private bool doingAction = false;
 	// private bool isTurning = false;
 	// private bool rightTurn = false;
-	private bool settingUp = true;
-	private readonly float baseTurnSpeed = 20f;
+	public bool settingUp = true;
+	private readonly float baseTurnSpeed = 100f;
 	private float turnSpeed;
 	
 	protected override void Start()
@@ -80,7 +80,7 @@ public class BossBehavior : MoveableAgent
 		}
 		else
 		{
-			// agent.SetDestination(Damageable.Player.transform.position);
+			agent.SetDestination(Damageable.Player.transform.position);
 		}
 		
 		if (animator != null)
@@ -95,7 +95,6 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator StartUp()
 	{
 		yield return new WaitForSeconds(1f);
-		settingUp = false;
 		StartCoroutine(TryPlayIdle());
 	}
 	
@@ -119,7 +118,7 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator MeleeAttack()
 	{
 		doingAction = true;
-		turnSpeed = 60f;
+		//turnSpeed = 100f;
 		
 		// Ensure Facing player
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
@@ -138,7 +137,7 @@ public class BossBehavior : MoveableAgent
 		animator.SetTrigger(MELEE_KEY);
 		yield return new WaitForSeconds(1f);
 		
-		turnSpeed = baseTurnSpeed;
+		//turnSpeed = baseTurnSpeed;
 		doingAction = false;
 	}
 

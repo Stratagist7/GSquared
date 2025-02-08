@@ -5,10 +5,14 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Transform healthBar;
+    [SerializeField] private bool facePlayer = true;
 
     private void Update()
     {
-        healthBar.LookAt(Damageable.Player.transform.position);
+        if (facePlayer)
+        {
+            healthBar.LookAt(Damageable.Player.transform.position);
+        }
     }
 
     public void SetHealth(float health)
