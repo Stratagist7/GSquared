@@ -29,6 +29,16 @@ public class EnemyAnimationEvents : MonoBehaviour
         attackSounds.PlayAudio();
     }
 
+    public void EnableMeleeHit()
+    {
+        behavior.EnableMeleeHitbox(true);
+    }
+    
+    public void DisableMeleeHit()
+    {
+        behavior.EnableMeleeHitbox(false);
+    }
+
     public void JumpUp()
     {
         behavior.JumpUp();

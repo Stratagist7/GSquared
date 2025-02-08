@@ -7,7 +7,7 @@ public class BossBehavior : MoveableAgent
 	// private static readonly int TURN_KEY = Animator.StringToHash("Turning");
 	// private static readonly int TURN_RIGHT_KEY = Animator.StringToHash("Turn Right");
 	private static readonly int SLOW_KEY = Animator.StringToHash("Slowed");
-	private static readonly int MELEE_KEY = Animator.StringToHash("Attack");
+	private static readonly int MELEE_KEY = Animator.StringToHash("Melee Attack");
     private static readonly int JUMP_KEY = Animator.StringToHash("Jump Attack");
 	private static readonly int RANGED_KEY = Animator.StringToHash("Range Attack");
 	
@@ -20,6 +20,7 @@ public class BossBehavior : MoveableAgent
 	[SerializeField] private Animator animator;
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private ParticleSystem poisonSpit;
+	[SerializeField] private GameObject meleeHitbox;
 	
 	[Header("Audio")]
 	[SerializeField] private MultiSfxHandler idleSfx;
@@ -31,10 +32,13 @@ public class BossBehavior : MoveableAgent
 	// private bool isTurning = false;
 	// private bool rightTurn = false;
 	private bool settingUp = true;
+	private readonly float baseTurnSpeed = 20f;
+	private float turnSpeed;
 	
 	protected override void Start()
 	{
 		base.Start();
+		turnSpeed = baseTurnSpeed;
 		StartCoroutine(StartUp());
 	}
 	
@@ -53,7 +57,7 @@ public class BossBehavior : MoveableAgent
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
 		//rightTurn = Vector3.Dot(transform.right, target) > 0;
 		Quaternion targetRot = Quaternion.LookRotation(target);
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, 20f * Time.deltaTime);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
 		//isTurning = Quaternion.Angle(transform.rotation, targetRot) > 0.5f;
 
 		if (agent.enabled == false || doingAction)
@@ -110,16 +114,35 @@ public class BossBehavior : MoveableAgent
 		}
 	}
 
+#region Melee Attack
 	private IEnumerator MeleeAttack()
 	{
 		//TODO deal damage
 		doingAction = true;
+		turnSpeed = 60f;
+		
+		// Ensure Facing player
+		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
+		Quaternion targetRot = Quaternion.LookRotation(target);
+		while (Quaternion.Angle(transform.rotation, targetRot) > 15f)
+		{
+			yield return null;
+		}
+		
 		animator.SetTrigger(MELEE_KEY);
 		yield return new WaitForSeconds(1f);
 		
+		turnSpeed = baseTurnSpeed;
 		doingAction = false;
 	}
 
+	public void EnableMeleeHitbox(bool argShouldEnable)
+	{
+		meleeHitbox.SetActive(argShouldEnable);
+	}
+#endregion // Melee Attack
+
+#region Jump Attack
 	private IEnumerator JumpAttack()
 	{
 		//TODO deal damage
@@ -144,7 +167,9 @@ public class BossBehavior : MoveableAgent
 	{
 		rb.AddForce(Vector3.down * downThrust, ForceMode.Impulse);
 	}
+#endregion	// Jump Attack
 
+#region Ranged Attack	
 	private IEnumerator RangedAttack()
 	{
 		//TODO contact damage of poison
@@ -168,4 +193,5 @@ public class BossBehavior : MoveableAgent
 	{
 		poisonSpit.Play();
 	}
+#endregion // Ranged Attack	
 }
