@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class VentFade : Interactable
@@ -25,7 +26,6 @@ public class VentFade : Interactable
 
     private IEnumerator Fade()
     {
-        MenuUI.instance.UnlockCursor(true); // REMOVE WHEN ADDING NEW SCENE TO MOVE TO
         effect.tintColor = Color.black;
         float t = 0;
         float startRadius = 1.5f;
@@ -43,7 +43,7 @@ public class VentFade : Interactable
         effect.radius = endRadius;
         effect.feather = endFeather;
 
-        tempText.SetActive(true); // MOVE TO NEW SCENE
+        SceneManager.LoadScene("MainLevel");
     }
 
 }

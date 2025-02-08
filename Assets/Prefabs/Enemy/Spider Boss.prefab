@@ -16274,6 +16274,14 @@ PrefabInstance:
       propertyPath: frozenPrefab
       value: 
       objectReference: {fileID: 1562623932468501896, guid: 569d9d06700e72e4687dfb6f21c828e6, type: 3}
+    - target: {fileID: 2600912649377288297, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600912649377288297, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_MaxValue
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2908897620993153908, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: damage
       value: 10
@@ -16336,7 +16344,7 @@ PrefabInstance:
       objectReference: {fileID: 6648588980078072689}
     - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalScale.x
@@ -16416,15 +16424,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
-      value: 0.35
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Radius
-      value: 0.45
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_BaseOffset
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -334000983
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_StoppingDistance

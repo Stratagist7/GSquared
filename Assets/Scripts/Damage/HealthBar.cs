@@ -24,6 +24,7 @@ public class HealthBar : MonoBehaviour
         if (healthSlider)
         {
             healthSlider.maxValue = health;
+            healthSlider.value = health;
         }
     }
 }

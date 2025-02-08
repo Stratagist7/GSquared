@@ -80,7 +80,7 @@ public class BossBehavior : MoveableAgent
 		}
 		else
 		{
-			print("move closer");
+			// agent.SetDestination(Damageable.Player.transform.position);
 		}
 		
 		if (animator != null)
@@ -118,7 +118,6 @@ public class BossBehavior : MoveableAgent
 #region Melee Attack
 	private IEnumerator MeleeAttack()
 	{
-		//TODO deal damage
 		doingAction = true;
 		turnSpeed = 60f;
 		
@@ -146,7 +145,6 @@ public class BossBehavior : MoveableAgent
 #region Jump Attack
 	private IEnumerator JumpAttack()
 	{
-		//TODO deal damage
 		doingAction = true;
 		agent.isStopped = true;
 		agent.enabled = false;
@@ -179,7 +177,6 @@ public class BossBehavior : MoveableAgent
 #region Ranged Attack	
 	private IEnumerator RangedAttack()
 	{
-		//TODO contact damage of poison
 		doingAction = true;
 		
 		// Ensure Facing player
