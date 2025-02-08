@@ -16463,6 +16463,7 @@ MonoBehaviour:
   rb: {fileID: 8398334177926079092}
   poisonSpit: {fileID: 47511583382012247}
   meleeHitbox: {fileID: 4546479678346120267}
+  jumpHitbox: {fileID: 0}
   idleSfx: {fileID: 3539907168300168069}
   idleSfxChance: 0.1
   idleSfxCd: 2

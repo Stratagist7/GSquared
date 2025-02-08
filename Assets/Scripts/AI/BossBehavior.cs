@@ -21,6 +21,7 @@ public class BossBehavior : MoveableAgent
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private ParticleSystem poisonSpit;
 	[SerializeField] private GameObject meleeHitbox;
+	[SerializeField] private GameObject jumpHitboxPrefab;
 	
 	[Header("Audio")]
 	[SerializeField] private MultiSfxHandler idleSfx;
@@ -166,6 +167,12 @@ public class BossBehavior : MoveableAgent
 	public void JumpDown()
 	{
 		rb.AddForce(Vector3.down * downThrust, ForceMode.Impulse);
+	}
+	
+	public void SpawnJumpHitbox()
+	{
+		GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+		Destroy(hitbox, 0.2f);
 	}
 #endregion	// Jump Attack
 

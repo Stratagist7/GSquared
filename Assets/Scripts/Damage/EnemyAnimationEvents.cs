@@ -38,6 +38,11 @@ public class EnemyAnimationEvents : MonoBehaviour
     {
         behavior.EnableMeleeHitbox(false);
     }
+    
+    public void EnableJumpHit()
+    {
+        behavior.SpawnJumpHitbox();
+    }
 
     public void JumpUp()
     {
