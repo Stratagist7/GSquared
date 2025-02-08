@@ -4,6 +4,8 @@ using UnityEngine;
 public class BossBehavior : MoveableAgent
 {
 	private static readonly int MOVE_KEY = Animator.StringToHash("Moving");
+	// private static readonly int TURN_KEY = Animator.StringToHash("Turning");
+	// private static readonly int TURN_RIGHT_KEY = Animator.StringToHash("Turn Right");
 	private static readonly int SLOW_KEY = Animator.StringToHash("Slowed");
 	private static readonly int MELEE_KEY = Animator.StringToHash("Attack");
     private static readonly int JUMP_KEY = Animator.StringToHash("Jump Attack");
@@ -26,7 +28,8 @@ public class BossBehavior : MoveableAgent
 	private float lastIdleTime;
 	
 	private bool doingAction = false;
-	private bool isTurning = false;
+	// private bool isTurning = false;
+	// private bool rightTurn = false;
 	private bool settingUp = true;
 	
 	protected override void Start()
@@ -48,9 +51,10 @@ public class BossBehavior : MoveableAgent
 		}
 		
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
+		//rightTurn = Vector3.Dot(transform.right, target) > 0;
 		Quaternion targetRot = Quaternion.LookRotation(target);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, 20f * Time.deltaTime);
-		isTurning = Quaternion.Angle(transform.rotation, targetRot) > 0.05f;
+		//isTurning = Quaternion.Angle(transform.rotation, targetRot) > 0.5f;
 
 		if (agent.enabled == false || doingAction)
 		{
@@ -76,8 +80,10 @@ public class BossBehavior : MoveableAgent
 		
 		if (animator != null)
 		{
-			animator.SetBool(MOVE_KEY, isTurning || (agent.enabled && agent.remainingDistance > agent.stoppingDistance));
+			animator.SetBool(MOVE_KEY, agent.enabled && agent.remainingDistance > agent.stoppingDistance);
 			animator.SetBool(SLOW_KEY, isSlowed);
+			// animator.SetBool(TURN_KEY, isTurning && (agent.enabled == false || agent.remainingDistance <= agent.stoppingDistance));
+			// animator.SetBool(TURN_RIGHT_KEY, rightTurn);
 		}
 	}
 	
