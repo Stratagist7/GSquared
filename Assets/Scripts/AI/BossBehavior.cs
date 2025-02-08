@@ -124,8 +124,14 @@ public class BossBehavior : MoveableAgent
 		// Ensure Facing player
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
 		Quaternion targetRot = Quaternion.LookRotation(target);
+		float t = 0;
 		while (Quaternion.Angle(transform.rotation, targetRot) > 15f)
 		{
+			t += Time.deltaTime;
+			if (t > 3f)
+			{
+				break;
+			}
 			yield return null;
 		}
 		
@@ -178,12 +184,18 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator RangedAttack()
 	{
 		doingAction = true;
-		
+
 		// Ensure Facing player
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
 		Quaternion targetRot = Quaternion.LookRotation(target);
+		float t = 0;
 		while (Quaternion.Angle(transform.rotation, targetRot) > 2f)
 		{
+			t += Time.deltaTime;
+			if (t > 1f)
+			{
+				break;
+			}
 			yield return null;
 		}
 		
