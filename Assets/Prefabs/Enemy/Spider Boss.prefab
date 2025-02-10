@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5961918480166417182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR2LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2672079041975261444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR3LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 58565046986651531}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL2LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1561422528474364924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL3Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8956504267409035036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigJaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367888624481719874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL4Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3543017651587769561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL2Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 906718134582402939}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR3Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 3040263451184615350}
   - component: {fileID: 47511583382012247}
   - component: {fileID: 2980805426998875100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoopStreamEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4982,7 +4982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6104986851432560142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5013,7 +5013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3604493061580554154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR4LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5044,7 +5044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2218569286036741355}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5076,7 +5076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4160083922740113357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR2Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5107,7 +5107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4018409909114371468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigSpine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5139,7 +5139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799610835063608653}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5171,7 +5171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3520285332829604625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5203,7 +5203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841342955388618949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL3LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5234,7 +5234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 384407482895810897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR4Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5266,7 +5266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7346163659134915778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigLArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5298,7 +5298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1582683484015272916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5330,7 +5330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4521548208642255751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5362,7 +5362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349075409912617606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5393,7 +5393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2545729873546676176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5425,7 +5425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7642809181816048608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigTail6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5461,7 +5461,7 @@ GameObject:
   - component: {fileID: 7694415835925558198}
   - component: {fileID: 8343967296196910606}
   - component: {fileID: 1827007339668906976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Melee Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5576,7 +5576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998509328582361975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL4LegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5607,7 +5607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451554373221100426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigRArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5638,7 +5638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2902070326879949681}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR4Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5670,7 +5670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7710400293673980144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL4Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5702,7 +5702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1651256126057614087}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL2Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5734,7 +5734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4151615348847592199}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigLArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5765,7 +5765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3112205546261927934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigHub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5806,7 +5806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7049859671105039220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR3Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5838,7 +5838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307422748714470669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL2Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5870,7 +5870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8855909284058519519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5904,7 +5904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7326300434430325184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR4Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5935,7 +5935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8598010569925296656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL3Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5967,7 +5967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2478581387285196923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigLArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5999,7 +5999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6968438779396785588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL4Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6036,7 +6036,7 @@ GameObject:
   - component: {fileID: 1139300758240299482}
   - component: {fileID: 4968710181776655246}
   - component: {fileID: 3744364890650056314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spider Queen Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6290,7 +6290,7 @@ GameObject:
   - component: {fileID: 4233561025673762853}
   - component: {fileID: 8030872403784585011}
   - component: {fileID: 6909832801006812091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoopSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10981,7 +10981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5913542979371275923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigLArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11016,7 +11016,7 @@ GameObject:
   - component: {fileID: 5248332870224616766}
   - component: {fileID: 6260976418487659965}
   - component: {fileID: 5515889825684436897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoopPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15842,7 +15842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5348455160591435016}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigRArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15874,7 +15874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710532505597306630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigRArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15906,7 +15906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7907194232900467201}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR2Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15938,7 +15938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 896253137793595622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigRArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15972,7 +15972,7 @@ GameObject:
   - component: {fileID: 7034044664893812693}
   - component: {fileID: 9117401541964398341}
   - component: {fileID: 8783106217819439359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spider Queen Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16116,7 +16116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8220775720725969992}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR2Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16148,7 +16148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7268774997982944720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigL3Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16180,7 +16180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2758521358599246912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16212,7 +16212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1753085028117412477}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigR3Leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16267,6 +16267,10 @@ PrefabInstance:
       value: Spider Boss
       objectReference: {fileID: 0}
     - target: {fileID: 293167015072925656, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 293167015072925656, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -16274,6 +16278,22 @@ PrefabInstance:
       propertyPath: frozenPrefab
       value: 
       objectReference: {fileID: 1562623932468501896, guid: 569d9d06700e72e4687dfb6f21c828e6, type: 3}
+    - target: {fileID: 958397225944635511, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823282267256871494, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210440576659910976, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552542726555965727, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2600912649377288297, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Value
       value: 200
@@ -16281,6 +16301,10 @@ PrefabInstance:
     - target: {fileID: 2600912649377288297, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_MaxValue
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793949223419349157, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2908897620993153908, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: damage
@@ -16298,6 +16322,14 @@ PrefabInstance:
       propertyPath: forwardThrust
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 3223770530307549844, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450092748147348643, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
       value: 0.35058737
@@ -16313,6 +16345,22 @@ PrefabInstance:
     - target: {fileID: 3654491764059040556, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Center.z
       value: 0.03341508
+      objectReference: {fileID: 0}
+    - target: {fileID: 3811549621685054272, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935197216289255256, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212792466674666515, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212792466674666515, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5431864845712297099, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalScale.x
@@ -16346,6 +16394,22 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5719061559442739254, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833921287554584251, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833921287554584251, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: facePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833921287554584251, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.5323114
@@ -16360,7 +16424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.500004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16368,7 +16432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6270147766289190184, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16398,13 +16462,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6336135577262119847, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7532863989496484758, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7532863989496484758, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7724360156916671335, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_IsActive
@@ -16418,9 +16486,13 @@ PrefabInstance:
       propertyPath: lightningHeight
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 8508450299335039256, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Speed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Height
@@ -16437,6 +16509,10 @@ PrefabInstance:
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_AgentTypeID
       value: -334000983
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_Acceleration
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9073634222560037803, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_StoppingDistance
@@ -16489,6 +16565,7 @@ MonoBehaviour:
   idleSfx: {fileID: 3539907168300168069}
   idleSfxChance: 0.1
   idleSfxCd: 2
+  settingUp: 1
 --- !u!114 &3539907168300168069
 MonoBehaviour:
   m_ObjectHideFlags: 0

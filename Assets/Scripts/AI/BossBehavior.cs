@@ -4,8 +4,8 @@ using UnityEngine;
 public class BossBehavior : MoveableAgent
 {
 	private static readonly int MOVE_KEY = Animator.StringToHash("Moving");
-	// private static readonly int TURN_KEY = Animator.StringToHash("Turning");
-	// private static readonly int TURN_RIGHT_KEY = Animator.StringToHash("Turn Right");
+	private static readonly int TURN_KEY = Animator.StringToHash("Turning");
+	private static readonly int TURN_RIGHT_KEY = Animator.StringToHash("Turn Right");
 	private static readonly int SLOW_KEY = Animator.StringToHash("Slowed");
 	private static readonly int MELEE_KEY = Animator.StringToHash("Melee Attack");
     private static readonly int JUMP_KEY = Animator.StringToHash("Jump Attack");
@@ -30,10 +30,11 @@ public class BossBehavior : MoveableAgent
 	private float lastIdleTime;
 	
 	private bool doingAction = false;
-	// private bool isTurning = false;
-	// private bool rightTurn = false;
+	private bool canTurn = true;
+	private bool isTurning = false;
+	private bool rightTurn = false;
 	public bool settingUp = true;
-	private readonly float baseTurnSpeed = 100f;
+	private readonly float baseTurnSpeed = 90f;
 	private float turnSpeed;
 	
 	protected override void Start()
@@ -54,12 +55,16 @@ public class BossBehavior : MoveableAgent
 		{
 			return;
 		}
-		
-		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
-		//rightTurn = Vector3.Dot(transform.right, target) > 0;
-		Quaternion targetRot = Quaternion.LookRotation(target);
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
-		//isTurning = Quaternion.Angle(transform.rotation, targetRot) > 0.5f;
+
+		if (canTurn)
+		{
+			Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
+			rightTurn = Vector3.Dot(transform.right, target) < 0;
+			Quaternion targetRot = Quaternion.LookRotation(target);
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
+			isTurning = Quaternion.Angle(transform.rotation, targetRot) > 0;
+		}
+
 
 		if (agent.enabled == false || doingAction)
 		{
@@ -68,14 +73,17 @@ public class BossBehavior : MoveableAgent
 
 		if ((transform.position - Damageable.Player.transform.position).sqrMagnitude <= meleeRange)
 		{
+			agent.ResetPath();
 			StartCoroutine(MeleeAttack());
 		}
 		else if ((transform.position - Damageable.Player.transform.position).sqrMagnitude <= jumpRange)
 		{
+			agent.ResetPath();
 			StartCoroutine(JumpAttack());
 		}
 		else if ((transform.position - Damageable.Player.transform.position).sqrMagnitude <= poisonRange)
 		{
+			agent.ResetPath();
 			StartCoroutine(RangedAttack());
 		}
 		else
@@ -87,8 +95,8 @@ public class BossBehavior : MoveableAgent
 		{
 			animator.SetBool(MOVE_KEY, agent.enabled && agent.remainingDistance > agent.stoppingDistance);
 			animator.SetBool(SLOW_KEY, isSlowed);
-			// animator.SetBool(TURN_KEY, isTurning && (agent.enabled == false || agent.remainingDistance <= agent.stoppingDistance));
-			// animator.SetBool(TURN_RIGHT_KEY, rightTurn);
+			animator.SetBool(TURN_KEY, (canTurn && isTurning) && (agent.enabled == false || agent.remainingDistance <= agent.stoppingDistance));
+			animator.SetBool(TURN_RIGHT_KEY, rightTurn);
 		}
 	}
 	
@@ -118,7 +126,7 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator MeleeAttack()
 	{
 		doingAction = true;
-		//turnSpeed = 100f;
+		turnSpeed = 100f;
 		
 		// Ensure Facing player
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
@@ -127,17 +135,19 @@ public class BossBehavior : MoveableAgent
 		while (Quaternion.Angle(transform.rotation, targetRot) > 15f)
 		{
 			t += Time.deltaTime;
-			if (t > 3f)
+			if (t > 5f)
 			{
 				break;
 			}
 			yield return null;
 		}
 		
+		canTurn = false;
 		animator.SetTrigger(MELEE_KEY);
 		yield return new WaitForSeconds(1f);
 		
-		//turnSpeed = baseTurnSpeed;
+		turnSpeed = baseTurnSpeed;
+		canTurn = true;
 		doingAction = false;
 	}
 
@@ -151,6 +161,7 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator JumpAttack()
 	{
 		doingAction = true;
+		canTurn = false;
 		agent.isStopped = true;
 		agent.enabled = false;
 		
@@ -159,6 +170,7 @@ public class BossBehavior : MoveableAgent
 		
 		agent.enabled = true;
 		agent.isStopped = false;
+		canTurn = true;
 		doingAction = false;
 	}
 
@@ -191,16 +203,18 @@ public class BossBehavior : MoveableAgent
 		while (Quaternion.Angle(transform.rotation, targetRot) > 2f)
 		{
 			t += Time.deltaTime;
-			if (t > 1f)
+			if (t > 5f)
 			{
 				break;
 			}
 			yield return null;
 		}
 		
+		canTurn = false;
 		animator.SetTrigger(RANGED_KEY);
 		yield return new WaitForSeconds(3f);
 		
+		canTurn = true;
 		doingAction = false;
 	}
 
