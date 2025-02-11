@@ -22,6 +22,8 @@ public class BossBehavior : MoveableAgent
 	[SerializeField] private ParticleSystem poisonSpit;
 	[SerializeField] private GameObject meleeHitbox;
 	[SerializeField] private GameObject jumpHitboxPrefab;
+	[SerializeField] private GameObject rangeHitboxPrefab;
+	[SerializeField] private GameObject jumpDustPrefab;
 	
 	[Header("Audio")]
 	[SerializeField] private MultiSfxHandler idleSfx;
@@ -177,6 +179,8 @@ public class BossBehavior : MoveableAgent
 	public void JumpUp()
 	{
 		rb.AddForce(Vector3.up * upThrust, ForceMode.Impulse);
+		GameObject hitbox = Instantiate(rangeHitboxPrefab, new Vector3(transform.position.x, rangeHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+		Destroy(hitbox, 1.1f);
 	}
 
 	public void JumpDown()
@@ -187,6 +191,7 @@ public class BossBehavior : MoveableAgent
 	public void SpawnJumpHitbox()
 	{
 		GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+		Instantiate(jumpDustPrefab, new Vector3(transform.position.x, jumpDustPrefab.transform.position.y, transform.position.z), Quaternion.identity);
 		Destroy(hitbox, 0.2f);
 	}
 #endregion	// Jump Attack

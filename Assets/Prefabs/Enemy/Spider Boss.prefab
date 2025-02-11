@@ -16562,6 +16562,8 @@ MonoBehaviour:
   poisonSpit: {fileID: 47511583382012247}
   meleeHitbox: {fileID: 4546479678346120267}
   jumpHitboxPrefab: {fileID: 1486801365548660785, guid: 761e74c53d63d3c46a7a011718ccf59c, type: 3}
+  rangeHitboxPrefab: {fileID: 7885927959300303359, guid: 922fbf5463462e9438711bb92ccdaa21, type: 3}
+  jumpDustPrefab: {fileID: 3343542230617871505, guid: 19a6a0001113285419495459d60c8c45, type: 3}
   idleSfx: {fileID: 3539907168300168069}
   idleSfxChance: 0.1
   idleSfxCd: 2
