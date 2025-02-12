@@ -29,6 +29,7 @@ public class BossBehavior : MoveableAgent
 	[SerializeField] private MultiSfxHandler idleSfx;
 	[SerializeField] private float idleSfxChance = 0.1f;
 	[SerializeField] private float idleSfxCd = 2f;
+	[SerializeField] private EffectSfxHandler poisonSfx;
 	private float lastIdleTime;
 	
 	private bool doingAction = false;
@@ -226,6 +227,11 @@ public class BossBehavior : MoveableAgent
 	public void SpitPoison()
 	{
 		poisonSpit.Play();
+	}
+
+	public void PoisonSfx()
+	{
+		poisonSfx.PlayAudio();
 	}
 #endregion // Ranged Attack	
 }

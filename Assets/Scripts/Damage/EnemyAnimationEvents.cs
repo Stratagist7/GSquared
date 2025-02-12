@@ -58,5 +58,10 @@ public class EnemyAnimationEvents : MonoBehaviour
     {
         behavior.SpitPoison();
     }
+
+    public void PoisonSfx()
+    {
+        behavior.PoisonSfx();
+    }
     
 }
