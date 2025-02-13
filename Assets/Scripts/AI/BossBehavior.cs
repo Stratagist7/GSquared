@@ -17,7 +17,7 @@ public class BossBehavior : MoveableAgent
 	private const float MELEE_ANGLE = 15f;
 	private const float MELEE_TIMEOUT = 5f;
 	private const float MELEE_DURATION = 0.85f;
-	private const float JUMP_DURATION = 2.5f;
+	private const float JUMP_DURATION = 2.5f/1.5f;
 	private const float JUMP_RANGE_DURATION = 1.1f/1.5f;
 	private const float JUMP_DAMAGE_DURATION = 0.2f;
 	private const float RANGED_ANGLE = 2f;
@@ -50,6 +50,7 @@ public class BossBehavior : MoveableAgent
 	private bool canTurn = true;
 	private bool isTurning = false;
 	private bool rightTurn = false;
+	private bool canAnimateTurn = true;
 	public bool settingUp = true;
 	private readonly float baseTurnSpeed = 90f;
 	private float turnSpeed;
@@ -112,7 +113,7 @@ public class BossBehavior : MoveableAgent
 		{
 			animator.SetBool(MOVE_KEY, agent.enabled && agent.remainingDistance > agent.stoppingDistance);
 			animator.SetBool(SLOW_KEY, isSlowed);
-			animator.SetBool(TURN_KEY, (canTurn && isTurning) && (agent.enabled == false || agent.remainingDistance <= agent.stoppingDistance));
+			animator.SetBool(TURN_KEY, canAnimateTurn && (canTurn && isTurning) && (agent.enabled == false || agent.remainingDistance <= agent.stoppingDistance));
 			animator.SetBool(TURN_RIGHT_KEY, rightTurn);
 		}
 	}
@@ -186,7 +187,7 @@ public class BossBehavior : MoveableAgent
 	private IEnumerator JumpAttack()
 	{
 		doingAction = true;
-		canTurn = false;
+		canAnimateTurn = false;
 		agent.isStopped = true;
 		agent.enabled = false;
 		
@@ -195,7 +196,7 @@ public class BossBehavior : MoveableAgent
 		
 		agent.enabled = true;
 		agent.isStopped = false;
-		canTurn = true;
+		canAnimateTurn = true;
 		doingAction = false;
 	}
 
