@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScale: {x: 0, y: 1, z: 0}
   endScale: {x: 1, y: 1, z: 1}
-  duration: 1.1
+  duration: 0.7333333
 --- !u!1 &7885927959300303359
 GameObject:
   m_ObjectHideFlags: 0

@@ -16601,7 +16601,7 @@ MonoBehaviour:
   meleeRange: 30.25
   jumpRange: 81
   poisonRange: 324
-  upThrust: 20
+  upThrust: 15
   downThrust: 10
   animator: {fileID: 180687799603783271}
   rb: {fileID: 8398334177926079092}

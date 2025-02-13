@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossBehavior : MoveableAgent
 {
+#region Static Variables
+	// Animator variables
 	private static readonly int MOVE_KEY = Animator.StringToHash("Moving");
 	private static readonly int TURN_KEY = Animator.StringToHash("Turning");
 	private static readonly int TURN_RIGHT_KEY = Animator.StringToHash("Turn Right");
@@ -10,6 +12,18 @@ public class BossBehavior : MoveableAgent
 	private static readonly int MELEE_KEY = Animator.StringToHash("Melee Attack");
     private static readonly int JUMP_KEY = Animator.StringToHash("Jump Attack");
 	private static readonly int RANGED_KEY = Animator.StringToHash("Range Attack");
+	
+	// Const numbers
+	private const float MELEE_ANGLE = 15f;
+	private const float MELEE_TIMEOUT = 5f;
+	private const float MELEE_DURATION = 0.85f;
+	private const float JUMP_DURATION = 2.5f;
+	private const float JUMP_RANGE_DURATION = 1.1f/1.5f;
+	private const float JUMP_DAMAGE_DURATION = 0.2f;
+	private const float RANGED_ANGLE = 2f;
+	private const float RANGED_TIMEOUT = 3f;
+	private const float RANGED_DURATION = 1f;
+#endregion // Static Variables	
 	
 	[SerializeField] private float meleeRange;
 	[SerializeField] private float jumpRange;
@@ -135,10 +149,18 @@ public class BossBehavior : MoveableAgent
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
 		Quaternion targetRot = Quaternion.LookRotation(target);
 		float t = 0;
-		while (Quaternion.Angle(transform.rotation, targetRot) > 15f)
+		while (Quaternion.Angle(transform.rotation, targetRot) > MELEE_ANGLE)
 		{
 			t += Time.deltaTime;
-			if (t > 5f)
+
+			if ((transform.position - Damageable.Player.transform.position).sqrMagnitude > meleeRange)
+			{
+				turnSpeed = baseTurnSpeed;
+				doingAction = false;
+				yield break;
+			}
+			
+			if (t > MELEE_TIMEOUT)
 			{
 				break;
 			}
@@ -147,7 +169,7 @@ public class BossBehavior : MoveableAgent
 		
 		canTurn = false;
 		animator.SetTrigger(MELEE_KEY);
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(MELEE_DURATION);
 		
 		turnSpeed = baseTurnSpeed;
 		canTurn = true;
@@ -169,7 +191,7 @@ public class BossBehavior : MoveableAgent
 		agent.enabled = false;
 		
 		animator.SetTrigger(JUMP_KEY);
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(JUMP_DURATION);
 		
 		agent.enabled = true;
 		agent.isStopped = false;
@@ -181,7 +203,7 @@ public class BossBehavior : MoveableAgent
 	{
 		rb.AddForce(Vector3.up * upThrust, ForceMode.Impulse);
 		GameObject hitbox = Instantiate(rangeHitboxPrefab, new Vector3(transform.position.x, rangeHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
-		Destroy(hitbox, 1.1f);
+		Destroy(hitbox, JUMP_RANGE_DURATION);
 	}
 
 	public void JumpDown()
@@ -193,7 +215,7 @@ public class BossBehavior : MoveableAgent
 	{
 		GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
 		Instantiate(jumpDustPrefab, new Vector3(transform.position.x, jumpDustPrefab.transform.position.y, transform.position.z), Quaternion.identity);
-		Destroy(hitbox, 0.2f);
+		Destroy(hitbox, JUMP_DAMAGE_DURATION);
 	}
 #endregion	// Jump Attack
 
@@ -206,10 +228,18 @@ public class BossBehavior : MoveableAgent
 		Vector3 target = (Damageable.Player.transform.position - transform.position).normalized;
 		Quaternion targetRot = Quaternion.LookRotation(target);
 		float t = 0;
-		while (Quaternion.Angle(transform.rotation, targetRot) > 2f)
+		while (Quaternion.Angle(transform.rotation, targetRot) > RANGED_ANGLE)
 		{
 			t += Time.deltaTime;
-			if (t > 5f)
+
+			float dist = (transform.position - Damageable.Player.transform.position).sqrMagnitude;
+			if (dist > poisonRange || dist <= jumpRange)
+			{
+				doingAction = false;
+				yield break;
+			}
+			
+			if (t > RANGED_TIMEOUT)
 			{
 				break;
 			}
@@ -218,7 +248,7 @@ public class BossBehavior : MoveableAgent
 		
 		canTurn = false;
 		animator.SetTrigger(RANGED_KEY);
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(RANGED_DURATION);
 		
 		canTurn = true;
 		doingAction = false;
