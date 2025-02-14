@@ -12,7 +12,6 @@ public class MeleeChaser : MoveableAgent
 	[SerializeField] private float upThrust = 10f;
 	[SerializeField] private float forwardThrust = 10f;
 	[SerializeField] private float downThrustMultiplier = 1.5f;
-	[SerializeField] private Rigidbody rb;
 	[SerializeField] protected Animator animator;
 
 	[Header("Audio")]

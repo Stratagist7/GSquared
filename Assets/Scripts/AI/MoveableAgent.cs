@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class MoveableAgent : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected Rigidbody rb;
     private float normSpeed;
     protected bool isStunned = false;
     protected bool isSlowed = false;
@@ -23,6 +24,10 @@ public class MoveableAgent : MonoBehaviour
 
     public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME)
     {
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
         isStunned = true;
         stunCounter++;
         if (agent.enabled)
@@ -42,6 +47,10 @@ public class MoveableAgent : MonoBehaviour
             return;
         }
         
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
         agent.enabled = true;
         agent.isStopped = false;
         isStunned = false;

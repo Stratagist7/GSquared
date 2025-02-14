@@ -32,7 +32,6 @@ public class BossBehavior : MoveableAgent
 	[SerializeField] private float downThrust;
 	[Space]
 	[SerializeField] private Animator animator;
-	[SerializeField] private Rigidbody rb;
 	[SerializeField] private ParticleSystem poisonSpit;
 	[SerializeField] private GameObject meleeHitbox;
 	[SerializeField] private GameObject jumpHitboxPrefab;
@@ -194,6 +193,7 @@ public class BossBehavior : MoveableAgent
 		animator.SetTrigger(JUMP_KEY);
 		yield return new WaitForSeconds(JUMP_DURATION);
 		
+		rb.isKinematic = true;
 		agent.enabled = true;
 		agent.isStopped = false;
 		canAnimateTurn = true;
@@ -202,6 +202,7 @@ public class BossBehavior : MoveableAgent
 
 	public void JumpUp()
 	{
+		rb.isKinematic = false;
 		rb.AddForce(Vector3.up * upThrust, ForceMode.Impulse);
 		GameObject hitbox = Instantiate(rangeHitboxPrefab, new Vector3(transform.position.x, rangeHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
 		Destroy(hitbox, JUMP_RANGE_DURATION);

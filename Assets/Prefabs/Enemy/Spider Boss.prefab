@@ -16524,7 +16524,7 @@ PrefabInstance:
     - target: {fileID: 7948995958285881246, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8105135838501104626}
     - target: {fileID: 7948995958285881246, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: lightningHeight
       value: 0.7
