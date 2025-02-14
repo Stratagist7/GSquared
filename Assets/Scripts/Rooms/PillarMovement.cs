@@ -6,9 +6,12 @@ public class PillarMovement : MonoBehaviour
     [SerializeField] private float initialDelay;
     [SerializeField] private float duration;
 
+    private const float UP_Y = 2f;
+    private const float DOWN_Y = -7.5f;
+
     void Start()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, -7.5f, transform.localPosition.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, DOWN_Y, transform.localPosition.z);
         StartCoroutine(StartUp());
     }
 
@@ -20,8 +23,8 @@ public class PillarMovement : MonoBehaviour
 
     private IEnumerator MoveUp()
     {
-        Vector3 startPos = new Vector3(transform.localPosition.x, -7.5f, transform.localPosition.z);
-        Vector3 endPos = new Vector3(transform.localPosition.x, 3f, transform.localPosition.z);
+        Vector3 startPos = new Vector3(transform.localPosition.x, DOWN_Y, transform.localPosition.z);
+        Vector3 endPos = new Vector3(transform.localPosition.x, UP_Y, transform.localPosition.z);
         float t = 0f;
 
         while (t < duration)
@@ -38,8 +41,8 @@ public class PillarMovement : MonoBehaviour
     
     private IEnumerator MoveDown()
     {
-        Vector3 startPos = new Vector3(transform.localPosition.x, 3f, transform.localPosition.z);
-        Vector3 endPos = new Vector3(transform.localPosition.x, -7.5f, transform.localPosition.z);
+        Vector3 startPos = new Vector3(transform.localPosition.x, UP_Y, transform.localPosition.z);
+        Vector3 endPos = new Vector3(transform.localPosition.x, DOWN_Y, transform.localPosition.z);
         float t = 0f;
 
         while (t < duration)
