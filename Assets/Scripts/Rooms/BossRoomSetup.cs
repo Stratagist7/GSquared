@@ -3,17 +3,14 @@ using UnityEngine;
 public class BossRoomSetup : MonoBehaviour
 {
     [SerializeField] private BossBehavior[] bosses;
+    [SerializeField] private PillarMovement[] pillars;
     [SerializeField] private bool startInRoom = false;
 
     private void Start()
     {
         if (startInRoom)
         {
-            foreach (BossBehavior boss in bosses)
-            {
-                boss.settingUp = false;
-            }
-            Destroy(gameObject);
+            Setup();
         }
     }
 
@@ -21,12 +18,23 @@ public class BossRoomSetup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach (BossBehavior boss in bosses)
-            {
-                boss.settingUp = false;
-            }
-
-            Destroy(gameObject);
+            Setup();
         }
+    }
+
+    private void Setup()
+    {
+        print("Setup");
+        foreach (BossBehavior boss in bosses)
+        {
+            boss.settingUp = false;
+        }
+
+        foreach (PillarMovement pillar in pillars)
+        {
+            pillar.Setup();
+        }
+
+        Destroy(gameObject);
     }
 }

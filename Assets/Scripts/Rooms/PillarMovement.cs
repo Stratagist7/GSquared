@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PillarMovement : MonoBehaviour
 {
@@ -13,9 +12,14 @@ public class PillarMovement : MonoBehaviour
     private const float UP_Y = 2f;
     private const float DOWN_Y = -7.5f;
 
-    void Start()
+
+    private void Start()
     {
         transform.localPosition = new Vector3(transform.localPosition.x, DOWN_Y, transform.localPosition.z);
+    }
+
+    public void Setup()
+    {
         StartCoroutine(StartUp());
     }
 
