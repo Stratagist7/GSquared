@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PillarMovement : MonoBehaviour
 {
     [SerializeField] private float initialDelay;
     [SerializeField] private float duration;
+    [SerializeField] private Transform ammoSpawner;
+    [SerializeField] private GameObject ammoPrefab;
+    private DroppedAmmo ammo;
 
     private const float UP_Y = 2f;
     private const float DOWN_Y = -7.5f;
@@ -17,6 +21,7 @@ public class PillarMovement : MonoBehaviour
 
     private IEnumerator StartUp()
     {
+        SpawnAmmo();
         yield return new WaitForSeconds(initialDelay);
         StartCoroutine(MoveUp());
     }
@@ -53,8 +58,19 @@ public class PillarMovement : MonoBehaviour
         }
         transform.localPosition = endPos;
         
+        SpawnAmmo();
         yield return new WaitForSeconds(7.5f);
         StartCoroutine(MoveUp());
+    }
+
+    private void SpawnAmmo()
+    {
+        if (ammo != null)
+        {
+            Destroy(ammo.gameObject);
+        }
+        ammo = Instantiate(ammoPrefab, ammoSpawner.transform.position, Quaternion.identity).GetComponent<DroppedAmmo>();
+        ammo.SetAmmo(15, (DamageType)Random.Range(0, 6));
     }
 
     
