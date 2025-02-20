@@ -56,7 +56,7 @@ public class MenuUI : MonoBehaviour
 		caughtScreen.SetActive(true);
 	}
 
-	private void FreezePlayer(bool argShow)
+	public void FreezePlayer(bool argShow)
 	{
 		playerUI.SetActive(!argShow);
 		
@@ -66,7 +66,7 @@ public class MenuUI : MonoBehaviour
 		UnlockCursor(argShow);
 	}
 
-	public void UnlockCursor(bool argShowCursor)
+	private void UnlockCursor(bool argShowCursor)
 	{
 		Paused = argShowCursor;
 		Cursor.visible = argShowCursor;

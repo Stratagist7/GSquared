@@ -4,11 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class VentFade : Interactable
+public class FadeEffect : Interactable
 {
     [SerializeField] private PostEffectsController effect;
+    
+    [SerializeField] private GameObject[] activateObjects;
+    [SerializeField] private GameObject[] deactivateObjects;
+    [Space] 
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private GameObject tempText;
+    [SerializeField] private Color fadeColor = Color.black;
+    [SerializeField] private float startRadius = 1.5f;
+    [SerializeField] private float endRadius = 0f;
+    [SerializeField] private float startFeather = 2.5f;
+    [SerializeField] private float endFeather = 0f;
     void Start()
     {
         interactAction = StartFade;
@@ -26,13 +34,8 @@ public class VentFade : Interactable
 
     private IEnumerator Fade()
     {
-        effect.tintColor = Color.black;
+        effect.tintColor = fadeColor;
         float t = 0;
-        float startRadius = 1.5f;
-        float endRadius = 0;
-
-        float startFeather = 2.5f;
-        float endFeather = 0;
         while (t < fadeDuration)
         {
             effect.radius = Mathf.Lerp(startRadius, endRadius, t / fadeDuration);
@@ -43,7 +46,24 @@ public class VentFade : Interactable
         effect.radius = endRadius;
         effect.feather = endFeather;
 
-        SceneManager.LoadScene("MainLevel");
+        if (activateObjects.Length > 0)
+        {
+            foreach (GameObject obj in activateObjects)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (GameObject obj in deactivateObjects)
+            {
+                obj.SetActive(false);
+            }
+            MenuUI.instance.FreezePlayer(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainLevel");
+        }
+        
     }
 
 }

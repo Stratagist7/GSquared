@@ -55,14 +55,10 @@ Shader "Unlit/Vignette"
                 float mask = 1 - smoothstep(_Radius, _Radius + _Feather, circle);
                 float invertMask = 1 - mask;
 
-                float3 displayCOlor = col.rgb * mask;
-                float3 vignetteColor = (1 - col.rgb) * invertMask * _TintColor;
-                if(col.r > .07 && col.g > .07 && col.b > .07)
-                {
-                    vignetteColor = col.rgb * invertMask * _TintColor;
-                }
+                float3 displayColor = col.rgb * mask;
+                float3 vignetteColor = invertMask * _TintColor;
                 
-                return fixed4(displayCOlor + vignetteColor, 1);
+                return fixed4(displayColor + vignetteColor, 1);
             }
             ENDCG
         }
