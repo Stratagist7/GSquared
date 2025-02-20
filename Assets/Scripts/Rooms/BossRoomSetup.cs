@@ -24,7 +24,6 @@ public class BossRoomSetup : MonoBehaviour
 
     private void Setup()
     {
-        print("Setup");
         foreach (BossBehavior boss in bosses)
         {
             boss.settingUp = false;
