@@ -4,6 +4,7 @@ public class BossRoomSetup : MonoBehaviour
 {
     [SerializeField] private BossBehavior[] bosses;
     [SerializeField] private PillarMovement[] pillars;
+    [SerializeField] private GameObject bossHealthBars;
     [SerializeField] private bool startInRoom = false;
 
     private void Start()
@@ -33,6 +34,8 @@ public class BossRoomSetup : MonoBehaviour
         {
             pillar.Setup();
         }
+        
+        bossHealthBars.SetActive(true);
 
         Destroy(gameObject);
     }
