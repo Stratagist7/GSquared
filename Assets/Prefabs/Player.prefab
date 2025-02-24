@@ -167,7 +167,7 @@ AudioSource:
   m_GameObject: {fileID: 3872947760841288684}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1542043195721024651, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 8300000, guid: c922ce502afa4564e858e36309b01a23, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1287,7 +1287,7 @@ AudioSource:
   m_GameObject: {fileID: 9112764115773958238}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1542043195721024651, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 8300000, guid: e61d13981f35a904e8029370ee578cca, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2553,7 +2553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
-  menuUI: {fileID: 0}
 --- !u!114 &2947609661487704405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,9 +2601,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 0
+  hasGun: 0
   animator: {fileID: 6775468623692847462}
   gun: {fileID: 7779012629947551391}
   ammo: {fileID: 2947609661487704405}
+  ammoUI: {fileID: 0}
   gunImage:
   - {fileID: 0}
   - {fileID: 0}
@@ -2621,7 +2622,7 @@ AudioSource:
   m_GameObject: {fileID: 4005961841278974688}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1542043195721024651, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

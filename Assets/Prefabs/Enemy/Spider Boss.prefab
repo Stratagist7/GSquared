@@ -6207,7 +6207,7 @@ AudioSource:
   m_GameObject: {fileID: 7632352726481460395}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2894010004993638372, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -16602,13 +16602,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7637824673914049737}
+  rb: {fileID: 8398334177926079092}
   meleeRange: 30.25
   jumpRange: 81
   poisonRange: 324
   upThrust: 15
   downThrust: 10
   animator: {fileID: 180687799603783271}
-  rb: {fileID: 8398334177926079092}
   poisonSpit: {fileID: 47511583382012247}
   meleeHitbox: {fileID: 4546479678346120267}
   jumpHitboxPrefab: {fileID: 1486801365548660785, guid: 761e74c53d63d3c46a7a011718ccf59c, type: 3}

@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 2600912649377288297}
   healthBar: {fileID: 633571604095657351}
+  facePlayer: 1
 --- !u!54 &6962537685988080918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,11 +272,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9073634222560037803}
+  rb: {fileID: 6962537685988080918}
   damage: 5
   upThrust: 25
   forwardThrust: 30
   downThrustMultiplier: 1
-  rb: {fileID: 6962537685988080918}
   animator: {fileID: 0}
   idleSfx: {fileID: 0}
   idleSfxChance: 0.1
@@ -330,7 +331,7 @@ AudioSource:
   m_GameObject: {fileID: 293167015072925656}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2894010004993638372, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1147,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfd1cb0db3fe064eac9cc063b6b9fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inRange: []
   lightningHeight: 0.25
   drag: 1.7
   rb: {fileID: 6962537685988080918}

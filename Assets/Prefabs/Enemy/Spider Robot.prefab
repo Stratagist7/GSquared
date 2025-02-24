@@ -116,6 +116,7 @@ MonoBehaviour:
   stepSounds: {fileID: 3148728117030801397}
   deathSound: {fileID: 8213569673604463144}
   attackSounds: {fileID: 7552669043425561439}
+  behavior: {fileID: 0}
 --- !u!114 &3148728117030801397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ AudioSource:
   m_GameObject: {fileID: 409029837663826188}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2894010004993638372, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
