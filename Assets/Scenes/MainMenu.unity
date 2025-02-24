@@ -5739,7 +5739,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1703616811}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetEnvironVol
         m_Mode: 0
@@ -7492,7 +7492,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1703616811}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetSensitivity
         m_Mode: 0
@@ -9525,7 +9525,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1703616811}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetEnemyVol
         m_Mode: 0
@@ -9850,7 +9850,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1703616811}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetPlayerVol
         m_Mode: 0
@@ -10652,6 +10652,7 @@ MonoBehaviour:
   enemyText: {fileID: 813661465}
   playerSlider: {fileID: 1599032705}
   playerText: {fileID: 828329200}
+  mixer: {fileID: 24100000, guid: 9418fdb3688ffb04182724eeb80b48a5, type: 2}
 --- !u!1001 &1711916242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10964,7 +10965,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1703616811}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetMasterVol
         m_Mode: 0
