@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-	private const float VOL_OFFSET = -80;
+	private const float VOL_OFFSET = -45;
+	private const float VOL_MULTIPLIER = 0.65f;
 	[SerializeField] private Slider sensSlider;
 	[SerializeField] private TextMeshProUGUI sensText;
 	[Space]
@@ -32,19 +33,19 @@ public class SettingsMenu : MonoBehaviour
 		
 		masterSlider.value = PlayerPrefs.GetFloat("MasterVol", 100f);
 		masterText.text = PlayerPrefs.GetFloat("MasterVol", 100f).ToString();
-		mixer.SetFloat("MasterVol", masterSlider.value + VOL_OFFSET);
+		mixer.SetFloat("MasterVol", masterSlider.value * VOL_MULTIPLIER + VOL_OFFSET);
 		
 		environSlider.value = PlayerPrefs.GetFloat("EnvironVol", 100f);
 		environText.text = PlayerPrefs.GetFloat("EnvironVol", 100f).ToString();
-		mixer.SetFloat("EnvironVol", environSlider.value + VOL_OFFSET);
+		mixer.SetFloat("EnvironVol", environSlider.value * VOL_MULTIPLIER + VOL_OFFSET);
 		
 		enemySlider.value = PlayerPrefs.GetFloat("EnemyVol", 100f);
 		enemyText.text = PlayerPrefs.GetFloat("EnemyVol", 100f).ToString();
-		mixer.SetFloat("EnemyVol", enemySlider.value + VOL_OFFSET);
+		mixer.SetFloat("EnemyVol", enemySlider.value * VOL_MULTIPLIER + VOL_OFFSET);
 		
 		playerSlider.value = PlayerPrefs.GetFloat("PlayerVol", 100f);
 		playerText.text = PlayerPrefs.GetFloat("PlayerVol", 100f).ToString();
-		mixer.SetFloat("PlayerVol", playerSlider.value + VOL_OFFSET);
+		mixer.SetFloat("PlayerVol", playerSlider.value * VOL_MULTIPLIER + VOL_OFFSET);
 	}
 
 	public void SetSensitivity(float argSens)
@@ -59,7 +60,7 @@ public class SettingsMenu : MonoBehaviour
 		float vol = MathF.Round(argVol, 1);
 		PlayerPrefs.SetFloat("MasterVol", vol);
 		masterText.text = vol.ToString();
-		mixer.SetFloat("MasterVol", vol + VOL_OFFSET);
+		mixer.SetFloat("MasterVol", vol * VOL_MULTIPLIER + VOL_OFFSET);
 	}
 	
 	public void SetEnvironVol(float argVol)
@@ -67,7 +68,7 @@ public class SettingsMenu : MonoBehaviour
 		float vol = MathF.Round(argVol, 1);
 		PlayerPrefs.SetFloat("EnvironVol", vol);
 		environText.text = vol.ToString();
-		mixer.SetFloat("EnvironVol", vol + VOL_OFFSET);
+		mixer.SetFloat("EnvironVol", vol * VOL_MULTIPLIER + VOL_OFFSET);
 	}
 	
 	public void SetEnemyVol(float argVol)
@@ -75,7 +76,7 @@ public class SettingsMenu : MonoBehaviour
 		float vol = MathF.Round(argVol, 1);
 		PlayerPrefs.SetFloat("EnemyVol", vol);
 		enemyText.text = vol.ToString();
-		mixer.SetFloat("EnemyVol", vol + VOL_OFFSET);
+		mixer.SetFloat("EnemyVol", vol * VOL_MULTIPLIER + VOL_OFFSET);
 	}
 	
 	public void SetPlayerVol(float argVol)
@@ -83,6 +84,6 @@ public class SettingsMenu : MonoBehaviour
 		float vol = MathF.Round(argVol, 1);
 		PlayerPrefs.SetFloat("PlayerVol", vol);
 		playerText.text = vol.ToString();
-		mixer.SetFloat("PlayerVol", vol + VOL_OFFSET);
+		mixer.SetFloat("PlayerVol", vol * VOL_MULTIPLIER + VOL_OFFSET);
 	}
 }
