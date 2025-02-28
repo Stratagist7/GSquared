@@ -16292,7 +16292,7 @@ PrefabInstance:
     - target: {fileID: 470154763986695993, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: frozenPrefab
       value: 
-      objectReference: {fileID: 1562623932468501896, guid: 569d9d06700e72e4687dfb6f21c828e6, type: 3}
+      objectReference: {fileID: 8434421648749925118, guid: 63bdb49173209e444a8044810f953ebc, type: 3}
     - target: {fileID: 958397225944635511, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -16404,7 +16404,7 @@ PrefabInstance:
     - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: healthUI
       value: 
-      objectReference: {fileID: 6648588980078072689}
+      objectReference: {fileID: 0}
     - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: maxHealth
       value: 200
@@ -16508,6 +16508,10 @@ PrefabInstance:
     - target: {fileID: 6561626641398609292, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: MinDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962537685988080918, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7532863989496484758, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -16672,11 +16676,6 @@ Transform:
 --- !u!82 &5700593925825571566 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6561626641398609292, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
-  m_PrefabInstance: {fileID: 1446507956783325026}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6648588980078072689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5212792466674666515, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
   m_PrefabInstance: {fileID: 1446507956783325026}
   m_PrefabAsset: {fileID: 0}
 --- !u!195 &7637824673914049737 stripped
