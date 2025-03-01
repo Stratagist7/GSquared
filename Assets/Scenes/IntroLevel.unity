@@ -11184,6 +11184,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2779264907228054218, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 287745849}
     - target: {fileID: 2947609661487704405, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
       propertyPath: ammoUI
       value: 

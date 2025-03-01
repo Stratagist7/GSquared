@@ -2512,12 +2512,15 @@ PrefabInstance:
       addedObject: {fileID: 6405653726095162077}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 2947609661487704405}
+      addedObject: {fileID: 2779264907228054218}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 5389909551581416568}
+      addedObject: {fileID: 2947609661487704405}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: 5
+      addedObject: {fileID: 5389909551581416568}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: 6
       addedObject: {fileID: 5288573940958208194}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
@@ -2553,6 +2556,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
+  healthVFX: {fileID: 2779264907228054218}
+--- !u!114 &2779264907228054218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005961841278974688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae337067466cc36409b0a6e4dbfad277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 0}
 --- !u!114 &2947609661487704405
 MonoBehaviour:
   m_ObjectHideFlags: 0

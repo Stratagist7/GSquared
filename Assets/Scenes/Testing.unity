@@ -5539,7 +5539,7 @@ MonoBehaviour:
   postShader: {fileID: 4800000, guid: 27fd48010a118e0489427be02b33552c, type: 3}
   radius: 1.5
   feather: 2.5
-  tintColor: {r: 0, g: 0, b: 0, a: 1}
+  tintColor: {r: 0, g: 1, b: 0.98099947, a: 1}
 --- !u!4 &1177919430
 Transform:
   m_ObjectHideFlags: 0
@@ -11857,6 +11857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2779264907228054218, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1177919429}
     - target: {fileID: 2947609661487704405, guid: 9a7b9b9e07b2aad4586ff268e7389bb7, type: 3}
       propertyPath: ammoUI
       value: 

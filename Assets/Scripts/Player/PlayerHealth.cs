@@ -8,9 +8,10 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
+    [SerializeField] private HealthVFX healthVFX;
     
     private const int MAX_HEALTH = 100;
-    private const float DURATION = 0.025f;
+    private const float DURATION = 0.15f;
     private int health;
     private int shields;
     
@@ -54,33 +55,47 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int argDamage)
     {
+        // no shields? just hurt
         if (shields <= 0)
         {
             hitPoints.Enqueue(() => StartCoroutine(ChangeHealth(-argDamage)));
         }
         else
         {
+            // shields cover damage? bye bye shields
             if (shields >= argDamage)
             {
                 Shield(-argDamage);
             }
             else
             {
+                // shields & hurt necessary
                 int extraDamage = argDamage - shields;
                 Shield(-shields);
-                hitPoints.Enqueue(() => StartCoroutine(ChangeHealth(-extraDamage)));
+                hitPoints.Enqueue(() => StartCoroutine(ChangeHealth(-extraDamage, true)));
             }
         }
     }
 
     public void Shield(int argShields)
     {
+        // Don't waste q time when full on shields
+        if (argShields > 0 && shields >= MAX_HEALTH)
+        {
+            return;
+        }
+        
         hitPoints.Enqueue(() => StartCoroutine(ChangeShields(argShields)));
     }
 
-    private IEnumerator ChangeHealth(int argDifference)
+    private IEnumerator ChangeHealth(int argDifference, bool argIsSplitDmg = false)
     {
         isAnimating = true;
+        if (argIsSplitDmg == false && playerIsDead == false)
+        {
+            StartCoroutine(healthVFX.PlayHealthVFX(true));
+        }
+
         float time = 0;
         float startValue = health;
         float endValue = health + argDifference;
@@ -108,6 +123,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator ChangeShields(int argDifference)
     {
         isAnimating = true;
+        StartCoroutine(healthVFX.PlayHealthVFX(argDifference < 0));
         float time = 0;
         float startValue = shields;
 
