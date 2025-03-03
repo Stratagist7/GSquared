@@ -5581,7 +5581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be49177e6a24c946abbdcf8f16b8412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 30
 --- !u!1 &4570506974307935044
 GameObject:
   m_ObjectHideFlags: 0
@@ -16319,7 +16319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2793949223419349157, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2908897620993153908, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: damage
