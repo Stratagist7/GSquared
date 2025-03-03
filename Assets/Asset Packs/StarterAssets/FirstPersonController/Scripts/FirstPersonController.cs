@@ -107,7 +107,6 @@ namespace StarterAssets
 
 		private void Start()
 		{
-			RotationSpeed = PlayerPrefs.GetFloat("Sensitivity", 0.1f);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -123,6 +122,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			RotationSpeed = PlayerPrefs.GetFloat("Sensitivity", 0.1f);
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
