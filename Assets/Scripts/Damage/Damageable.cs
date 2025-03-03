@@ -142,7 +142,7 @@ public class Damageable : Hitable
 		{
 			if (animator != null)
 			{
-				agent.Stun();  // Prevent damage after death
+				agent.Stun(10);  // Prevent damage after death
 				animator.SetTrigger(DEATH_KEY);
 				animator.SetBool(DEAD_KEY, true);
 				healthUI.SetActive(false);
