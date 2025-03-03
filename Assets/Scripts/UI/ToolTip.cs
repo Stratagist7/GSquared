@@ -19,8 +19,8 @@ public class ToolTip : MonoBehaviour
 		{
 			return;
 		}
-
-		if (dismissInput.action.phase == InputActionPhase.Performed)
+		
+		if (anim.isPlaying == false && dismissInput.action.IsPressed())
 		{
 			DismissTooltip();
 		}

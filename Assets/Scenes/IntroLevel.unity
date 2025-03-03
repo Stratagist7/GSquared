@@ -4299,6 +4299,7 @@ GameObject:
   - component: {fileID: 391218976}
   - component: {fileID: 391218981}
   - component: {fileID: 391218980}
+  - component: {fileID: 391218982}
   - component: {fileID: 391218979}
   - component: {fileID: 391218978}
   - component: {fileID: 391218977}
@@ -4509,6 +4510,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391218975}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &391218982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391218975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dca759651566b44bc3266494094da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 1828988348}
+  tooltipText: Hold SHIFT to sprint
+  dismissInput: {fileID: -8750674506638915993, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
 --- !u!1 &392722635
 GameObject:
   m_ObjectHideFlags: 0
@@ -22464,6 +22480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 1828988348}
+  tooltipText: Hold TAB to change ammo type
   dismissInput: {fileID: 8879589256226354163, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
 --- !u!1001 &1528213409
 PrefabInstance:
