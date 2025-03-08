@@ -14,4 +14,9 @@ public class SpawnController : MonoBehaviour
             shouldSpawn = !shouldSpawn;
         }
     }
+
+    public void SetShouldSpawn(bool argShouldSpawn)
+    {
+        shouldSpawn = argShouldSpawn;
+    }
 }
