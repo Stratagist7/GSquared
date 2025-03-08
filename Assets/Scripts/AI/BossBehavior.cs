@@ -116,6 +116,11 @@ public class BossBehavior : MoveableAgent
 			animator.SetBool(TURN_RIGHT_KEY, rightTurn);
 		}
 	}
+
+	public void SetStartingUp(bool argValue)
+	{
+		settingUp = argValue;
+	}
 	
 	private IEnumerator StartUp()
 	{
