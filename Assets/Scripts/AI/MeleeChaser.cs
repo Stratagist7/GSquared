@@ -24,6 +24,7 @@ public class MeleeChaser : MoveableAgent
 	private bool attacking = false;
 	protected bool settingUp = true;
 	private bool shouldUnStun = false;
+	private bool alwaysAttacking = false;
 
 	protected override void Start()
 	{
@@ -43,14 +44,9 @@ public class MeleeChaser : MoveableAgent
 		{
 			agent.SetDestination(Damageable.Player.transform.position);
 		}
-		else
+		else if(alwaysAttacking == false && attacking == false && isStunned == false)
 		{
-			attacking = agent.isOnOffMeshLink;
-
-			if(attacking == false && isStunned == false)
-			{
-				StartCoroutine(Attack());
-			}
+			StartCoroutine(Attack());
 		}
 		
 
@@ -59,6 +55,11 @@ public class MeleeChaser : MoveableAgent
 			animator.SetBool(MOVE_KEY, agent.enabled && agent.remainingDistance > agent.stoppingDistance);
 			animator.SetBool(SLOW_KEY, isSlowed);
 		}
+	}
+
+	public void SetAlwaysAttacking(bool value)
+	{
+		alwaysAttacking = value;
 	}
 
 	// Wait for spawn animation before starting typical behaviors 
