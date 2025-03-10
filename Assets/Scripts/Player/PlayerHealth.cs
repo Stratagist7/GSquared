@@ -91,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator ChangeHealth(int argDifference, bool argIsSplitDmg = false)
     {
         isAnimating = true;
-        if (argIsSplitDmg == false && playerIsDead == false)
+        if (healthVFX != null && argIsSplitDmg == false && playerIsDead == false)
         {
             StartCoroutine(healthVFX.PlayHealthVFX(true));
         }

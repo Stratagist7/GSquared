@@ -34,7 +34,7 @@ public class MeleeChaser : MoveableAgent
 	
 	protected virtual void Update()
 	{
-		if (settingUp)
+		if (settingUp || agent.isOnNavMesh == false)
 		{
 			return;
 		}
@@ -43,10 +43,16 @@ public class MeleeChaser : MoveableAgent
 		{
 			agent.SetDestination(Damageable.Player.transform.position);
 		}
-		else if(attacking == false && isStunned == false)
+		else
 		{
-			StartCoroutine(Attack());
+			attacking = agent.isOnOffMeshLink;
+
+			if(attacking == false && isStunned == false)
+			{
+				StartCoroutine(Attack());
+			}
 		}
+		
 
 		if (animator != null)
 		{

@@ -16,7 +16,7 @@ public class MeleeWanderer : MeleeChaser
     
     protected override void Update()
     {
-        if (settingUp)
+        if (settingUp || agent.isOnNavMesh == false)
         {
             return;
         }
