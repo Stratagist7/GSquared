@@ -20,7 +20,7 @@ public class MeleeChaser : MoveableAgent
 	[SerializeField] private float idleSfxCd = 2f;
 	private float lastIdleTime;
 
-	private float dist;
+	protected float dist;
 	private bool attacking = false;
 	protected bool settingUp = true;
 	private bool shouldUnStun = false;
@@ -39,14 +39,30 @@ public class MeleeChaser : MoveableAgent
 		{
 			return;
 		}
-		
-		if (agent.enabled && (transform.position - Damageable.Player.transform.position).sqrMagnitude > dist)
+
+		if (agent.enabled)
 		{
-			agent.SetDestination(Damageable.Player.transform.position);
-		}
-		else if(alwaysAttacking == false && attacking == false && isStunned == false)
-		{
-			StartCoroutine(Attack());
+			if (agent.hasPath)
+			{
+				// If in range of player && able to attack
+				if ((transform.position - Damageable.Player.transform.position).sqrMagnitude <= dist)
+				{
+					if(alwaysAttacking == false && attacking == false && isStunned == false)
+					{
+						StartCoroutine(Attack());
+					}
+				}
+				// If player has moved a lot, recalculate destination
+				else if ((agent.destination - Damageable.Player.transform.position).sqrMagnitude > dist)
+				{
+					agent.SetDestination(Damageable.Player.transform.position);
+				}
+			}
+			else
+			{
+				// Go to player if not already
+				agent.SetDestination(Damageable.Player.transform.position);
+			}
 		}
 		
 

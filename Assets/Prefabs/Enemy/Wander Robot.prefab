@@ -1331,6 +1331,7 @@ MonoBehaviour:
   playerDetectionRadius: 3
   changeLocationChance: 0.05
   wanderStoppingDistance: 0.4
+  defaultStoppingDistance: 3
   pr: {fileID: 8801348081755700631}
 --- !u!195 &8282322728340504080
 NavMeshAgent:

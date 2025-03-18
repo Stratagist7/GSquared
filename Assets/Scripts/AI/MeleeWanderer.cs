@@ -8,6 +8,7 @@ public class MeleeWanderer : MeleeChaser
     [SerializeField] private float playerDetectionRadius;
     [SerializeField, Tooltip("Range of 0 to 1")] private float changeLocationChance;
     [SerializeField] private float wanderStoppingDistance = 0.3f;
+    [SerializeField] private float defaultStoppingDistance = 2f;
     [SerializeField] private PullRadius pr;
 
     private int currentLocation = 0;
@@ -23,7 +24,8 @@ public class MeleeWanderer : MeleeChaser
 // CHECK IF OTHER SPIDERS SEE PLAYER
         if (isAlert || Vector3.Distance(transform.position, Damageable.Player.transform.position) <= playerDetectionRadius)
         {
-            agent.stoppingDistance = 2;
+            agent.stoppingDistance = defaultStoppingDistance;
+            dist = Mathf.Pow(defaultStoppingDistance, 2);;
             AlertNearby();
             base.Update();
         }
