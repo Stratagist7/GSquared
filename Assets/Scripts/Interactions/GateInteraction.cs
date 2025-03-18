@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GateInteraction : Interactable
@@ -17,5 +14,7 @@ public class GateInteraction : Interactable
     {
         airlockGate.MoveGate(false);
         entryGate.MoveGate(true, false);
+        interactText.SetActive(false);
+        Destroy(gameObject);
     }
 }
