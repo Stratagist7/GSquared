@@ -123,7 +123,11 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator ChangeShields(int argDifference)
     {
         isAnimating = true;
-        StartCoroutine(healthVFX.PlayHealthVFX(argDifference < 0));
+        if (argDifference < 0)
+        {
+            StartCoroutine(healthVFX.PlayHealthVFX(true));
+        }
+
         float time = 0;
         float startValue = shields;
 
