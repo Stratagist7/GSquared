@@ -41,17 +41,17 @@ public class EnemyAnimationEvents : MonoBehaviour
     
     public void EnableJumpHit()
     {
-        behavior.SpawnJumpHitbox();
+        //behavior.SpawnJumpHitbox();
     }
 
     public void JumpUp()
     {
-        behavior.JumpUp();
+        //behavior.JumpUp();
     }
 
     public void JumpDown()
     {
-        behavior.JumpDown();
+        //behavior.JumpDown();
     }
 
     public void SpitPoison()

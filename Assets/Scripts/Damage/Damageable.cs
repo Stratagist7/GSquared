@@ -81,7 +81,7 @@ public class Damageable : Hitable
 			freezeHandler.Freeze();
 			if (agent != null)
 			{
-				agent.Stun(ReactionValues.FREEZE_TIME);
+				agent.Stun(ReactionValues.FREEZE_TIME, false);
 			}
 		};
 
@@ -142,7 +142,7 @@ public class Damageable : Hitable
 		{
 			if (animator != null)
 			{
-				agent.Stun(10);  // Prevent damage after death
+				agent.Stun(10, false, true);  // Prevent damage after death
 				animator.SetTrigger(DEATH_KEY);
 				animator.SetBool(DEAD_KEY, true);
 				healthUI.SetActive(false);

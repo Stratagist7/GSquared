@@ -9,6 +9,7 @@ public class MoveableAgent : MonoBehaviour
     private float normSpeed;
     protected bool isStunned = false;
     protected bool isSlowed = false;
+    protected bool isDead = false;
     private int stunCounter = 0;
 
     protected virtual void Start()
@@ -22,9 +23,10 @@ public class MoveableAgent : MonoBehaviour
         agent.speed = normSpeed * argMultiplier;
     }
 
-    public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME)
+    public void Stun(float argSeconds = ReactionValues.WIND_STUN_TIME, bool argUpdateKinematic = true, bool argIsDeathStun = false)
     {
-        if (rb != null)
+        isDead = argIsDeathStun;
+        if (rb != null && argUpdateKinematic)
         {
             rb.isKinematic = false;
         }

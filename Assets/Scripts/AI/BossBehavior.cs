@@ -53,6 +53,7 @@ public class BossBehavior : MoveableAgent
 	public bool settingUp = true;
 	private readonly float baseTurnSpeed = 90f;
 	private float turnSpeed;
+	private bool jumped = false;
 	
 	protected override void Start()
 	{
@@ -68,10 +69,14 @@ public class BossBehavior : MoveableAgent
 			return;
 		}
 
-		if (isStunned)
+		if (isStunned && isDead == false)
 		{
+			animator.speed = 0;
+			// animator.SetBool(MOVE_KEY, false);
+			// animator.SetBool(TURN_KEY, false);
 			return;
 		}
+		animator.speed = 1;
 
 		if (canTurn)
 		{
@@ -196,6 +201,9 @@ public class BossBehavior : MoveableAgent
 		agent.enabled = false;
 		
 		animator.SetTrigger(JUMP_KEY);
+		StartCoroutine(JumpUp());
+		StartCoroutine(JumpDown());
+		StartCoroutine(SpawnJumpHitbox());
 		yield return new WaitForSeconds(JUMP_DURATION);
 		
 		rb.isKinematic = true;
@@ -203,27 +211,65 @@ public class BossBehavior : MoveableAgent
 		agent.isStopped = false;
 		canAnimateTurn = true;
 		doingAction = false;
+		jumped = false;
 	}
 
-	public void JumpUp()
+	public IEnumerator JumpUp()
 	{
+		yield return new WaitForSeconds(22f / 30f * 2f / 3f);
+		if (isStunned)
+		{
+			yield break;
+		}
 		rb.isKinematic = false;
 		rb.AddForce(Vector3.up * upThrust, ForceMode.Impulse);
+		jumped = true;
 		GameObject hitbox = Instantiate(rangeHitboxPrefab, new Vector3(transform.position.x, rangeHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
 		Destroy(hitbox, JUMP_RANGE_DURATION);
 	}
 
-	public void JumpDown()
+	public IEnumerator JumpDown()
 	{
-		rb.AddForce(Vector3.down * downThrust, ForceMode.Impulse);
+		yield return new WaitForSeconds(40f / 30f * 2f / 3f);
+		if (jumped)
+		{
+			rb.AddForce(Vector3.down * downThrust, ForceMode.Impulse);
+		}
 	}
 	
-	public void SpawnJumpHitbox()
+	public IEnumerator SpawnJumpHitbox()
 	{
-		GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
-		Instantiate(jumpDustPrefab, new Vector3(transform.position.x, jumpDustPrefab.transform.position.y, transform.position.z), Quaternion.identity);
-		Destroy(hitbox, JUMP_DAMAGE_DURATION);
+		yield return new WaitForSeconds(55f / 30f * 2f / 3f);
+		if (jumped)
+		{
+			GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+			Instantiate(jumpDustPrefab, new Vector3(transform.position.x, jumpDustPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+			Destroy(hitbox, JUMP_DAMAGE_DURATION);
+			yield return new WaitForSeconds(7f / 30f * 2f / 3f);
+			rb.isKinematic = true;
+			agent.enabled = true;
+		}
 	}
+	
+	// public void JumpUp()
+	// {
+	// 	rb.isKinematic = false;
+	// 	rb.AddForce(Vector3.up * upThrust, ForceMode.Impulse);
+	// 	GameObject hitbox = Instantiate(rangeHitboxPrefab, new Vector3(transform.position.x, rangeHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+	// 	Destroy(hitbox, JUMP_RANGE_DURATION);
+	// }
+	//
+	// public void JumpDown()
+	// {
+	// 	rb.AddForce(Vector3.down * downThrust, ForceMode.Impulse);
+	// }
+	//
+	// public void SpawnJumpHitbox()
+	// {
+	// 	GameObject hitbox = Instantiate(jumpHitboxPrefab, new Vector3(transform.position.x, jumpHitboxPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+	// 	Instantiate(jumpDustPrefab, new Vector3(transform.position.x, jumpDustPrefab.transform.position.y, transform.position.z), Quaternion.identity);
+	// 	Destroy(hitbox, JUMP_DAMAGE_DURATION);
+	// }
 #endregion	// Jump Attack
 
 #region Ranged Attack	
