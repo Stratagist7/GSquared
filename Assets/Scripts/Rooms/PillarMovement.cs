@@ -74,7 +74,7 @@ public class PillarMovement : MonoBehaviour
             Destroy(ammo.gameObject);
         }
         ammo = Instantiate(ammoPrefab, ammoSpawner.transform.position, Quaternion.identity).GetComponent<DroppedAmmo>();
-        ammo.SetAmmo(15, (DamageType)Random.Range(0, 6));
+        ammo.SetAmmo(25, (DamageType)Random.Range(0, 6));
     }
 
     
