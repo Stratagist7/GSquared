@@ -19,6 +19,7 @@ public class Damageable : Hitable
 	[SerializeField] private PullRadius pr;
 	[SerializeField] private Animator animator;
 	[SerializeField] private GameObject healthUI;
+	[SerializeField] private GameObject steamPrefab;
 	[Header("Dropped Ammo")] 
 	[SerializeField] private GameObject droppedAmmoPrefab;
 	[SerializeField] private int ammoAmount;
@@ -72,9 +73,17 @@ public class Damageable : Hitable
 		reactions[(DamageType.Earth, DamageType.Lightning)] = GiveShieldParticle;
 		reactions[(DamageType.Earth, DamageType.Water)] = GiveShieldParticle;
 
-		reactions[(DamageType.Fire, DamageType.Ice)] = () => TakeDamage(DamageType.None, ReactionValues.MELT_DMG);
+		reactions[(DamageType.Fire, DamageType.Ice)] = () =>
+		{
+			TakeDamage(DamageType.None, ReactionValues.MELT_DMG);
+			Instantiate(steamPrefab, transform);
+		};
 		reactions[(DamageType.Fire, DamageType.Lightning)] = () => pr.Explode();
-		reactions[(DamageType.Fire, DamageType.Water)] = () => TakeDamage(DamageType.None, ReactionValues.VAPORIZE_DMG);
+		reactions[(DamageType.Fire, DamageType.Water)] = () =>
+		{
+			TakeDamage(DamageType.None, ReactionValues.VAPORIZE_DMG);
+			Instantiate(steamPrefab, transform);
+		};
 
 		reactions[(DamageType.Ice, DamageType.Water)] = () =>
 		{

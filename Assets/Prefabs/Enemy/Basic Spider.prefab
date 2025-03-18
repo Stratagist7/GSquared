@@ -256,6 +256,7 @@ MonoBehaviour:
   pr: {fileID: 7948995958285881246}
   animator: {fileID: 0}
   healthUI: {fileID: 5719061559442739254}
+  steamPrefab: {fileID: 4756997017931527163, guid: 624d498bfe2ea644588f1b89cebf26e7, type: 3}
   droppedAmmoPrefab: {fileID: 6507742713195232737, guid: fae7bf40f73e4214b96e20bc31e233a3, type: 3}
   ammoAmount: 10
   damageType: -1

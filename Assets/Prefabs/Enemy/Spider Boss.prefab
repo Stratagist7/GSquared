@@ -16410,6 +16410,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
+      propertyPath: steamPrefab
+      value: 
+      objectReference: {fileID: 4756997017931527163, guid: 8c33080c0cc87464496374ca25c41205, type: 3}
+    - target: {fileID: 5718213561658250816, guid: e39ea9d16ccb85d41858c96e4196ef0c, type: 3}
       propertyPath: damageTypeUI.Array.data[0]
       value: 
       objectReference: {fileID: 0}
