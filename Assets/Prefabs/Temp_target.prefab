@@ -65,6 +65,7 @@ MonoBehaviour:
   pr: {fileID: 4061447498198782796}
   animator: {fileID: 0}
   healthUI: {fileID: 1878267873592797643}
+  steamPrefab: {fileID: 4756997017931527163, guid: 624d498bfe2ea644588f1b89cebf26e7, type: 3}
   droppedAmmoPrefab: {fileID: 6507742713195232737, guid: fae7bf40f73e4214b96e20bc31e233a3, type: 3}
   ammoAmount: 10
   damageType: 1
@@ -82,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 8166871947559299476}
   healthBar: {fileID: 6738551102214413434}
+  facePlayer: 1
 --- !u!65 &4150991119861449271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -467,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfd1cb0db3fe064eac9cc063b6b9fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inRange: []
   lightningHeight: 1
   drag: 1.7
   rb: {fileID: 6819855061728921101}
