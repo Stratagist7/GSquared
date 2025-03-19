@@ -15,7 +15,7 @@ Shader "Main Cel" {
 		// Control how smoothly the rim blends when approaching unlit
 		// parts of the surface.
 		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
-        _RampLevels("Ramp Levels", Range(2, 20)) = 3
+        _RampLevels("Ramp Levels", Range(2, 30)) = 3
     }
     SubShader {
         Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
