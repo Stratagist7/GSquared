@@ -1843,7 +1843,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.98099947, a: 1}
   m_Intensity: 1
-  m_Range: 6.06
+  m_Range: 4.33
   m_SpotAngle: 79.2
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -13094,6 +13094,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 47fbc90daa91ab541984ebd9f72db2d4, type: 2}
+    - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
+      propertyPath: m_SpotAngle
+      value: 93.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 75.7
+      objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
