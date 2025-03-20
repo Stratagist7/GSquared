@@ -13,7 +13,7 @@ public class MeleeWanderer : MeleeChaser
 
     private int currentLocation = 0;
     private bool wandering = false;
-    private bool isAlert = false;
+    public bool isAlert = false;
     
     protected override void Update()
     {

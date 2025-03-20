@@ -164,6 +164,11 @@ public class Damageable : Hitable
 			DropAmmo();
 		}
 
+		if (agent is MeleeWanderer wanderer)
+		{
+			wanderer.isAlert = true;
+		}
+
 		ApplyDamageTypeEffect(argType);
 	}
 
