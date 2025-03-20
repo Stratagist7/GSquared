@@ -32,8 +32,14 @@ public class AmmoWheel : MonoBehaviour
     };
 
     private DamageType curType = DamageType.None;
+    private DamageType lastType = DamageType.None;
     private Vector2 mouseLoc;
 	
+    private void OnEnable()
+    {
+        lastType = DamageType.None;
+    }
+
     private void OnDisable()
     {
         ammo.damageType = curType;
@@ -63,6 +69,7 @@ public class AmmoWheel : MonoBehaviour
             return;
         }
 
+        lastType = curType;
         SetSize((int)ammoAngle[closeAngle]);
         curType = ammoAngle[closeAngle];
     }
@@ -87,20 +94,12 @@ public class AmmoWheel : MonoBehaviour
 
     private void SetSize(int growIndex)
     {
-        // shrink all currently grown objects
-        for (int i = 0; i < ammoObjects.Length; i++)
+        // Shrink the last one
+        if (lastType != DamageType.None)
         {
-            if (i == growIndex)
-            {
-                continue;
-            }
-
-            if (ammoObjects[i].localScale != smallBgScale)
-            {
-                //print("shrinking " + ammoObjects[i]);
-                StartCoroutine(ChangeSize(i, true));
-            }
+            StartCoroutine(ChangeSize((int)lastType, true));
         }
+
         // grow the intended one
         StartCoroutine(ChangeSize(growIndex));
     }
@@ -111,7 +110,7 @@ public class AmmoWheel : MonoBehaviour
         float duration = growDuration;
         Vector3 maskStartValue = bigMaskScale;
         Vector3 maskEndValue = smallMaskScale;
-        Vector3 ammoStartValue = smallBgScale;
+        Vector3 ammoStartValue = ammoObjects[ammoIndex].localScale;
         Vector3 ammoEndValue = bigBgScale;
         ammoObjects[ammoIndex].SetSiblingIndex(2);
         
@@ -120,7 +119,7 @@ public class AmmoWheel : MonoBehaviour
             duration = shrinkDuration;
             maskStartValue = smallMaskScale;
             maskEndValue = bigMaskScale;
-            ammoStartValue = bigBgScale;
+            // ammoStartValue = bigBgScale;
             ammoEndValue = smallBgScale;
             ammoObjects[ammoIndex].SetSiblingIndex(7);
         }
