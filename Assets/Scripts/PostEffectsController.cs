@@ -7,7 +7,7 @@ using UnityEngine;
 public class PostEffectsController : MonoBehaviour
 {
     [SerializeField] private Shader postShader;
-    [SerializeField, Range(0, 1.5f)] public float radius;
+    [SerializeField, Range(-1.5f, 1.5f)] public float radius;
     [SerializeField, Range(0, 5f)] public float feather;
     [SerializeField] public Color tintColor;
     private Material postEffectMaterial;

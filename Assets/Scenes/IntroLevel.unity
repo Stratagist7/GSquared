@@ -18803,7 +18803,7 @@ MonoBehaviour:
   fadeDuration: 0.9
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   startRadius: 1.5
-  endRadius: 0
+  endRadius: -1.5
   startFeather: 2.5
   endFeather: 0
 --- !u!65 &692328076

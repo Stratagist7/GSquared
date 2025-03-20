@@ -7,7 +7,7 @@ public class FadeIn : MonoBehaviour
     [SerializeField] private PostEffectsController effect;
     private float fadeDuration = 1f;
     private Color fadeColor = Color.black;
-    private float startRadius = 0f;
+    private float startRadius = -1.5f;
     private float endRadius = 1.5f;
     private float startFeather = 0f;
     private float endFeather = 2.5f;
