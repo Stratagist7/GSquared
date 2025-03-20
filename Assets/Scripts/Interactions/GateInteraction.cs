@@ -4,6 +4,7 @@ public class GateInteraction : Interactable
 {
     [SerializeField] private GateControl airlockGate;
     [SerializeField] private GateControl entryGate;
+    [SerializeField] private GameObject navLink;
     
     void Start()
     {
@@ -15,6 +16,7 @@ public class GateInteraction : Interactable
         airlockGate.MoveGate(false);
         entryGate.MoveGate(true, false);
         interactText.SetActive(false);
+        navLink.SetActive(false);
         Destroy(gameObject);
     }
 }
