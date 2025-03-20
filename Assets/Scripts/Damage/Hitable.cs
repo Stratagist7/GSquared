@@ -15,11 +15,17 @@ public class Hitable : MonoBehaviour
 	
 	public virtual void TakeDamage(DamageType argType, int argDamage = -1)
 	{
+		if (argDamage < 0)
+		{
+			argDamage = ElementManager.instance.GetElement(argType).damage;
+		}
+		_curHealth -= argDamage;
+		
 		if (_curHealth <= 0)
 		{
 			return;
 		}
-		_curHealth -= argDamage;
+		
 		
 	}
 }

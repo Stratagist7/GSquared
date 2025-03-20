@@ -58,7 +58,7 @@ public class BulletDamage : MonoBehaviour
 	private void DealDamage()
 	{
 		canDamage = false;
-		Damageable damageable = target.GetComponent<Damageable>();
+		Hitable damageable = target.GetComponent<Hitable>();
 		if (damageable)
 		{
 			damageable.TakeDamage(damageType);
@@ -72,14 +72,14 @@ public class BulletDamage : MonoBehaviour
 				par = par.transform.parent.gameObject;
 			}
 
-			damageable = par.GetComponent<Damageable>();
+			damageable = par.GetComponent<Hitable>();
 			if (damageable)
 			{
 				damageable.TakeDamage(damageType);
 			}
 			else
 			{
-				Debug.LogError("Object " + target.name + " is tagged as damageable but is missing the Damageable script");
+				Debug.LogError("Object " + target.name + " is tagged as damageable but is missing a Hitable script");
 			}
 		}
 	}

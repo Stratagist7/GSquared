@@ -13,16 +13,35 @@ public class GlassBreaking : Hitable
 	[SerializeField] private ParticleSystem particles;
 	[SerializeField] private AudioClip sfx;
 	[SerializeField] private AudioSource audioSource;
+	[SerializeField] private MeshRenderer mRenderer;
 	
 	public override void TakeDamage(DamageType argType, int argDamage = -1)
 	{
+		// don't do anything if already broken
+		if (_curHealth <= 0)
+		{
+			return;
+		}
+		
 		base.TakeDamage(argType, argDamage);
 
 		if (_curHealth <= 0)
 		{
 			audioSource.PlayOneShot(sfx);
 			particles.Play();
-			filter.mesh = newMesh;
+			if (newMesh != null)
+			{
+				filter.mesh = newMesh;
+			}
+
+			if (mRenderer != null)
+			{
+				Material[] mats = new Material[2];
+				mats[0] = mRenderer.materials[0];
+				mats[1] = mRenderer.materials[1];
+				mRenderer.materials = mats;
+			}
+
 			if (disableColl != null)
 			{
 				disableColl.enabled = false;

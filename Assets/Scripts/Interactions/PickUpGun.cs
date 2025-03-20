@@ -5,6 +5,7 @@ public class PickUpGun : Interactable
 	
 	[SerializeField] private GameObject gun;
 	[SerializeField] private GameObject[] enableObjects;
+	[SerializeField] private GlassBreaking glass;
 
 	private void Start()
 	{
@@ -22,6 +23,7 @@ public class PickUpGun : Interactable
 			{
 				obj.SetActive(true);
 			}
+			glass.TakeDamage(DamageType.None, 100);
 			Destroy(gameObject);
 		}
 	}
